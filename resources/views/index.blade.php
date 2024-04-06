@@ -14,17 +14,17 @@
       <meta name="description" content="">
       <meta name="author" content="">
       <!-- bootstrap css -->
-      <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}">
       <!-- style css -->
-      <link rel="stylesheet" type="text/css" href="css/style.css">
+      <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
       <!-- Responsive-->
-      <link rel="stylesheet" href="css/responsive.css">
+      <link rel="stylesheet" href="{{asset('css/responsive.css')}}">
       <!-- fevicon -->
-      <link rel="icon" href="images/fevicon.png" type="image/gif" />
+      <link rel="icon" href="{{asset('images/fevicon.png')}}" type="image/gif" />
       <!-- font css -->
       <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
       <!-- Scrollbar Custom CSS -->
-      <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+      <link rel="stylesheet" href="{{asset('css/jquery.mCustomScrollbar.min.css')}}">
       <!-- Tweaks for older IEs-->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
    </head>
@@ -84,7 +84,7 @@
                               <h1 class="banner_taital">Rental Wisata<br><spa style="color: #fe5b29;">Central Hiace Rent Jatim</spa</h1>
                               <p class="banner_text">Kami siap memberikan pengalaman wisata yang tak terlupakan dengan rental Hiace kami, sesuai dengan kebutuhan dan keinginan Anda!</p>
                               <div class="btn_main">
-                                 <div class="contact_bt"><a href="#">Booking</a></div>
+                                 <div class="contact_bt"><a href="/customer/pricelist">Booking</a></div>
                                  <div class="contact_bt active"><a href="https://wa.me/+628118000071">Contact Us</a></div>
                               </div>
                            </div>
@@ -93,7 +93,7 @@
                   </div>
                </div>
                <div class="col-md-6">
-                  <div class="banner_img"><img src="images/banner-img.png"></div>
+                  <div class="banner_img"><img src="{{asset('images/banner-img.png')}}"></div>
                </div>
             </div>
          </div>
@@ -105,7 +105,7 @@
             <div class="about_section_2">
                <div class="row">
                   <div class="col-md-6"> 
-                     <div class="image_iman"><img src="images/about-img.png" class="about_img"></div>
+                     <div class="image_iman"><img src="{{asset('images/about-img.png')}}" class="about_img"></div>
                   </div>
                   <div class="col-md-6"> 
                      <div class="about_taital_box">
@@ -129,21 +129,21 @@
                <div class="row">
                   <div class="col-md-4">
                      <div class="gallery_box">
-                        <div class="gallery_img"><img src="images/img-1.png"></div>
+                        <div class="gallery_img"><img src="{{asset('images/img-1.png')}}"></div>
                         <h3 class="types_text">Toyota car</h3>
                           <p class="looking_text">Start per day $4500</p>
                      </div>
                   </div>
                   <div class="col-md-4">
                      <div class="gallery_box">
-                        <div class="gallery_img"><img src="images/img-2.png"></div>
+                        <div class="gallery_img"><img src="{{asset('images/img-2.png')}}"></div>
                         <h3 class="types_text">Toyota car</h3>
                           <p class="looking_text">Start per day $4500</p>
                      </div>
                   </div>
                   <div class="col-md-4">
                      <div class="gallery_box">
-                        <div class="gallery_img"><img src="images/img-3.png"></div>
+                        <div class="gallery_img"><img src="{{asset('images/img-3.png')}}"></div>
                         <h3 class="types_text">Toyota car</h3>
                           <p class="looking_text">Start per day $4500</p>
                      </div>
@@ -154,21 +154,21 @@
                <div class="row">
                   <div class="col-md-4">
                      <div class="gallery_box">
-                        <div class="gallery_img"><img src="images/img-1.png"></div>
+                        <div class="gallery_img"><img src="{{asset('images/img-1.png')}}"></div>
                         <h3 class="types_text">Toyota car</h3>
                           <p class="looking_text">Start per day $4500</p>
                      </div>
                   </div>
                   <div class="col-md-4">
                      <div class="gallery_box">
-                        <div class="gallery_img"><img src="images/img-2.png"></div>
+                        <div class="gallery_img"><img src="{{asset('images/img-2.png')}}"></div>
                         <h3 class="types_text">Toyota car</h3>
                           <p class="looking_text">Start per day $4500</p>
                      </div>
                   </div>
                   <div class="col-md-4">
                      <div class="gallery_box">
-                        <div class="gallery_img"><img src="images/img-3.png"></div>
+                        <div class="gallery_img"><img src="{{asset('images/img-3.png')}}"></div>
                         <h3 class="types_text">Toyota car</h3>
                           <p class="looking_text">Start per day $4500</p>
                      </div>
@@ -189,17 +189,17 @@
             <div class="choose_section_2">
                <div class="row">
                    <div class="col-sm-4">
-                       <div class="icon_1"><img src="images/icon-1.png"></div>
+                       <div class="icon_1"><img src="{{asset('images/icon-1.png')}}"></div>
                        <h4 class="safety_text">Keamanan & Keselamatan</h4>
                        <p class="ipsum_text">Keamanan dan keselamatan adalah prioritas kami. Kami memiliki standar ketat untuk menjamin pengalaman perjalanan yang aman dan nyaman bagi pelanggan kami.</p>
                    </div>
                    <div class="col-sm-4">
-                       <div class="icon_1"><img src="images/icon-2.png"></div>
+                       <div class="icon_1"><img src="{{asset('images/icon-2.png')}}"></div>
                        <h4 class="safety_text">Pemesanan Online</h4>
                        <p class="ipsum_text">Kami menawarkan layanan pemesanan online yang cepat dan mudah untuk memesan mobil Hiace, kapan saja, di mana saja.</p>
                    </div>
                    <div class="col-sm-4">
-                       <div class="icon_1"><img src="images/icon-3.png"></div>
+                       <div class="icon_1"><img src="{{asset('images/icon-3.png')}}"></div>
                        <h4 class="safety_text">Pengemudi Terbaik</h4>
                        <p class="ipsum_text">Kami bekerja dengan pengemudi-pengemudi berpengalaman dan profesional yang menyediakan pengalaman berkendara yang aman dan menyenangkan.</p>
                    </div>
@@ -224,73 +224,19 @@
                         <div class="row">
                            <div class="col-md-6">
                               <div class="client_taital_box">
-                                 <div class="client_img"><img src="images/client-img1.png"></div>
+                                 <div class="client_img"><img src="{{asset('images/client-img1.png')}}"></div>
                                  <h3 class="moark_text">Hannery</h3>
                                  <p class="client_text">It is a long established fact that a reader will be distracted by the readable content of a page</p>
                               </div>
-                              <div class="quick_icon"><img src="images/quick-icon.png"></div>
+                              <div class="quick_icon"><img src="{{asset('images/quick-icon.png')}}"></div>
                            </div>
                            <div class="col-md-6">
                               <div class="client_taital_box">
-                                 <div class="client_img"><img src="images/client-img2.png"></div>
+                                 <div class="client_img"><img src="{{asset('images/client-img2.png')}}"></div>
                                  <h3 class="moark_text">Channery</h3>
                                  <p class="client_text">It is a long established fact that a reader will be distracted by the readable content of a page</p>
                               </div>
-                              <div class="quick_icon"><img src="images/quick-icon.png"></div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="carousel-item">
-                     <div class="row">
-                        <div class="col-md-12">
-                           <h1 class="client_taital">What Says Customers</h1>
-                        </div>
-                     </div>
-                     <div class="client_section_2">
-                        <div class="row">
-                           <div class="col-md-6">
-                              <div class="client_taital_box">
-                                 <div class="client_img"><img src="images/client-img1.png"></div>
-                                 <h3 class="moark_text">Hannery</h3>
-                                 <p class="client_text">It is a long established fact that a reader will be distracted by the readable content of a page</p>
-                              </div>
-                              <div class="quick_icon"><img src="images/quick-icon.png"></div>
-                           </div>
-                           <div class="col-md-6">
-                              <div class="client_taital_box">
-                                 <div class="client_img"><img src="images/client-img2.png"></div>
-                                 <h3 class="moark_text">Channery</h3>
-                                 <p class="client_text">It is a long established fact that a reader will be distracted by the readable content of a page</p>
-                              </div>
-                              <div class="quick_icon"><img src="images/quick-icon.png"></div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="carousel-item">
-                     <div class="row">
-                        <div class="col-md-12">
-                           <h1 class="client_taital">What Says Customers</h1>
-                        </div>
-                     </div>
-                     <div class="client_section_2">
-                        <div class="row">
-                           <div class="col-md-6">
-                              <div class="client_taital_box">
-                                 <div class="client_img"><img src="images/client-img1.png"></div>
-                                 <h3 class="moark_text">Hannery</h3>
-                                 <p class="client_text">It is a long established fact that a reader will be distracted by the readable content of a page</p>
-                              </div>
-                              <div class="quick_icon"><img src="images/quick-icon.png"></div>
-                           </div>
-                           <div class="col-md-6">
-                              <div class="client_taital_box">
-                                 <div class="client_img"><img src="images/client-img2.png"></div>
-                                 <h3 class="moark_text">Channery</h3>
-                                 <p class="client_text">It is a long established fact that a reader will be distracted by the readable content of a page</p>
-                              </div>
-                              <div class="quick_icon"><img src="images/quick-icon.png"></div>
+                              <div class="quick_icon"><img src="{{asset('images/quick-icon.png')}}"></div>
                            </div>
                         </div>
                      </div>
@@ -355,13 +301,13 @@
       </div>
       <!-- copyright section end -->
       <!-- Javascript files-->
-      <script src="js/jquery.min.js"></script>
-      <script src="js/popper.min.js"></script>
-      <script src="js/bootstrap.bundle.min.js"></script>
-      <script src="js/jquery-3.0.0.min.js"></script>
-      <script src="js/plugin.js"></script>
+      <script src="{{asset('js/jquery.min.js')}}"></script>
+      <script src="{{asset('js/popper.min.js')}}"></script>
+      <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
+      <script src="{{asset('js/jquery-3.0.0.min.js')}}"></script>
+      <script src="{{asset('js/plugin.js')}}"></script>
       <!-- sidebar -->
-      <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-      <script src="js/custom.js"></script>
+      <script src="{{asset('js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
+      <script src="{{asset('js/custom.js')}}"></script>
    </body>
 </html>

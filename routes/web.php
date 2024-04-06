@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
+
+Route::prefix("/customer")->group(function(){
+    Route::get('/pricelist', function () {
+        return view('customer.pricelist');
+    });
+});
