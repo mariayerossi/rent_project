@@ -27,9 +27,29 @@ ul li {
     font-size: 20px;
 }
 </style>
+<div class="container"> 
+    <div class="row justify-content-center"> 
+        <div class="col-11 col-sm-9 col-md-7 col-lg-6 col-xl-5 text-center p-0"> 
+            <div class="px-0 pb-0"> 
+                <form id="form"> 
+                    <ul id="progressbar">
+                        <li class="active" id="step1"> 
+                            <strong>Pricelist</strong> 
+                        </li> 
+                        <li id="step2"><strong>Mobil</strong></li> 
+                        <li id="step3"><strong>Data</strong></li> 
+                        <li id="step4"><strong>Bayar</strong></li> 
+                    </ul> 
+                    <fieldset> 
+                        <h1><b>Pilih Pricelist</b></h1>
+                    </fieldset> 
+                </form> 
+            </div> 
+        </div> 
+    </div> 
+</div> 
 <div class="container mb-5">
-    <h1 class="text-center"><b>Pricelist</b></h1>
-    <div class="row mt-3">
+    <div class="row">
         <div class="col-md-3">
             <div class="card text-center" style="box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);">
                 <div class="card-header bg-primary text-white">
