@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,8 +18,18 @@ Route::get('/', function () {
     return view('index');
 });
 
+// CUSTOMER
 Route::prefix("/customer")->group(function(){
     Route::get('/pricelist', function () {
         return view('customer.pricelist');
     });
+});
+
+Route::get('/login', function () {
+    return view('admin.login');
+});
+
+// ADMIN
+Route::prefix("/admin")->group(function(){
+    Route::post("/login", [Controller::class, "login"]);
 });
