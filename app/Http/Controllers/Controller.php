@@ -22,13 +22,16 @@ class Controller extends BaseController
         }
 
         //pasang session sek
-        // Session::put("role","admin");
-        // return redirect('/admin/beranda');
+        Session::put("role","admin");
         return response()->json(['success' => true, 'message' => 'BUENERRR!']);
     }
 
     public function logout(){
         Session::forget('role');
         return redirect("/login");
+    }
+
+    public function beranda() {
+        return view('admin.beranda');
     }
 }

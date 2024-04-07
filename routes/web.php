@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Controller;
+use App\Http\Middleware\admin;
+use App\Http\Middleware\guest;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,9 +29,11 @@ Route::prefix("/customer")->group(function(){
 
 Route::get('/login', function () {
     return view('admin.login');
-});
+})->middleware([guest::class]);
 
 // ADMIN
 Route::prefix("/admin")->group(function(){
     Route::post("/login", [Controller::class, "login"]);
+    Route::get("/logout", [Controller::class, "logout"]);
+    Route::get("/beranda", [Controller::class, "beranda"])->middleware([admin::class]);
 });
