@@ -27,8 +27,30 @@
       <link rel="stylesheet" href="{{asset('css/jquery.mCustomScrollbar.min.css')}}">
       <!-- Tweaks for older IEs-->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
    </head>
    <body>
+      <style>
+                  .floating {
+ position: fixed;
+ width: 60px;
+ height: 60px;
+ bottom: 40px;
+ right: 40px;
+ background-color: #25d366;
+ color: #fff;
+ border-radius: 50px;
+ text-align: center;
+ font-size: 30px;
+ box-shadow: 2px 2px 3px #999;
+ z-index: 100;
+}
+
+.fab-icon {
+ margin-top: 16px;
+}
+      </style>
       <!-- header section start -->
       <div class="header_section">
          <div class="container">
@@ -254,7 +276,10 @@
             </div>
          </div>
       </div>
-
+      <!-- render the button and direct it to wa.me -->
+         <a href="https://wa.me/628118000071" class="floating" target="_blank">
+            <i class="fab fa-whatsapp fab-icon"></i>
+         </a>
       <div class="footer_section layout_padding" id="contact">
          <div class="container">
             <div class="row">
