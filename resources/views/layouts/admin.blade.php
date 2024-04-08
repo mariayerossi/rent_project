@@ -46,7 +46,7 @@
     <div class="header_section mb-4">
         <div class="container">
            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-               <a href="/" class="logo d-flex align-items-center">
+               <a href="/admin/beranda" class="logo d-flex align-items-center">
                    <h1 style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color:white">Central Hiace Rent Jatim</h1>
                </a>
                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,21 +54,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                    <ul class="navbar-nav ml-auto">
-                      <li class="nav-item">
-                         <a class="nav-link" href="/">Home</a>
-                      </li>
-                      <li class="nav-item">
-                         <a class="nav-link" href="#about">About</a>
-                      </li>
-                      <li class="nav-item">
-                         <a class="nav-link" href="#gallery">Vehicles</a>
-                      </li>
-                      <li class="nav-item">
-                         <a class="nav-link" href="#client">Client</a>
-                      </li>
-                      <li class="nav-item">
-                         <a class="nav-link" href="#contact">Contact</a>
-                      </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="/admin/mobil/daftarMobil">Mobil</a>
+                     </li>
                       <li class="nav-item">
                          <a class="nav-link" href="/admin/logout">Logout</a>
                       </li>
@@ -79,7 +67,6 @@
            </nav>
         </div>
      </div>
-     
 
       @yield('content')
       

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\mobil;
 use App\Http\Middleware\admin;
 use App\Http\Middleware\guest;
 use Illuminate\Support\Facades\Route;
@@ -36,4 +37,8 @@ Route::prefix("/admin")->group(function(){
     Route::post("/login", [Controller::class, "login"]);
     Route::get("/logout", [Controller::class, "logout"]);
     Route::get("/beranda", [Controller::class, "beranda"])->middleware([admin::class]);
+
+    Route::prefix("/mobil")->group(function(){
+        Route::get("/daftarMobil", [mobil::class, "daftarMobil"])->middleware([admin::class]);
+    });
 });
