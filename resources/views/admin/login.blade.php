@@ -250,7 +250,6 @@
                 return false; // Mengembalikan false untuk mencegah submission form
             });
         </script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       
       <script src="{{asset('js/jquery.min.js')}}"></script>
       <script src="{{asset('js/popper.min.js')}}"></script>

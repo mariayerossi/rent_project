@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('mobil', function (Blueprint $table) {
             $table->integerIncrements("id_mobil");
             $table->string("nama_mobil");
+            $table->string("foto_mobil");
             $table->integer("harga_mobil");
             $table->timestamps();
             $table->softDeletes();

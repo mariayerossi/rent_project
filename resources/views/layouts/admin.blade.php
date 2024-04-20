@@ -14,6 +14,7 @@
       <meta name="description" content="">
       <meta name="author" content="">
       <!-- bootstrap css -->
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}">
       <!-- style css -->
       <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
@@ -56,6 +57,9 @@
                    <ul class="navbar-nav ml-auto">
                      <li class="nav-item">
                         <a class="nav-link" href="/admin/mobil/daftarMobil">Mobil</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="/admin/mobil/daftarMobil">Sewa</a>
                      </li>
                       <li class="nav-item">
                          <a class="nav-link" href="/admin/logout">Logout</a>
