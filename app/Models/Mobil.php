@@ -23,4 +23,8 @@ class Mobil extends Model
         $mob->harga_mobil = $data["harga"];
         $mob->save();
     }
+
+    public function get_all_data(){
+        return Mobil::where('deleted_at',"=",null)->get();
+    }
 }

@@ -8,7 +8,10 @@ use Illuminate\Http\Request;
 class mobil extends Controller
 {
     public function daftarMobil() {
-        return view("admin.mobil.daftarMobil");
+        $mob = new ModelsMobil();
+        $param["data"] = $mob->get_all_data();
+
+        return view("admin.mobil.daftarMobil")->with($param);
     }
 
     public function tambahMobil(Request $request) {
