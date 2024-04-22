@@ -26,6 +26,7 @@ Route::prefix("/customer")->group(function(){
     Route::get('/pricelist', function () {
         return view('customer.pricelist');
     });
+    Route::get('/pilihJenis', [Controller::class, "pilihJenis"]);
 });
 
 Route::get('/login', function () {

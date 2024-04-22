@@ -72,7 +72,12 @@ ul li {
                         </ul>
                     </p>
                     <div class="mt-auto">
-                        <a href="#" class="btn btn-primary">Booking</a>
+                        {{-- <a href="#" class="btn btn-primary">Booking</a> --}}
+                        <form action="/customer/pilihJenis" method="get">
+                            @csrf
+                            <input type="hidden" name="jenis" value="City Tour">
+                            <button type="submit" class="btn btn-primary">Booking</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -100,7 +105,12 @@ ul li {
                         </ul>
                     </p>
                     <div class="mt-auto">
-                        <a href="#" class="btn btn-primary">Booking</a>
+                        {{-- <a href="#" class="btn btn-primary">Booking</a> --}}
+                        <form action="/customer/pilihJenis" method="get">
+                            @csrf
+                            <input type="hidden" name="jenis" value="Zona I">
+                            <button type="submit" class="btn btn-primary">Booking</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -128,7 +138,11 @@ ul li {
                         </ul>
                     </p>
                     <div class="mt-auto">
-                        <a href="#" class="btn btn-primary">Booking</a>
+                        <form action="/customer/pilihJenis" method="get">
+                            @csrf
+                            <input type="hidden" name="jenis" value="Zona II">
+                            <button type="submit" class="btn btn-primary">Booking</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -156,7 +170,11 @@ ul li {
                         </ul>
                     </p>
                     <div class="mt-auto">
-                        <a href="#" class="btn btn-primary">Booking</a>
+                        <form action="/customer/pilihJenis" method="get">
+                            @csrf
+                            <input type="hidden" name="jenis" value="Zona III">
+                            <button type="submit" class="btn btn-primary">Booking</button>
+                        </form>
                     </div>
                 </div>
             </div>

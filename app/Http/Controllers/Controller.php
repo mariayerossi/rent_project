@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mobil;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
@@ -33,5 +34,12 @@ class Controller extends BaseController
 
     public function beranda() {
         return view('admin.beranda');
+    }
+
+    public function pilihJenis(Request $request) {
+        // dd($request->jenis);
+        $mob = new Mobil();
+        $param["data"] = $mob->get_all_data();
+        return view('customer.daftarMobil')->with($param);
     }
 }
