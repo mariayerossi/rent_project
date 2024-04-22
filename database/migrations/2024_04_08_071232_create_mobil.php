@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string("nama_mobil");
             $table->string("foto_mobil");
             $table->integer("harga_mobil");
+            $table->string("status_mobil");
             $table->timestamps();
             $table->softDeletes();
         });

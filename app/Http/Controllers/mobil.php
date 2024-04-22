@@ -34,4 +34,8 @@ class mobil extends Controller
 
         return response()->json(['success' => true, 'message' => 'Berhasil Menambah Mobil!']);
     }
+
+    public function editMobil(Request $request) {
+        dd($request->harga);
+    }
 }

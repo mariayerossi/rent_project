@@ -21,10 +21,11 @@ class Mobil extends Model
         $mob->nama_mobil = $data["nama"];
         $mob->foto_mobil = $data["foto"];
         $mob->harga_mobil = $data["harga"];
+        $mob->status_mobil = "Aktif";
         $mob->save();
     }
 
     public function get_all_data(){
-        return Mobil::where('deleted_at',"=",null)->get();
+        return Mobil::where('deleted_at',"=",null)->where("status_mobil","=","Aktif")->get();
     }
 }

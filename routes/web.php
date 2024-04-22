@@ -43,5 +43,6 @@ Route::prefix("/admin")->group(function(){
         Route::get("/daftarMobil", [mobil::class, "daftarMobil"])->middleware([admin::class]);
         Route::view("/tambahMobil", "admin.mobil.masterMobil")->middleware([admin::class]);
         Route::post("/tambah", [mobil::class, "tambahMobil"]);
+        Route::post("/edit", [mobil::class, "editMobil"]);
     });
 });
