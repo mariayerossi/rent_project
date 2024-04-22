@@ -9,7 +9,7 @@ class mobil extends Controller
 {
     public function daftarMobil() {
         $mob = new ModelsMobil();
-        $param["data"] = $mob->get_all_data();
+        $param["data"] = $mob->get_all_data_admin();
 
         return view("admin.mobil.daftarMobil")->with($param);
     }
@@ -36,6 +36,25 @@ class mobil extends Controller
     }
 
     public function editMobil(Request $request) {
-        dd($request->harga);
+        // dd($request->harga);
+        if ($request->nama == null || $request->harga == null) {
+            return response()->json(['success' => false, 'message' => 'Field tidak boleh kosong!']);
+        }
+
+        $status = "Aktif";
+        if ($request->status == null) {
+            $status = "Non Aktif";
+        }
+
+        $data = [
+            "id" => $request->id,
+            "nama" => $request->nama,
+            "harga" => $request->harga,
+            "status" => $status
+        ];
+        $mob = new ModelsMobil();
+        $mob->updateMobil($data);
+
+        return response()->json(['success' => true, 'message' => 'Berhasil Mengubah Data!']);
     }
 }

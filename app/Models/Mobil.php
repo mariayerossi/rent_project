@@ -28,4 +28,16 @@ class Mobil extends Model
     public function get_all_data(){
         return Mobil::where('deleted_at',"=",null)->where("status_mobil","=","Aktif")->get();
     }
+
+    public function get_all_data_admin(){
+        return Mobil::where('deleted_at',"=",null)->get();
+    }
+
+    public function updateMobil($data){
+        $mob = Mobil::find($data["id"]);
+        $mob->nama_mobil = $data["nama"];
+        $mob->harga_mobil = $data["harga"];
+        $mob->status_mobil = $data["status"];
+        $mob->save();
+    }
 }

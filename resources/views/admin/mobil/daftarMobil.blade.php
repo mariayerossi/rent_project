@@ -108,28 +108,29 @@ input:checked + .slider:before {
                                       </button>
                                     </div>
                                     <div class="modal-body">
-                                      <form method="post" action="/admin/mobil/edit">
+                                      <form method="GET" action="/admin/mobil/edit" data-id="{{$item->id_mobil}}" id="form-{{$item->id_mobil}}">
                                         @csrf
+                                        <input type="hidden" name="id" value="{{$item->id_mobil}}">
                                         <div class="form-group">
                                           <label for="recipient-name" class="col-form-label">Nama:</label>
                                           <input type="text" class="form-control" id="recipient-name" value="{{$item->nama_mobil}}" name="nama">
                                         </div>
                                         <div class="form-group">
                                             <label for="hargaDisplay" class="col-form-label">Harga:</label>
-                                            <input type="text" class="form-control" id="hargaDisplay" value="{{ number_format($item->harga_mobil, 0, ',', '.') }}" oninput="formatNumber2(this)" name="harga">
-                                            <input type="hidden" name="harga" id="hargaActual">
+                                            <input type="text" class="form-control" id="hargaDisplay" value="{{ number_format($item->harga_mobil, 0, ',', '.') }}" oninput="formatNumber2(this)" name="harga" data-id="{{$item->id_mobil}}">
+                                            <input type="hidden" name="harga" id="{{$item->id_mobil}}" value="{{$item->harga_mobil}}">
                                         </div>
                                         <div class="form-group">
                                             <label for="recipient-status" class="col-form-label">Status:</label><br>
                                             <label class="switch">
-                                                <input type="checkbox" checked name="status">
+                                                <input type="checkbox" @if($item->status_mobil == "Aktif") checked @endif name="status">
                                                 <span class="slider round"></span>
                                               </label>
                                             </div>
                                     </div>
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                      <button type="submit" class="btn btn-primary">Edit</button>
+                                      <button type="submit" class="btn btn-primary btn_submit" data-id="{{$item->id_mobil}}">Edit</button>
                                     </div>
                                 </form>
                                   </div>
@@ -163,6 +164,8 @@ input:checked + .slider:before {
     }
 
     function formatNumber2(input) {
+        let id = input.getAttribute("data-id");
+        console.log(id);
         let value = input.value;
         value = value.replace(/\D/g, '');
         let numberValue = parseInt(value, 10);
@@ -171,11 +174,52 @@ input:checked + .slider:before {
             // Update input yang terlihat oleh pengguna dengan format yang sudah diformat
             input.value = numberValue.toLocaleString('id-ID');
             // Update input tersembunyi dengan angka murni
-            document.getElementById('hargaActual').value = numberValue;
+            document.getElementById(id).value = numberValue;
         } else {
             input.value = '';
-            document.getElementById('hargaActual').value = '';
+            document.getElementById(id).value = '';
         }
     }
+
+    $(document).on("click",".btn_submit",function(event){
+    // alert("halo");
+    event.preventDefault();
+  var form = $(this).attr("data-id");
+//   alert(form);
+          $.ajax({
+              url: "/admin/mobil/edit",
+              method: "GET",
+              data: $('#form-'+form).serialize(),
+              success: function(response) {
+                // alert("halo");
+                if (response.success) {
+                    if (response.success) {
+                        Swal.fire({
+                            title: "Success!",
+                            text: response.message,
+                            icon: "success"
+                        }).then((result) => {
+                        /* Read more about isConfirmed, isDenied below */
+                        if (result.isConfirmed) {
+                            window.location.reload();
+                        } else if (result.isDenied) {
+                            window.location.reload();
+                        }
+                        });
+                    }
+                    else {
+                        Swal.fire({
+                            title: "Error!",
+                            text: response.message,
+                            icon: "error"
+                        });
+                    }
+                }
+              },
+              error: function(jqXHR, textStatus, errorThrown) {
+                  swal("Error!", "Gagal mengirim rating!", "error");
+              }
+          });
+});
 </script>
 @endsection
