@@ -40,7 +40,7 @@ class Controller extends BaseController
         // dd($request->jenis);
 
         if (session()->has("jenis")) {
-            session()->forget('cart');
+            session()->forget('jenis');
         }
         session()->put('jenis', $request->jenis);
 
@@ -68,6 +68,7 @@ class Controller extends BaseController
                 'harga' => $mob->harga_mobil,
                 // Informasi lain yang mungkin Anda perlukan
             ];
+            // dd($cart);
 
             // Simpan keranjang belanja kembali ke sesi
             session()->put('cart', $cart);

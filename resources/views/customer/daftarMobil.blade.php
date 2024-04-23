@@ -114,7 +114,11 @@
                 </div>
             </div>
             @php
-                $cart = count(session()->get('cart'));
+                $cart = 0;
+                if (session()->has("cart") || session()->get("cart") != null) {
+                    $cart = count(session()->get('cart'));
+                }
+                // dd(session()->get('cart'));
             @endphp
             <div class="fixed-bottom mb-3 ml-3">
                 <button class="btn btn-primary btn-buka-keranjang" data-toggle="modal" data-target="#keranjangModal">
@@ -141,8 +145,8 @@
                                     </tr>
                                 </thead>
                                 <tbody id="keranjang-body">
-                                    @if (Session::has("cart"))
-                                        @foreach (Session::get("cart") as $item)
+                                    @if (session()->has("cart") || session()->get("cart") != null)
+                                        @foreach (session()->get("cart") as $item)
                                             <tr>
                                                 <td>{{$item["nama"]}}</td>
                                                 <td>{{$item["harga"]}}</td>
