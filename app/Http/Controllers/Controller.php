@@ -38,6 +38,12 @@ class Controller extends BaseController
 
     public function pilihJenis(Request $request) {
         // dd($request->jenis);
+
+        if (session()->has("jenis")) {
+            session()->forget('cart');
+        }
+        session()->put('jenis', $request->jenis);
+
         $mob = new Mobil();
         $param["data"] = $mob->get_all_data();
         return view('customer.daftarMobil')->with($param);
