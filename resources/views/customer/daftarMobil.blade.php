@@ -44,6 +44,16 @@
             width: 100%;
         }
     }
+    .notifikasi {
+        background-color: #ff4d4d;
+        color: #fff;
+        border-radius: 50%;
+        padding: 0.2em 0.5em;
+        font-size: 0.8em;
+        position: relative;
+        top: -15px; /* Menggeser notifikasi ke atas */
+        transform: translateY(-50%); /* Menggeser notifikasi secara vertikal ke tengah */
+    }
 </style>
 <div class="container"> 
     <div class="row justify-content-center"> 
@@ -103,49 +113,52 @@
                 </div>
                 </div>
             </div>
+            @php
+                $cart = count(session()->get('cart'));
+            @endphp
             <div class="fixed-bottom mb-3 ml-3">
                 <button class="btn btn-primary btn-buka-keranjang" data-toggle="modal" data-target="#keranjangModal">
                     <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-                </button>
+                </button>@if ($cart > 0)<span id="permintaanNotifikasi" class="notifikasi">{{$cart}}</span>@endif
             </div>
             <!-- Tambahkan kode untuk popup keranjang -->
-<div class="modal fade" id="keranjangModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Keranjang</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+            <div class="modal fade" id="keranjangModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Keranjang</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Nama</th>
+                                        <th>Harga</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="keranjang-body">
+                                    @if (Session::has("cart"))
+                                        @foreach (Session::get("cart") as $item)
+                                            <tr>
+                                                <td>{{$item["nama"]}}</td>
+                                                <td>{{$item["harga"]}}</td>
+                                                <td><a href="" class="hapus" data-id="{{$item["id"]}}">Hapus</a></td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="/customer/data" type="button" class="btn btn-success">Booking</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="modal-body">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Nama</th>
-                            <th>Harga</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody id="keranjang-body">
-                        @if (Session::has("cart"))
-                            @foreach (Session::get("cart") as $item)
-                                <tr>
-                                    <td>{{$item["nama"]}}</td>
-                                    <td>{{$item["harga"]}}</td>
-                                    <td><a href="" class="hapus" data-id="{{$item["id"]}}">Hapus</a></td>
-                                </tr>
-                            @endforeach
-                        @endif
-                    </tbody>
-                </table>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-            </div>
-        </div>
-    </div>
-</div>
         @else
             <h5 class="text-center mt-5">Tidak ada mobil yang tersedia!</h5>
         @endif

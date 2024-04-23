@@ -32,6 +32,9 @@ Route::prefix("/customer")->group(function(){
         Route::get('/clear', [Controller::class, "clearKeranjang"]);
         Route::get('/hapus/{id}', [Controller::class, "hapusKeranjang"]);
     });
+    Route::get('/data', function () {
+        return view('customer.data');
+    });
 });
 
 Route::get('/login', function () {
