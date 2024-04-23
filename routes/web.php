@@ -27,6 +27,11 @@ Route::prefix("/customer")->group(function(){
         return view('customer.pricelist');
     });
     Route::get('/pilihJenis', [Controller::class, "pilihJenis"]);
+    Route::prefix("/keranjang")->group(function(){
+        Route::post('/tambah', [Controller::class, "tambahKeranjang"]);
+        Route::get('/clear', [Controller::class, "clearKeranjang"]);
+        Route::get('/hapus/{id}', [Controller::class, "hapusKeranjang"]);
+    });
 });
 
 Route::get('/login', function () {
