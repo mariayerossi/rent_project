@@ -42,8 +42,21 @@
             <input type="time" class="form-control" id="exampleInputTime1" aria-describedby="timeHelp" name="jam">
         </div>
         <div class="form-group">
+            <label for="exampleFormControlTextarea1">Alamat Penjemputan</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="alamat"></textarea>
+        </div>
+        <div class="form-group">
             <label for="exampleInputDurasi1">Durasi Wisata</label>
-            <input type="number" class="form-control" id="exampleInputDurasi1" aria-describedby="durasiHelp" name="durasi" min="0" max="10" placeholder="Masukkan Durasi Wisata Anda">
+            <div class="input-group mb-2">
+                <input type="number" class="form-control" id="exampleInputDurasi1" aria-describedby="durasiHelp" name="durasi" min="0" max="10" placeholder="Masukkan Durasi Wisata Anda">
+                <div class="input-group-prepend">
+                    @if (session()->get("jenis") == "City Tour" || session()->get("jenis") == "Zona I")
+                        <div class="input-group-text">jam</div>
+                    @else
+                        <div class="input-group-text">hari</div>
+                    @endif
+                </div>
+            </div>
         </div>
         <div class="d-flex justify-content-end">
             <button type="submit" class="btn btn-primary" id="submit">Submit</button>
