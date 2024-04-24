@@ -15,7 +15,7 @@ return new class extends Migration
             $table->integerIncrements("id_dtrans");
             $table->unsignedInteger("fk_id_htrans");
             $table->unsignedInteger("fk_id_mobil");
-            $table->string("status");//dalam pengecekan, tersedia
+            $table->string("status_dtrans");//dalam pengecekan, tersedia
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('fk_id_htrans')

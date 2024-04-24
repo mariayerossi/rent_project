@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('htrans', function (Blueprint $table) {
             $table->integerIncrements("id_htrans");
+            $table->timestamp("tanggal_htrans");
             $table->string("nama_cust");
             $table->date("tanggal_jemput");
             $table->time("jam_jemput");
             $table->string("alamat_jemput");
             $table->integer("durasi");
-            $table->string("status");//menunggu ketersediaan, menunggu pembayaran, menunggu konfirmasi, diterima
+            $table->string("status_htrans");//menunggu ketersediaan, menunggu pembayaran, menunggu konfirmasi, diterima
             $table->timestamps();
             $table->softDeletes();
         });
