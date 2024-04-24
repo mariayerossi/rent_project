@@ -100,4 +100,14 @@ class Controller extends BaseController
 
         return response()->json(['success' => true, 'message' => 'Berhasil menghapus item!']);
     }
+
+    public function kirimData(Request $request) {
+        if ($request->nama == null || $request->tanggal == null || $request->jam == null || $request->alamat == null || $request->durasi == null) {
+            return response()->json(['success' => false, 'message' => 'Field tidak boleh kosong!']);
+        }
+        //masukin db utk dicek ketersediaannya sm admin
+
+
+        return response()->json(['success' => true, 'message' => 'Berhasil mengisi data! Silahkan tunggu admin melakukan cek ketersediaan mobil.']);
+    }
 }

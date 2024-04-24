@@ -27,7 +27,7 @@
     </div> 
 </div> 
 <div class="container mb-5">
-    <form action="" method="post" id="submitForm">
+    <form action="/customer/kirimData" method="post" id="kirimForm">
         @csrf
         <div class="form-group">
             <label for="exampleInputEmail1">Nama</label>
@@ -59,8 +59,57 @@
             </div>
         </div>
         <div class="d-flex justify-content-end">
-            <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+            <button type="submit" class="btn btn-primary" id="kirim">Submit dan Cek Ketersediaan</button>
         </div>
     </form>
 </div>
+<script>
+    $(document).ready(function() {
+        $("#kirim").click(function(event) {
+            event.preventDefault(); // Mencegah perilaku default form
+
+            var formData = new FormData($("#kirimForm")[0]);
+
+            $.ajax({
+                url: "/customer/kirimData",
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    if (response.success) {
+                        Swal.fire({
+                            title: "Success!",
+                            text: response.message,
+                            icon: "success"
+                        }).then((result) => {
+                        /* Read more about isConfirmed, isDenied below */
+                        if (result.isConfirmed) {
+                            window.location.reload();
+                            // window.location.href = "";
+                        } else if (result.isDenied) {
+                            window.location.reload();
+                        }
+                        });
+                    }
+                    else {
+                        Swal.fire({
+                            title: "Error!",
+                            text: response.message,
+                            icon: "error"
+                        });
+                    }
+                    // alert('Berhasil Diterima!');
+                    // Atau Anda dapat mengupdate halaman dengan respons jika perlu
+                    // Anda dapat menyesuaikan feedback yang diberikan ke pengguna berdasarkan respons server
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert('Ada masalah saat mengirim data. Silahkan coba lagi.');
+                }
+            });
+
+            return false; // Mengembalikan false untuk mencegah submission form
+        });
+    })
+</script>
 @endsection

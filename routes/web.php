@@ -35,6 +35,7 @@ Route::prefix("/customer")->group(function(){
     Route::get('/data', function () {
         return view('customer.data');
     });
+    Route::post('/kirimData', [Controller::class, "kirimData"]);
 });
 
 Route::get('/login', function () {
