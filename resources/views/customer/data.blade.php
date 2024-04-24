@@ -27,11 +27,15 @@
     </div> 
 </div> 
 <div class="container mb-5">
-    <form action="/customer/kirimData" method="post" id="kirimForm">
+    <form action="" method="post" id="kirimForm">
         @csrf
         <div class="form-group">
             <label for="exampleInputEmail1">Nama</label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="nama" placeholder="Masukkan Nama Anda">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Nomer Telepon</label>
+            <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="telepon" placeholder="Masukkan Nomer Telepon Anda">
         </div>
         <div class="form-group">
             <label for="exampleInputDate1">Tanggal Penjemputan</label>
@@ -62,54 +66,76 @@
             <button type="submit" class="btn btn-primary" id="kirim">Submit dan Cek Ketersediaan</button>
         </div>
     </form>
+    <!-- Modal -->
+    <div class="modal fade" id="agreementModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">PERHATIAN!</h5>
+                </div>
+                <div class="modal-body">
+                    Peraturan:
+                    1. Pengembalian mobil harus dengan kondisi BBM penuh. (Kecuali jenis city tour)
+                    2. 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="confirmBooking">Submit dan Cek Ketersediaan</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <script>
-    $(document).ready(function() {
-        $("#kirim").click(function(event) {
-            event.preventDefault(); // Mencegah perilaku default form
+    document.getElementById('kirim').addEventListener('click', function(event) {
+        event.preventDefault();
+        $('#agreementModal').modal('show');
+    });
 
-            var formData = new FormData($("#kirimForm")[0]);
+    document.getElementById('confirmBooking').addEventListener('click', function(event) {
+        $('#agreementModal').modal('hide');
+        event.preventDefault();
 
-            $.ajax({
-                url: "/customer/kirimData",
-                type: "POST",
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function(response) {
-                    if (response.success) {
-                        Swal.fire({
-                            title: "Success!",
-                            text: response.message,
-                            icon: "success"
-                        }).then((result) => {
-                        /* Read more about isConfirmed, isDenied below */
-                        if (result.isConfirmed) {
-                            window.location.reload();
-                            // window.location.href = "";
-                        } else if (result.isDenied) {
-                            window.location.reload();
-                        }
-                        });
+        var formData = new FormData($("#kirimForm")[0]);
+
+        $.ajax({
+            url: "/customer/kirimData",
+            type: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                if (response.success) {
+                    Swal.fire({
+                        title: "Success!",
+                        text: response.message,
+                        icon: "success"
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        window.location.reload();
+                        // window.location.href = "";
+                    } else if (result.isDenied) {
+                        window.location.reload();
                     }
-                    else {
-                        Swal.fire({
-                            title: "Error!",
-                            text: response.message,
-                            icon: "error"
-                        });
-                    }
-                    // alert('Berhasil Diterima!');
-                    // Atau Anda dapat mengupdate halaman dengan respons jika perlu
-                    // Anda dapat menyesuaikan feedback yang diberikan ke pengguna berdasarkan respons server
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    alert('Ada masalah saat mengirim data. Silahkan coba lagi.');
+                    });
                 }
-            });
-
-            return false; // Mengembalikan false untuk mencegah submission form
+                else {
+                    Swal.fire({
+                        title: "Error!",
+                        text: response.message,
+                        icon: "error"
+                    });
+                }
+                // alert('Berhasil Diterima!');
+                // Atau Anda dapat mengupdate halaman dengan respons jika perlu
+                // Anda dapat menyesuaikan feedback yang diberikan ke pengguna berdasarkan respons server
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert('Ada masalah saat mengirim data. Silahkan coba lagi.');
+            }
         });
-    })
+
+        return false; // Mengembalikan false untuk mencegah submission form
+    });
 </script>
 @endsection

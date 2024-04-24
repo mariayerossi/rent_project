@@ -15,6 +15,8 @@ return new class extends Migration
             $table->integerIncrements("id_htrans");
             $table->timestamp("tanggal_htrans");
             $table->string("nama_cust");
+            $table->string("telepon_cust");
+            $table->string("jenis");
             $table->date("tanggal_jemput");
             $table->time("jam_jemput");
             $table->string("alamat_jemput");

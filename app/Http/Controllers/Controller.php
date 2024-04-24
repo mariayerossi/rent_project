@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dtrans;
+use App\Models\Htrans;
 use App\Models\Mobil;
+use DateInterval;
+use DateTime;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
@@ -102,11 +106,59 @@ class Controller extends BaseController
     }
 
     public function kirimData(Request $request) {
-        if ($request->nama == null || $request->tanggal == null || $request->jam == null || $request->alamat == null || $request->durasi == null) {
+        if ($request->nama == null || $request->telepon == null || $request->tanggal == null || $request->jam == null || $request->alamat == null || $request->durasi == null) {
             return response()->json(['success' => false, 'message' => 'Field tidak boleh kosong!']);
         }
+
+        date_default_timezone_set("Asia/Jakarta");
+        $tgl_skrg = date("Y-m-d");
+
+        //minimal pesan h-15 hari h
+        $sewa = new DateTime($request->tanggal);
+        $sewa->sub(new DateInterval('P15D'));
+        $tgl_min = $sewa->format('Y-m-d');
+
+        if ($tgl_skrg > $tgl_min) {
+            return response()->json(['success' => false, 'message' => 'Pemesanan melalui website dilakukan minimal 15 hari sebelumnya. Jika mendesak, silahkan lakukan pemesanan manual di Whatsapp!']);
+        }
+
         //masukin db utk dicek ketersediaannya sm admin
-        
+        $skrg = date("Y-m-d H:i:s");
+
+        $jenis = "";
+        if (session()->has("jenis") || session()->get("jenis") != null) {
+            $jenis = session()->get("jenis");
+        }
+        else {
+            return response()->json(['success' => false, 'message' => 'Silahkan pilih jenis perjalanan di pricelist!']);
+        }
+
+        $dataH = [
+            "tanggal_ht" => $skrg,
+            "nama" => $request->nama,
+            "telepon" => $request->telepon,
+            "jenis" => $jenis,
+            "tanggal_jem" => $request->tanggal,
+            "jam" => $request->jam,
+            "alamat" => $request->alamat,
+            "durasi" => $request->durasi
+        ];
+        $ht = new Htrans();
+        $id = $ht->insertHtrans($dataH);
+
+        if (session()->has("cart") || session()->get("cart") != null) {
+            foreach (session()->get("cart") as $key => $value) {
+                $dataD = [
+                    "fk_id_htrans" => $id,
+                    "fk_id_mobil" => $value["id"]
+                ];
+                $dt = new Dtrans();
+                $dt->insertDtrans($dataD);
+            }
+        }
+        else {
+            return response()->json(['success' => false, 'message' => 'Silahkan pilih mobil!']);
+        }
 
         return response()->json(['success' => true, 'message' => 'Berhasil mengisi data! Silahkan tunggu admin melakukan cek ketersediaan mobil.']);
     }
