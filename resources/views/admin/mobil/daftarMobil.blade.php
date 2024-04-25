@@ -96,7 +96,7 @@ input:checked + .slider:before {
                                 <td><img onclick="showImage('{{ asset('upload/'.$item->foto_mobil) }}')" style="cursor: zoom-in;" class="img-ratio-16-9" src="{{ asset('upload/' . $item->foto_mobil) }}" alt=""></td>
                                 <td>Rp {{ number_format($item->harga_mobil, 0, ',', '.') }}/hari</td>
                                 <td>{{$item->status_mobil}}</td>
-                                <td><button class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal{{$item->id_mobil}}" data-whatever="@mdo">Edit</button></td>
+                                <td><button class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal{{$item->id_mobil}}" data-whatever="@mdo">Edit</button><button class="btn btn-outline-primary">Atur</button></td>
                             </tr>
                             <div class="modal fade" id="exampleModal{{$item->id_mobil}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
