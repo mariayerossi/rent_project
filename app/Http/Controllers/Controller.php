@@ -160,6 +160,9 @@ class Controller extends BaseController
             return response()->json(['success' => false, 'message' => 'Silahkan pilih mobil!']);
         }
 
+        session()->forget('cart');
+        session()->forget('jenis');
+
         return response()->json(['success' => true, 'message' => 'Berhasil mengisi data! Silahkan tunggu admin melakukan cek ketersediaan mobil.']);
     }
 }

@@ -20,7 +20,7 @@ class Htrans extends Model
         $ht = new Htrans();
         $ht->tanggal_htrans = $data["tanggal_ht"];
         $ht->nama_cust = $data["nama"];
-        $ht->telp_cust = $data["telp"];
+        $ht->telepon_cust = $data["telepon"];
         $ht->jenis = $data["jenis"];
         $ht->tanggal_jemput = $data["tanggal_jem"];
         $ht->jam_jemput = $data["jam"];
