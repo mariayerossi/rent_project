@@ -26,7 +26,7 @@ class Htrans extends Model
         $ht->jam_jemput = $data["jam"];
         $ht->alamat_jemput = $data["alamat"];
         $ht->durasi = $data["durasi"];
-        $ht->status_htrans = "Menunggu Ketersediaan";
+        $ht->status_htrans = "Menunggu";
         $ht->save();
 
         return $ht->id_htrans;

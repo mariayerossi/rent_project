@@ -34,8 +34,8 @@
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="nama" placeholder="Masukkan Nama Anda">
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Nomer Telepon</label>
-            <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="telepon" placeholder="Masukkan Nomer Telepon Anda">
+            <label for="exampleInputEmail1">Nomer Telepon yang terdaftar di Whatsapp</label>
+            <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="telepon" placeholder="Masukkan Nomer Telepon Whatsaap Anda">
         </div>
         <div class="form-group">
             <label for="exampleInputDate1">Tanggal Penjemputan</label>
@@ -63,7 +63,7 @@
             </div>
         </div>
         <div class="d-flex justify-content-end">
-            <button type="submit" class="btn btn-primary" id="kirim">Submit dan Cek Ketersediaan</button>
+            <button type="submit" class="btn btn-primary" id="kirim">Submit</button>
         </div>
     </form>
     <!-- Modal -->
@@ -82,7 +82,7 @@
                     5. Pembatalan pemesanan kurang dari seminggu sebelumnya tidak mendapat pengembalian dana.
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="confirmBooking">Submit dan Cek Ketersediaan</button>
+                    <button type="button" class="btn btn-primary" id="confirmBooking">Lanjutkan</button>
                 </div>
             </div>
         </div>
@@ -115,8 +115,8 @@
                     }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {
-                        window.location.reload();
-                        // window.location.href = "";
+                        // window.location.reload();
+                        window.location.href = "/customer/bayar";
                     } else if (result.isDenied) {
                         window.location.reload();
                     }

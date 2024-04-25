@@ -21,7 +21,7 @@ return new class extends Migration
             $table->time("jam_jemput");
             $table->string("alamat_jemput");
             $table->integer("durasi");
-            $table->string("status_htrans");//menunggu ketersediaan, menunggu pembayaran, menunggu konfirmasi, diterima
+            $table->string("status_htrans");//menunggu, diterima, ditolak (pengembalian uang melalui whatsapp)
             $table->timestamps();
             $table->softDeletes();
         });

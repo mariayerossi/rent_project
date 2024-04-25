@@ -20,7 +20,6 @@ class Dtrans extends Model
         $dt = new Dtrans();
         $dt->fk_id_htrans = $data["fk_id_htrans"];
         $dt->fk_id_mobil = $data["fk_id_mobil"];
-        $dt->status_dtrans = "Dalam Pengecekan";
         $dt->save();
     }
 }
