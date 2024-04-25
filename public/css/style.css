@@ -1218,7 +1218,7 @@ html {
 
 #progressbar #step4:before { 
 	content: "4"
-} 
+}
 
 #progressbar li:before { 
 	width: 50px; 
