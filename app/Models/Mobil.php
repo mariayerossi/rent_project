@@ -29,6 +29,10 @@ class Mobil extends Model
         return Mobil::where('deleted_at',"=",null)->where("status_mobil","=","Aktif")->get();
     }
 
+    public function get_by_id($id){
+        return Mobil::where("id_mobil","=",$id)->first();
+    }
+
     public function get_all_data_admin(){
         return Mobil::where('deleted_at',"=",null)->get();
     }

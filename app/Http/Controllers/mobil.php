@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ketersediaan;
 use App\Models\Mobil as ModelsMobil;
 use Illuminate\Http\Request;
 
@@ -56,5 +57,27 @@ class mobil extends Controller
         $mob->updateMobil($data);
 
         return response()->json(['success' => true, 'message' => 'Berhasil Mengubah Data!']);
+    }
+
+    public function AturKetersediaan(Request $request) {
+        $mob = new ModelsMobil();
+        $param["data"] = $mob->get_by_id($request->id);
+
+        $sed = new Ketersediaan();
+        $param["data2"] = $sed->get_by_id_mobil($request->id);
+
+        return view("admin.mobil.ketersediaan")->with($param);
+    }
+
+    public function hapusSedia($id) {
+        //kasih pengecekan apakah tanggal hr ini?
+
+        $data = [
+            "id" => $id
+        ];
+        $sed = new Ketersediaan();
+        $sed->deleteKetersediaan($data);
+
+        return response()->json(['success' => true, 'message' => 'Berhasil Menghapus!']);
     }
 }

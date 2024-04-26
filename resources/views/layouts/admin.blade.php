@@ -13,8 +13,8 @@
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
-      <!-- bootstrap css -->
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <!-- bootstrap css -->
       <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}">
       <!-- style css -->
       <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
@@ -26,10 +26,12 @@
       <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
       <!-- Scrollbar Custom CSS -->
       <link rel="stylesheet" href="{{asset('css/jquery.mCustomScrollbar.min.css')}}">
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
       <!-- Tweaks for older IEs-->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-      
-      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+      <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
 
       <link href= 
 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'> 

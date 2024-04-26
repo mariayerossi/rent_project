@@ -134,7 +134,22 @@ class Controller extends BaseController
         }
 
         //data cust disimpan di session
-        
+        if (session()->has("data")) {
+            session()->forget('data');
+        }
+
+        $data = [
+            "tanggal_ht" => $skrg,
+            "nama" => $request->nama,
+            "telepon" => $request->telepon,
+            "jenis" => $jenis,
+            "tanggal_jem" => $request->tanggal,
+            "jam" => $request->jam,
+            "alamat" => $request->alamat,
+            "durasi" => $request->durasi
+        ];
+            
+        session()->put('data', $data);
 
         //transaksi disimpan di db ketika cust bayar saja
         // $dataH = [
