@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ketersediaan;
 use App\Models\Mobil as ModelsMobil;
+use DateTime;
 use Illuminate\Http\Request;
 
 class mobil extends Controller
@@ -70,14 +71,58 @@ class mobil extends Controller
     }
 
     public function hapusSedia($id) {
+        // dd("halo");
         //kasih pengecekan apakah tanggal hr ini?
+        date_default_timezone_set("Asia/Jakarta");
+        $skrg = date("Y-m-d H:i:s");
+        $skrgg = new DateTime($skrg);
+
+        $sed = new Ketersediaan();
+        $mulai = $sed->get_by_id($id)->tanggal_mulai;
+        $mulaii = new DateTime($mulai);
+        $selesai = $sed->get_by_id($id)->tanggal_selesai;
+        $selesaii = new DateTime($selesai);
+
+        if ($mulaii <= $skrgg && $skrgg <= $selesaii) {
+            return response()->json(['success' => false, 'message' => 'Gagal Menghapus! Tanggal sudah lewat!']);
+        }
 
         $data = [
             "id" => $id
         ];
-        $sed = new Ketersediaan();
         $sed->deleteKetersediaan($data);
 
         return response()->json(['success' => true, 'message' => 'Berhasil Menghapus!']);
+    }
+
+    public function tambahSedia(Request $request) {
+        $index = 1;
+        while ($request->has("mulai$index") && $request->has("selesai$index")) {
+            $id = $request->input("id$index");
+            $sed = new Ketersediaan();
+
+            if ($id != null) {
+                //proses update
+                $mulai = $sed->get_by_id($id)->tanggal_mulai;
+                $selesai = $sed->get_by_id($id)->tanggal_selesai;
+
+                //klo ada perubahan, lakukan proses update
+                if ($request->input("mulai$index") != $mulai || $request->input("selesai$index") != $selesai) {
+                    $data1 = [
+                        "id" => $id,
+                        "mulai" => $request->input("mulai$index"),
+                        "selesai" => $request->input("selesai$index")
+                    ];
+                    $sed->updateKetersediaan($data1);
+
+                    return response()->json(['success' => true, 'message' => 'Berhasil Mengedit!']);
+                }
+            }
+            else {
+                //proses insert
+            }
+            
+            $index++;
+        }
     }
 }

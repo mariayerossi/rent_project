@@ -24,6 +24,10 @@ class Ketersediaan extends Model
         $sed->save();
     }
 
+    public function get_by_id($id){
+        return Ketersediaan::where("id_sedia","=",$id)->first();
+    }
+
     public function get_by_id_mobil($id){
         return Ketersediaan::where("deleted_at","=",null)->where("fk_id_mobil","=",$id)->get();
     }
@@ -32,5 +36,12 @@ class Ketersediaan extends Model
     {
         $sed = Ketersediaan::find($data["id"]);
         $sed->delete();
+    }
+
+    public function updateKetersediaan($data){
+        $sed = Ketersediaan::find($data["id"]);
+        $sed->tanggal_mulai = $data["mulai"];
+        $sed->tanggal_selesai = $data["selesai"];
+        $sed->save();
     }
 }

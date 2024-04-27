@@ -60,6 +60,7 @@ Route::prefix("/admin")->group(function(){
     });
 
     Route::prefix("/ketersediaan")->group(function(){
+        Route::post("/tambah", [mobil::class, "tambahSedia"]);
         Route::post("/hapus/{id}", [mobil::class, "hapusSedia"]);
     });
 });
