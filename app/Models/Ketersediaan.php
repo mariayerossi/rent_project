@@ -38,6 +38,16 @@ class Ketersediaan extends Model
         $sed->delete();
     }
 
+    public function SoftDeleteKetersediaan($data)
+    {
+        date_default_timezone_set("Asia/Jakarta");
+        $skrg = date("Y-m-d H:i:s");
+
+        $sed = Ketersediaan::find($data["id"]);
+        $sed->deleted_at = $skrg;
+        $sed->save();
+    }
+
     public function updateKetersediaan($data){
         $sed = Ketersediaan::find($data["id"]);
         $sed->tanggal_mulai = $data["mulai"];

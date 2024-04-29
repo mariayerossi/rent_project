@@ -65,7 +65,22 @@ class mobil extends Controller
         $param["data"] = $mob->get_by_id($request->id);
 
         $sed = new Ketersediaan();
-        $param["data2"] = $sed->get_by_id_mobil($request->id);
+        $data2 = $sed->get_by_id_mobil($request->id);
+
+        // //(opsional klo cronjob ga bisa) hapus data yang sudah lewat
+        // date_default_timezone_set("Asia/Jakarta");
+        // $skrg = date("Y-m-d");
+        
+        // foreach ($data2 as $key => $value) {
+        //     if ($value->tanggal_selesai < $skrg) {
+        //         $data3 = [
+        //             "id" => $value->id_sedia
+        //         ];
+        //         $sed->deleteKetersediaan($data3);
+        //     }
+        // }
+
+        $param["data2"] = $data2;
 
         return view("admin.mobil.ketersediaan")->with($param);
     }
@@ -96,6 +111,10 @@ class mobil extends Controller
     }
 
     public function tambahSedia(Request $request) {
+        //kasih pengecekan apakah tanggal akhir kurang dr tanggal awal
+
+        //kasih pengecekan apakah tanggal awal kurang dari tanggal sekarang
+
         $index = 1;
         while ($request->has("mulai$index") && $request->has("selesai$index")) {
             $id = $request->input("id$index");
@@ -107,22 +126,28 @@ class mobil extends Controller
                 $selesai = $sed->get_by_id($id)->tanggal_selesai;
 
                 //klo ada perubahan, lakukan proses update
-                if ($request->input("mulai$index") != $mulai || $request->input("selesai$index") != $selesai) {
+                if ($request->input("selesai$index") != $selesai) {
                     $data1 = [
                         "id" => $id,
                         "mulai" => $request->input("mulai$index"),
                         "selesai" => $request->input("selesai$index")
                     ];
                     $sed->updateKetersediaan($data1);
-
-                    return response()->json(['success' => true, 'message' => 'Berhasil Mengedit!']);
                 }
             }
-            else {
+
+            if ($id == null) {
                 //proses insert
+                $data2 = [
+                    "fk_id_mobil" => $request->id_mobil,
+                    "mulai" => $request->input("mulai$index"),
+                    "selesai" => $request->input("selesai$index")
+                ];
+                $sed->insertKetersediaan($data2);
             }
-            
+
             $index++;
         }
+        return response()->json(['success' => true, 'message' => 'Berhasil Melakukan Perubahan!']);
     }
 }

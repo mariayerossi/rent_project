@@ -31,7 +31,7 @@
                 <button type="button" class="btn btn-primary mb-3" onclick="addTimeInput2()">Add</button>
             </div>
         </div>
-        <input type="hidden" id="" name="id" value="{{$data->id_mobil}}">
+        <input type="hidden" id="" name="id_mobil" value="{{$data->id_mobil}}">
         <div class="d-flex justify-content-end">
             <a href="javascript:history.back()" class="btn btn-outline-danger me-3">Batal</a>
             <button type="submit" class="btn btn-success" id="tambah">Simpan</button>
@@ -120,51 +120,51 @@
             }
         });
     }
-    // $(document).ready(function() {
-    //     $("#tambah").click(function(event) {
-    //         event.preventDefault(); // Mencegah perilaku default form
+    $(document).ready(function() {
+        $("#tambah").click(function(event) {
+            event.preventDefault(); // Mencegah perilaku default form
 
-    //         var formData = new FormData($("#tambahForm")[0]);
+            var formData = new FormData($("#tambahForm")[0]);
 
-    //         $.ajax({
-    //             url: "/admin/ketersediaan/tambah",
-    //             type: "POST",
-    //             data: formData,
-    //             processData: false,  // Important: Don't process the data
-    //             contentType: false,
-    //             success: function(response) {
-    //                 if (response.success) {
-    //                     Swal.fire({
-    //                         title: "Success!",
-    //                         text: response.message,
-    //                         icon: "success"
-    //                     }).then((result) => {
-    //                     /* Read more about isConfirmed, isDenied below */
-    //                     if (result.isConfirmed) {
-    //                         window.location.reload();
-    //                     } else if (result.isDenied) {
-    //                         window.location.reload();
-    //                     }
-    //                     });
-    //                 }
-    //                 else {
-    //                     Swal.fire({
-    //                         title: "Error!",
-    //                         text: response.message,
-    //                         icon: "error"
-    //                     });
-    //                 }
-    //                 // alert('Berhasil Diterima!');
-    //                 // Atau Anda dapat mengupdate halaman dengan respons jika perlu
-    //                 // Anda dapat menyesuaikan feedback yang diberikan ke pengguna berdasarkan respons server
-    //             },
-    //             error: function(jqXHR, textStatus, errorThrown) {
-    //                 alert('Ada masalah saat mengirim data. Silahkan coba lagi.');
-    //             }
-    //         });
+            $.ajax({
+                url: "/admin/ketersediaan/tambah",
+                type: "POST",
+                data: formData,
+                processData: false,  // Important: Don't process the data
+                contentType: false,
+                success: function(response) {
+                    if (response.success) {
+                        Swal.fire({
+                            title: "Success!",
+                            text: response.message,
+                            icon: "success"
+                        }).then((result) => {
+                        /* Read more about isConfirmed, isDenied below */
+                        if (result.isConfirmed) {
+                            window.location.reload();
+                        } else if (result.isDenied) {
+                            window.location.reload();
+                        }
+                        });
+                    }
+                    else {
+                        Swal.fire({
+                            title: "Error!",
+                            text: response.message,
+                            icon: "error"
+                        });
+                    }
+                    // alert('Berhasil Diterima!');
+                    // Atau Anda dapat mengupdate halaman dengan respons jika perlu
+                    // Anda dapat menyesuaikan feedback yang diberikan ke pengguna berdasarkan respons server
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert('Ada masalah saat mengirim data. Silahkan coba lagi.');
+                }
+            });
 
-    //         return false; // Mengembalikan false untuk mencegah submission form
-    //     });
-    // })
+            return false; // Mengembalikan false untuk mencegah submission form
+        });
+    })
 </script>
 @endsection
