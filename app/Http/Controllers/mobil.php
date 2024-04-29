@@ -111,12 +111,21 @@ class mobil extends Controller
     }
 
     public function tambahSedia(Request $request) {
-        //kasih pengecekan apakah tanggal akhir kurang dr tanggal awal
-
-        //kasih pengecekan apakah tanggal awal kurang dari tanggal sekarang
-
         $index = 1;
         while ($request->has("mulai$index") && $request->has("selesai$index")) {
+            //kasih pengecekan apakah tanggal akhir kurang dr tanggal awal
+            if ($request->input("mulai$index") > $request->input("selesai$index")) {
+                return response()->json(['success' => false, 'message' => 'Tanggal tidak valid!']);
+            }
+
+            //kasih pengecekan apakah tanggal awal kurang dari tanggal sekarang
+            date_default_timezone_set("Asia/Jakarta");
+            $skrg = date("Y-m-d");
+            if ($request->input("mulai$index") < $skrg) {
+                return response()->json(['success' => false, 'message' => 'Tanggal tidak valid!']);
+            }
+
+
             $id = $request->input("id$index");
             $sed = new Ketersediaan();
 
@@ -126,7 +135,7 @@ class mobil extends Controller
                 $selesai = $sed->get_by_id($id)->tanggal_selesai;
 
                 //klo ada perubahan, lakukan proses update
-                if ($request->input("selesai$index") != $selesai) {
+                if ($request->input("mulai$index") != $mulai || $request->input("selesai$index") != $selesai) {
                     $data1 = [
                         "id" => $id,
                         "mulai" => $request->input("mulai$index"),
