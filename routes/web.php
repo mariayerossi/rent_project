@@ -26,7 +26,10 @@ Route::prefix("/customer")->group(function(){
     Route::get('/pricelist', function () {
         return view('customer.pricelist');
     });
-    Route::get('/pilihJenis', [Controller::class, "pilihJenis"]);
+    Route::prefix("/jenis")->group(function(){
+        Route::get('/pilih', [Controller::class, "pilihJenis"]);
+        Route::get('/clear', [Controller::class, "clearJenis"]);
+    });
     Route::prefix("/keranjang")->group(function(){
         Route::post('/tambah', [Controller::class, "tambahKeranjang"]);
         Route::get('/clear', [Controller::class, "clearKeranjang"]);
@@ -34,7 +37,9 @@ Route::prefix("/customer")->group(function(){
     });
     Route::get('/data', function () {
         return view('customer.data');
+        Route::get('/clear', [Controller::class, "clearData"]);
     });
+    Route::get('/clearAll', [Controller::class, "clearAll"]);
     Route::post('/kirimData', [Controller::class, "kirimData"]);
     Route::get('/bayar', function () {
         return view('customer.bayar');

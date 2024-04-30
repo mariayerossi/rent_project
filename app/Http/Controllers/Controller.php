@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Dtrans;
 use App\Models\Htrans;
+use App\Models\Ketersediaan;
 use App\Models\Mobil;
 use DateInterval;
 use DateTime;
@@ -91,6 +92,32 @@ class Controller extends BaseController
         return response()->json(['success' => true, 'message' => 'Berhasil menghapus semua item!']);
     }
 
+    public function clearJenis()
+    {
+        // Kosongkan keranjang belanja dengan menghapus sesi 'jenis'
+        session()->forget('jenis');
+
+        return response()->json(['success' => true, 'message' => 'Berhasil menghapus semua item!']);
+    }
+
+    public function clearData()
+    {
+        // Kosongkan keranjang belanja dengan menghapus sesi 'data'
+        session()->forget('data');
+
+        return response()->json(['success' => true, 'message' => 'Berhasil menghapus semua item!']);
+    }
+
+    public function clearAll()
+    {
+        // Kosongkan keranjang belanja dengan menghapus sesi semua
+        session()->forget('jenis');
+        session()->forget('cart');
+        session()->forget('data');
+
+        return response()->json(['success' => true, 'message' => 'Berhasil menghapus semua item!']);
+    }
+
     public function hapusKeranjang($productId) {
         // Ambil keranjang belanja dari sesi
         $cart = session()->get('cart');
@@ -122,7 +149,40 @@ class Controller extends BaseController
             return response()->json(['success' => false, 'message' => 'Pemesanan melalui website dilakukan minimal 15 hari sebelumnya. Jika mendesak, silahkan lakukan pemesanan manual di Whatsapp!']);
         }
 
-        //masukin db utk dicek ketersediaannya sm admin
+        //cek ketersediaan mobil di tanggal tsb
+        if (!session()->has("cart") || session()->get("cart") == null) {
+            return response()->json(['success' => false, 'message' => 'Silahkan pilih mobil!']);
+        }
+
+        //hitung waktu selesai wisatanya
+        $mulai = $request->tanggal;
+        $mulaii = new DateTime($mulai);
+        $durasi = $request->durasi;
+        $selesai = date('Y-m-d', strtotime($mulai . ' + ' . $durasi . ' days'));
+        $selesaii = new DateTime($selesai);
+
+        $unavailableCars = [];
+
+        foreach (session()->get("cart") as $key => $value) {
+            $sed = new Ketersediaan();
+            $dataSed = $sed->get_by_id_mobil($value["id"]);
+            if (!$dataSed->isEmpty()) {
+                foreach ($dataSed as $key2 => $value2) {
+                    $sed_mulai = new DateTime($value2->tanggal_mulai);
+                    $sed_selesai = new DateTime($value2->tanggal_selesai);
+                    //kasi pengecekan apakah waktu yang diberikan customer berbenturan dgn ketersediaan
+                    if ($mulaii < $sed_selesai && $selesaii > $sed_mulai) {
+                        //mobil tdk tersedia
+                        $unavailableCars[] = $value["nama"]." tidak dapat disewa pada ".$value2->tanggal_mulai ." hingga ".$value2->tanggal_selesai;
+                    }
+                }
+            }
+        }
+
+        if ($unavailableCars != null) {
+            return response()->json(['success' => false, 'message' => $unavailableCars]);
+        }
+
         $skrg = date("Y-m-d H:i:s");
 
         $jenis = "";
