@@ -84,7 +84,7 @@
             @foreach ($data as $item)
                 <div class="col-md-3 product-col mb-4">
                     <div class="card h-100">
-                        <div class="aspect-ratio-square" onclick="showImage('{{ asset('upload/'.$item->foto_mobil) }}')">
+                        <div class="aspect-ratio-square" onclick="showImage('{{ asset('upload/'.$item->foto_mobil) }}','{{$item->id_mobil}}')">
                             <img src="{{ asset('upload/' . $item->foto_mobil) }}" class="card-img-top">
                         </div>
                         <div class="card-body">
@@ -109,6 +109,8 @@
                 <div class="modal-content">
                     <div class="modal-body">
                     <img src="" id="modalImage" class="img-fluid">
+                    <h4><b>Tidak dapat disewa pada tanggal:</b></h4>
+                    <div id="isi"></div>
                     </div>
                 </div>
                 </div>
@@ -169,11 +171,32 @@
     </div>
 </div>
 <script>
-    function showImage(imgPath) {
+    // function showImage(imgPath) {
+    //     document.getElementById('modalImage').src = imgPath;
+    //     $('#imageModal').modal('show');
+    // }
+
+    function showImage(imgPath, id) {
         document.getElementById('modalImage').src = imgPath;
-        $('#imageModal').modal('show');
+        // Assuming you want to use AJAX to fetch data using the ID
+        $.ajax({
+            type: "POST",
+            url: "/customer/get_ketersediaan",
+            data: {
+                id: id,
+                _token: '{{ csrf_token() }}' // Include CSRF token
+            },
+            success: function(response) {
+                $("#isi").html(response.data); // Assuming response contains the data you want to display
+                $('#imageModal').modal('show');
+            },
+            error: function(xhr, status, error) {
+                // Handle errors here
+                console.error('Error fetching data:', error);
+            }
+        });
     }
-    
+        
     $(document).ready(function() {
         // Tangani klik tombol tambah ke keranjang
         $(".btn-tambah-keranjang").click(function(e) {

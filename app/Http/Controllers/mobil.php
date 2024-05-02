@@ -159,4 +159,47 @@ class mobil extends Controller
         }
         return response()->json(['success' => true, 'message' => 'Berhasil Melakukan Perubahan!']);
     }
+
+    public function getKetersediaan(Request $request)
+    {
+        $id = $request->id;
+        // Fetch availability data based on the provided ID
+        $data = [
+            "id" => $id
+        ];
+        $sed = new Ketersediaan();
+        $ketersediaan = $sed->get_by_id_mobil($data);
+
+        $data2 = "";
+        if (!$ketersediaan->isEmpty()) {
+            foreach ($ketersediaan as $key => $value) {
+                if ($value->tanggal_mulai != $value->tanggal_selesai) {
+    
+                    $tanggalAwal = $value->tanggal_mulai;
+                    $tanggalObjek = DateTime::createFromFormat('Y-m-d', $tanggalAwal);
+                    $carbonDate = \Carbon\Carbon::parse($tanggalObjek)->locale('id');
+                    $tanggalBaru = $carbonDate->isoFormat('D MMMM YYYY');
+    
+                    $tanggalAwal2 = $value->tanggal_selesai;
+                    $tanggalObjek2 = DateTime::createFromFormat('Y-m-d', $tanggalAwal2);
+                    $carbonDate2 = \Carbon\Carbon::parse($tanggalObjek2)->locale('id');
+                    $tanggalBaru2 = $carbonDate2->isoFormat('D MMMM YYYY');
+    
+                    $data2 .= $tanggalBaru . " - ".$tanggalBaru2."<br>";
+                }
+                else {
+                    $data2 .= $value->tanggal_mulai."<br>";
+                }
+            }
+        }
+        else {
+            $data2 = "-";
+        }
+        
+        // You can customize the response as needed, here I'm just returning availability data
+        return response()->json([
+            'success' => true,
+            'data' => $data2, // Assuming you have a field named tanggal_unavailable
+        ]);
+    }
 }

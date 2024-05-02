@@ -44,6 +44,7 @@ Route::prefix("/customer")->group(function(){
     Route::get('/bayar', function () {
         return view('customer.bayar');
     });
+    Route::post('/get_ketersediaan', [mobil::class, "getKetersediaan"]);
 });
 
 Route::get('/login', function () {
