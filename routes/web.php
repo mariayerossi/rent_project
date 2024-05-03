@@ -41,10 +41,10 @@ Route::prefix("/customer")->group(function(){
     });
     Route::get('/clearAll', [Controller::class, "clearAll"]);
     Route::post('/kirimData', [Controller::class, "kirimData"]);
+    Route::post('/get_ketersediaan', [mobil::class, "getKetersediaan"]);
     Route::get('/bayar', function () {
         return view('customer.bayar');
     });
-    Route::post('/get_ketersediaan', [mobil::class, "getKetersediaan"]);
 });
 
 Route::get('/login', function () {

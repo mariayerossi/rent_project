@@ -25,7 +25,7 @@
             </div> 
         </div>
     </div> 
-</div> 
+</div>
 <div class="container mb-5">
     <form action="" method="post" id="kirimForm">
         @csrf
