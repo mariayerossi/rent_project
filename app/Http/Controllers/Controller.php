@@ -173,7 +173,17 @@ class Controller extends BaseController
                     //kasi pengecekan apakah waktu yang diberikan customer berbenturan dgn ketersediaan
                     if ($mulaii < $sed_selesai && $selesaii > $sed_mulai) {
                         //mobil tdk tersedia
-                        $unavailableCars[] = $value["nama"]." tidak dapat disewa pada ".$value2->tanggal_mulai ." hingga ".$value2->tanggal_selesai;
+                        $tanggalAwal = $value2->tanggal_mulai;
+                        $tanggalObjek = DateTime::createFromFormat('Y-m-d', $tanggalAwal);
+                        $carbonDate = \Carbon\Carbon::parse($tanggalObjek)->locale('id');
+                        $tanggalBaru = $carbonDate->isoFormat('D MMMM YYYY');
+
+                        $tanggalAwal2 = $value2->tanggal_selesai;
+                        $tanggalObjek2 = DateTime::createFromFormat('Y-m-d', $tanggalAwal2);
+                        $carbonDate2 = \Carbon\Carbon::parse($tanggalObjek2)->locale('id');
+                        $tanggalBaru2 = $carbonDate2->isoFormat('D MMMM YYYY');
+                        
+                        $unavailableCars[] = $value["nama"]." tidak dapat disewa pada ".$tanggalBaru ." hingga ".$tanggalBaru2;
                     }
                 }
             }
