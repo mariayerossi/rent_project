@@ -29,5 +29,27 @@
     </div> 
 </div>
 <div class="container mb-5">
+    <div class="d-flex justify-content-center">
+        <div class="alert alert-warning" role="alert">
+            <i class="bi bi-exclamation-circle"></i>Perhatikan! Pelanggan dapat melakukan pembayaran secara tunai atau dengan sistem pembayaran muka (DP) yang dilakukan saat pemesanan, dengan sisa pembayaran harus diselesaikan paling lambat sebelum keberangkatan. Besaran pembayaran muka dapat ditentukan secara fleksibel, namun untuk situasi yang mendesak, pembayaran muka minimal sebesar 50% dari total biaya.
+        </div>
+    </div>
+    <h3><b>Jenis Perjalanan:</b></h3>
+    @if (Session::has("jenis") || Session::get("jenis") != null)
+        <div class="row">
+            <div class="col-9">
+                <h3>{{Session::get("jenis")["nama"]}}</h3>
+            </div>
+            <div class="col-3">
+                @php
+                    //buat format harga
+                    
+                @endphp
+                <h3>Rp. {{Session::get("jenis")["harga"]}}</h3>
+            </div>
+        </div>
+    @else
+        <h3>Tidak ada data. Silahkan pilih jenis perjalanan</h3>
+    @endif
 </div>
 @endsection

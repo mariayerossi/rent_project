@@ -47,7 +47,11 @@ class Controller extends BaseController
         if (session()->has("jenis")) {
             session()->forget('jenis');
         }
-        session()->put('jenis', $request->jenis);
+        $data = [
+            "nama" => $request->jenis,
+            "harga" => $request->harga
+        ];
+        session()->put('jenis', $data);
 
         $mob = new Mobil();
         $param["data"] = $mob->get_all_data();

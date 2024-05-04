@@ -76,6 +76,7 @@ ul li {
                         <form action="/customer/jenis/pilih" method="get">
                             @csrf
                             <input type="hidden" name="jenis" value="City Tour">
+                            <input type="hidden" name="harga" value="1100000">
                             <button type="submit" class="btn btn-primary">Booking</button>
                         </form>
                     </div>
@@ -109,6 +110,7 @@ ul li {
                         <form action="/customer/jenis/pilih" method="get">
                             @csrf
                             <input type="hidden" name="jenis" value="Zona I">
+                            <input type="hidden" name="harga" value="1300000">
                             <button type="submit" class="btn btn-primary">Booking</button>
                         </form>
                     </div>
@@ -141,6 +143,7 @@ ul li {
                         <form action="/customer/jenis/pilih" method="get">
                             @csrf
                             <input type="hidden" name="jenis" value="Zona II">
+                            <input type="hidden" name="harga" value="1500000">
                             <button type="submit" class="btn btn-primary">Booking</button>
                         </form>
                     </div>
@@ -173,6 +176,7 @@ ul li {
                         <form action="/customer/jenis/pilih" method="get">
                             @csrf
                             <input type="hidden" name="jenis" value="Zona III">
+                            <input type="hidden" name="harga" value="1700000">
                             <button type="submit" class="btn btn-primary">Booking</button>
                         </form>
                     </div>
