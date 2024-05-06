@@ -47,6 +47,7 @@ class Controller extends BaseController
         if (session()->has("jenis")) {
             session()->forget('jenis');
         }
+        
         $data = [
             "nama" => $request->jenis,
             "harga" => $request->harga
@@ -200,13 +201,35 @@ class Controller extends BaseController
         $skrg = date("Y-m-d H:i:s");
 
         $jenis = "";
+        $harga = 0;
         if (session()->has("jenis") || session()->get("jenis") != null) {
-            $jenis = session()->get("jenis");
+            $jenis = session()->get("jenis")["nama"];
+            $harga = session()->get("jenis")["harga"];
         }
         else {
             return response()->json(['success' => false, 'message' => 'Silahkan pilih jenis perjalanan di pricelist!']);
         }
 
+        //pengecekan min. hari/jam sesuai dengan jenis perjalanan
+        if ($jenis == "Zona I" && $request->durasi > 15) {
+            return response()->json(['success' => false, 'message' => 'Durasi perjalanan Zona I maximal 15 jam']);
+        }
+        else if ($jenis == "Zona II" && $request->durasi < 2) {
+            return response()->json(['success' => false, 'message' => 'Durasi perjalanan Zona II minimal 2 hari']);
+        }
+        else if ($jenis == "Zona III" && $request->durasi < 3) {
+            return response()->json(['success' => false, 'message' => 'Durasi perjalanan Zona III minimal 3 hari']);
+        }
+
+        $subtotal_jenis = $harga * $request->durasi;
+
+        $subtotal_mobil = 0;
+        foreach (session()->get("cart") as $key => $value) {
+            $subtotal_mobil += $value["harga"];
+        }
+
+        $total = $subtotal_jenis + $subtotal_mobil;
+        
         //data cust disimpan di session
         if (session()->has("data")) {
             session()->forget('data');
@@ -220,7 +243,10 @@ class Controller extends BaseController
             "tanggal_jem" => $request->tanggal,
             "jam" => $request->jam,
             "alamat" => $request->alamat,
-            "durasi" => $request->durasi
+            "durasi" => $request->durasi,
+            "subtotal_jenis" => $subtotal_jenis,
+            "subtotal_mobil" => $subtotal_mobil,
+            "total" => $total
         ];
             
         session()->put('data', $data);

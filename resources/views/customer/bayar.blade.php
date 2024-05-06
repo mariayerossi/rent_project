@@ -37,15 +37,14 @@
     <h3><b>Jenis Perjalanan:</b></h3>
     @if (Session::has("jenis") || Session::get("jenis") != null)
         <div class="row">
-            <div class="col-9">
+            <div class="col-6">
                 <h3>{{Session::get("jenis")["nama"]}}</h3>
             </div>
             <div class="col-3">
-                @php
-                    //buat format harga
-                    
-                @endphp
-                <h3>Rp. {{Session::get("jenis")["harga"]}}</h3>
+                <h3>Rp {{ number_format(Session::get("jenis")["harga"], 0, ',', '.') }}</h3>
+            </div>
+            <div class="col-3">
+                <h3>Rp {{ number_format(Session::get("jenis")["harga"], 0, ',', '.') }}</h3>
             </div>
         </div>
     @else
