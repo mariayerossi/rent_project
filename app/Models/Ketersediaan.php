@@ -32,6 +32,10 @@ class Ketersediaan extends Model
         return Ketersediaan::where("deleted_at","=",null)->where("fk_id_mobil","=",$id)->get();
     }
 
+    public function get_all_data(){
+        return Ketersediaan::where("deleted_at","=",null)->get();
+    }
+
     public function deleteKetersediaan($data)
     {
         $sed = Ketersediaan::find($data["id"]);

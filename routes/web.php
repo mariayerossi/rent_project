@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\mobil;
+use App\Http\Controllers\pembayaran as ControllersPembayaran;
 use App\Http\Middleware\admin;
 use App\Http\Middleware\guest;
 use Illuminate\Support\Facades\Route;
@@ -44,6 +45,9 @@ Route::prefix("/customer")->group(function(){
     Route::post('/get_ketersediaan', [mobil::class, "getKetersediaan"]);
     Route::get('/bayar', function () {
         return view('customer.bayar');
+    });
+    Route::prefix("/trans")->group(function(){
+        Route::post('/tambahDP', [ControllersPembayaran::class, "tambahDP"]);
     });
 });
 
