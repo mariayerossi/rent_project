@@ -155,7 +155,7 @@ class pembayaran extends Controller
     }
 
     public function cekStatus(Request $request) {
-        if ($request->nama == "" || $request->telepon == "" || $request->tanggal) {
+        if ($request->nama == "" || $request->telepon == "" || $request->tanggal == null) {
             return response()->json(['success' => false, 'message' => 'Field tidak boleh kosong!']);
         }
 
@@ -163,10 +163,18 @@ class pembayaran extends Controller
         $data = $ht->get_all_data();
 
         if ($data != null || !$data->isEmpty()) {
+            $status = 0;
             foreach ($data as $key => $value) {
                 if ($request->nama == $value->nama_cust && $request->telepon_cust == $value->telepon && $request->tanggal_jemput == $value->tanggal) {
-                    return redirect("/cek");
+                    $status = 1;
                 }
+            }
+
+            if ($status == 1) {
+                return response()->json(['success' => true, 'message' => 'Berhasil!']);
+            }
+            else {
+                return response()->json(['success' => false, 'message' => 'Tidak ada data tersimpan!']);
             }
         }
     }

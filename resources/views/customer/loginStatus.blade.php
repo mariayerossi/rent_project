@@ -63,18 +63,7 @@
                 contentType: false,
                 success: function(response) {
                     if (response.success) {
-                        Swal.fire({
-                            title: "Success!",
-                            text: response.message,
-                            icon: "success"
-                        }).then((result) => {
-                        /* Read more about isConfirmed, isDenied below */
-                        if (result.isConfirmed) {
-                            cekStatusButton.hidden = false;
-                        } else if (result.isDenied) {
-                            window.location.reload();
-                        }
-                        });
+                        window.location.href = "/customer/trans/cek"
                     }
                     else {
                         Swal.fire({
