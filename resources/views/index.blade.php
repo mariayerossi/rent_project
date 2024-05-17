@@ -110,7 +110,7 @@
                               <p class="banner_text">Kami siap memberikan pengalaman wisata yang tak terlupakan dengan rental Hiace kami, sesuai dengan kebutuhan dan keinginan Anda!</p>
                               <div class="btn_main">
                                  <div class="contact_bt"><a href="/customer/pricelist">Booking</a></div>
-                                 <div class="contact_bt active"><a href="https://wa.me/+628118000071">Contact Us</a></div>
+                                 <div class="contact_bt active"><a href="/customer/trans/loginStatus">Cek Status</a></div>
                               </div>
                            </div>
                         </div>

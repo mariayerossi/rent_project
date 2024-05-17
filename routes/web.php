@@ -48,6 +48,13 @@ Route::prefix("/customer")->group(function(){
     });
     Route::prefix("/trans")->group(function(){
         Route::post('/tambahDP', [ControllersPembayaran::class, "tambahDP"]);
+        Route::get('/loginStatus', function () {
+            return view('customer.loginStatus');
+        });
+        Route::post('/cekStatus', [ControllersPembayaran::class, "cekStatus"]);
+        Route::get('/cek', function () {
+            return view('customer.status');
+        });
     });
 });
 

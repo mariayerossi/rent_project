@@ -106,8 +106,30 @@
     @if (Session::has("data") || Session::get("data") != null)
         <h4 class="mt-3">Nama: {{Session::get("data")["nama"]}}</h4>
         <h4>No. Telepon: {{Session::get("data")["telepon"]}}</h4>
+        @php
+            $tanggalAwal3 = Session::get("data")["tanggal_jem"] . " " . Session::get("data")["jam"];
+            $tanggalObjek3 = DateTime::createFromFormat('Y-m-d H:i', $tanggalAwal3);
+            $carbonDate3 = \Carbon\Carbon::parse($tanggalObjek3)->locale('id');
+            $tanggalBaru3 = $carbonDate3->isoFormat('D MMMM YYYY HH:mm');
+            // dd($tanggalAwal3);
+
+            $durasi = Session::get("data")["durasi"];
+            $jenis = Session::get("jenis")["nama"];
+
+            // Menghitung waktu kembali
+            if ($jenis == "City Tour" || $jenis == "Zona I") {
+                // Durasi dalam jam
+                $carbonDateKembali = $carbonDate3->copy()->addHours($durasi);
+            } else {
+                // Durasi dalam hari
+                $carbonDateKembali = $carbonDate3->copy()->addDays($durasi);
+            }
+            $tanggalKembali = $carbonDateKembali->isoFormat('D MMMM YYYY HH:mm');
+        @endphp
+        <h4>Waktu Penjemputan: {{$tanggalBaru3}}</h4>
+        <h4>Durasi Perjalanan: {{Session::get("data")["durasi"]}} @if(Session::get("jenis")["nama"] == "City Tour" || Session::get("jenis")["nama"] == "Zona I") jam @else hari @endif</h4>
+        <h4>Waktu Kembali: {{$tanggalKembali}}</h4>
         <h4>Alamat Penjemputan: {{Session::get("data")["alamat"]}}</h4>
-        {{-- <h4>Waktu Penjemputan: {{Session::get("data")["tanggal"]}}</h4> --}}
     @else
         <h4 class="mt-3">Tidak ada data! Silahkan isi data</h4>
     @endif
@@ -202,6 +224,7 @@
         </table>
         <div class="d-flex justify-content-end">
             <button type="submit" class="btn btn-success" id="tambah">Bayar</button>
+            <a href="/customer/trans/loginStatus" hidden class="btn btn-secondary" id="cekStatus">Cek Status</a>
         </div>
     </form>
 </div>
@@ -210,6 +233,9 @@
         document.getElementById('modalImage').src = imgPath;
         $('#imageModal').modal('show');
     }
+    const bayarButton = document.getElementById('tambahBayar');
+    const cekStatusButton = document.getElementById('cekStatus');
+    
     // Misalkan nilai total diambil dari Session
     const total = {{Session::get("data")["total"]}}; // Gantilah nilai ini dengan nilai dari Session::get("data")["total"]
 
@@ -247,7 +273,7 @@
                         }).then((result) => {
                         /* Read more about isConfirmed, isDenied below */
                         if (result.isConfirmed) {
-                            window.location.reload();
+                            cekStatusButton.hidden = false;
                         } else if (result.isDenied) {
                             window.location.reload();
                         }
@@ -269,7 +295,7 @@
                 }
             });
 
-            return false; // Mengembalikan false untuk mencegah submission form
+            return false;
         });
     });
     function downloadImage(url) {

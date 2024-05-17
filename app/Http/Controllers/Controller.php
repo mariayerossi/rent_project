@@ -138,6 +138,7 @@ class Controller extends BaseController
     }
 
     public function kirimData(Request $request) {
+        // return response()->json(['success' => false, 'message' => $request->tanggal]);
         if ($request->nama == null || $request->telepon == null || $request->tanggal == null || $request->jam == null || $request->alamat == null || $request->durasi == null) {
             return response()->json(['success' => false, 'message' => 'Field tidak boleh kosong!']);
         }
@@ -251,37 +252,6 @@ class Controller extends BaseController
             
         session()->put('data', $data);
 
-        //transaksi disimpan di db ketika cust bayar saja
-        // $dataH = [
-        //     "tanggal_ht" => $skrg,
-        //     "nama" => $request->nama,
-        //     "telepon" => $request->telepon,
-        //     "jenis" => $jenis,
-        //     "tanggal_jem" => $request->tanggal,
-        //     "jam" => $request->jam,
-        //     "alamat" => $request->alamat,
-        //     "durasi" => $request->durasi
-        // ];
-        // $ht = new Htrans();
-        // $id = $ht->insertHtrans($dataH);
-
-        // if (session()->has("cart") || session()->get("cart") != null) {
-        //     foreach (session()->get("cart") as $key => $value) {
-        //         $dataD = [
-        //             "fk_id_htrans" => $id,
-        //             "fk_id_mobil" => $value["id"]
-        //         ];
-        //         $dt = new Dtrans();
-        //         $dt->insertDtrans($dataD);
-        //     }
-        // }
-        // else {
-        //     return response()->json(['success' => false, 'message' => 'Silahkan pilih mobil!']);
-        // }
-
-        // session()->forget('cart');
-        // session()->forget('jenis');
-
-        return response()->json(['success' => true, 'message' => 'Berhasil mengisi data! Silahkan tunggu admin melakukan cek ketersediaan mobil.']);
+        return response()->json(['success' => true, 'message' => 'Berhasil mengisi data!']);
     }
 }
