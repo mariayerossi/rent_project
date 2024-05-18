@@ -26,6 +26,10 @@ class Htrans extends Model
         $ht->jam_jemput = $data["jam"];
         $ht->alamat_jemput = $data["alamat"];
         $ht->durasi = $data["durasi"];
+        $ht->harga_jenis = $data["harga"];
+        $ht->subtotal_jenis = $data["sub_jenis"];
+        $ht->subtotal_mobil = $data["sub_mobil"];
+        $ht->total = $data["total"];
         $ht->status_htrans = "Menunggu";
         $ht->save();
 
@@ -34,5 +38,9 @@ class Htrans extends Model
 
     public function get_all_data(){
         return Htrans::where('deleted_at',"=",null)->get();
+    }
+
+    public function get_data_by_id($id){
+        return Htrans::where("id_htrans","=",$id)->first();
     }
 }

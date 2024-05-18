@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('pembayaran', function (Blueprint $table) {
             $table->integerIncrements("id_bayar");
             $table->unsignedInteger("fk_id_htrans");
-            $table->date("tanggal");
+            $table->timestamp("tanggal");
             $table->string("persen", 15);
             $table->integer("jumlah");
             $table->string("bukti");

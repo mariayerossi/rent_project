@@ -22,4 +22,8 @@ class Dtrans extends Model
         $dt->fk_id_mobil = $data["fk_id_mobil"];
         $dt->save();
     }
+
+    public function get_data_by_id_htrans($id){
+        return Dtrans::where("fk_id_htrans","=",$id)->get();
+    }
 }

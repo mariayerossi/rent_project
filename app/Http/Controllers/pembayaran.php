@@ -86,7 +86,11 @@ class pembayaran extends Controller
             "tanggal_jem" => Session::get("data")["tanggal_jem"],
             "jam" => Session::get("data")["jam"],
             "alamat" => Session::get("data")["alamat"],
-            "durasi" => Session::get("data")["durasi"]
+            "durasi" => Session::get("data")["durasi"],
+            "harga" => Session::get("jenis")["harga"],
+            "sub_jenis" => Session::get("data")["subtotal_jenis"],
+            "sub_mobil" => Session::get("data")["subtotal_mobil"],
+            "total" => Session::get("data")["total"]
         ];
         $ht = new Htrans();
         $id = $ht->insertHtrans($dataH);
@@ -165,17 +169,31 @@ class pembayaran extends Controller
         if ($data != null || !$data->isEmpty()) {
             $status = 0;
             foreach ($data as $key => $value) {
-                if ($request->nama == $value->nama_cust && $request->telepon_cust == $value->telepon && $request->tanggal_jemput == $value->tanggal) {
-                    $status = 1;
+                if ($request->nama == $value->nama_cust && $request->telepon == $value->telepon_cust && $request->tanggal == $value->tanggal_jemput) {
+                    $status = $value->id_htrans;
                 }
             }
+            // dd($status);
 
-            if ($status == 1) {
-                return response()->json(['success' => true, 'message' => 'Berhasil!']);
+            if ($status != 0) {
+                return response()->json(['success' => true, 'message' => $status]);
             }
             else {
                 return response()->json(['success' => false, 'message' => 'Tidak ada data tersimpan!']);
             }
         }
+    }
+
+    public function cek($id) {
+        $ht = new Htrans();
+        $param["dataH"] = $ht->get_data_by_id($id);
+
+        $dt = new Dtrans();
+        $param["dataD"] = $dt->get_data_by_id_htrans($id);
+
+        $by = new ModelsPembayaran();
+        $param["dataP"] = $by->get_data_by_id_htrans($id);
+
+        return view("customer.status")->with($param);
     }
 }

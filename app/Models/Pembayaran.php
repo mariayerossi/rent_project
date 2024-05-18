@@ -25,4 +25,8 @@ class Pembayaran extends Model
         $byr->bukti = $data["bukti"];
         $byr->save();
     }
+
+    public function get_data_by_id_htrans($id){
+        return Pembayaran::where("fk_id_htrans","=",$id)->get();
+    }
 }

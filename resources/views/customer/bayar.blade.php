@@ -41,67 +41,6 @@
             <i class="bi bi-exclamation-circle"></i>Perhatikan! Pelanggan dapat melakukan pembayaran secara tunai atau dengan sistem pembayaran muka (DP) yang dilakukan saat pemesanan, dengan sisa pembayaran harus diselesaikan paling lambat sebelum keberangkatan. Besaran pembayaran muka dapat ditentukan secara fleksibel, namun untuk situasi yang mendesak, pembayaran muka minimal sebesar 50% dari total biaya.
         </div>
     </div>
-    {{-- <div class="row">
-        <div class="col-6">
-            
-        </div>
-        <div class="col-3">
-            <h3><b>Harga</b></h3>
-        </div>
-        <div class="col-3">
-            <h3><b>Subtotal</b></h3>
-        </div>
-    </div>
-
-    <h3 class="mt-4"><b>Jenis Perjalanan:</b></h3>
-    @if (Session::has("jenis") || Session::get("jenis") != null)
-        <div class="row">
-            <div class="col-6">
-                <h3>{{Session::get("jenis")["nama"]}}</h3>
-            </div>
-            <div class="col-3">
-                <h3>Rp {{ number_format(Session::get("jenis")["harga"], 0, ',', '.') }} x {{Session::get("data")["durasi"]}} @if(Session::get("jenis")["nama"] == "City Tour" || Session::get("jenis")["nama"] == "Zona I") jam @else hari @endif</h3>
-            </div>
-            <div class="col-3">
-                <h3>Rp {{ number_format(Session::get("data")["subtotal_jenis"], 0, ',', '.') }}</h3>
-            </div>
-        </div>
-    @else
-        <h3>Tidak ada data. Silahkan pilih jenis perjalanan</h3>
-    @endif
-
-    <h3 class="mt-4"><b>Mobil yang disewa:</b></h3>
-    @if (Session::has("cart") || Session::get("cart") != null)
-        @foreach (Session::get("cart") as $item)
-            <div class="row">
-                <div class="col-6">
-                    <h3>{{$item["nama"]}}</h3>
-                </div>
-                <div class="col-3">
-                    <h3>Rp {{ number_format($item["harga"], 0, ',', '.') }}</h3>
-                </div>
-                <div class="col-3">
-                    <h3>Rp {{ number_format($item["harga"], 0, ',', '.') }}</h3>
-                </div>
-            </div>
-        @endforeach
-    @else
-        <h3>Tidak ada data. Silahkan pilih jenis mobil</h3>
-    @endif
-
-    <hr>
-
-    <div class="row mt-4">
-        <div class="col-6">
-            <h3><b>Total:</b></h3>
-        </div>
-        <div class="col-3">
-
-        </div>
-        <div class="col-3">
-            <h3>Rp {{ number_format(Session::get("data")["total"], 0, ',', '.') }}</h3>
-        </div>
-    </div> --}}
 
     @if (Session::has("data") || Session::get("data") != null)
         <h4 class="mt-3">Nama: {{Session::get("data")["nama"]}}</h4>

@@ -63,7 +63,7 @@
                 contentType: false,
                 success: function(response) {
                     if (response.success) {
-                        window.location.href = "/customer/trans/cek"
+                        window.location.href = "/customer/trans/cek/" + response.message
                     }
                     else {
                         Swal.fire({

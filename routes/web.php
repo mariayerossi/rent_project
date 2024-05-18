@@ -52,9 +52,7 @@ Route::prefix("/customer")->group(function(){
             return view('customer.loginStatus');
         });
         Route::post('/cekStatus', [ControllersPembayaran::class, "cekStatus"]);
-        Route::get('/cek', function () {
-            return view('customer.status');
-        });
+        Route::get('/cek/{id}', [ControllersPembayaran::class, "cek"]);
     });
 });
 
