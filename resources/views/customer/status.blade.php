@@ -120,21 +120,35 @@
         </tbody>
     </table>
 
-    {{-- BAGIAN PEMBAYARAN UNTUK SISANYA --}}
-    <img onclick="showImage('{{ asset('upload/qris.jpeg') }}')" style="cursor: zoom-in;" class="img-ratio-4-5" src="{{ asset('upload/qris.jpeg') }}" alt="">
-    <button onclick="downloadImage('{{ asset('upload/qris.jpeg') }}')" style="margin-left: 10px; padding: 10px 20px; cursor: pointer;">
-        Download Image
-    </button>
-    {{-- fitur show image --}}
-    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-body">
-            <img src="" id="modalImage" class="img-fluid">
+    @if ($dataP->sum("jumlah") < $dataH->total)
+        {{-- BAGIAN PEMBAYARAN UNTUK SISANYA --}}
+        <h3 class="mt-4"><b>Kekurangan Pembayaran: Rp {{ number_format($dataH->total-$dataP->sum("jumlah"), 0, ',', '.') }}</b></h3>
+        <img onclick="showImage('{{ asset('upload/qris.jpeg') }}')" style="cursor: zoom-in;" class="img-ratio-4-5" src="{{ asset('upload/qris.jpeg') }}" alt="">
+        <button onclick="downloadImage('{{ asset('upload/qris.jpeg') }}')" style="margin-left: 10px; padding: 10px 20px; cursor: pointer;">
+            Download Image
+        </button>
+        {{-- fitur show image --}}
+        <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                <img src="" id="modalImage" class="img-fluid">
+                </div>
+            </div>
             </div>
         </div>
-        </div>
-    </div>
+        <form action="/customer/trans/bayarSisanya" enctype="multipart/form-data" method="post" class="mb-5 mt-3" id="tambahForm">
+            @csrf
+            <input type="hidden" name="persen" value={{100-$dataP->sum("persen")}}>
+            <input type="hidden" name="htrans" value={{$dataH->id_htrans}}>
+            <input type="hidden" name="jumlah" value={{$dataH->total-$dataP->sum("jumlah")}}>
+            Masukkan Bukti Pembayaran: <input type="file" name="bukti" id="" accept=".jpg,.png,.jpeg">
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-success" id="tambah">Bayar</button>
+            </div>
+        </form>
+    @endif
+
 </div>
 <script>
     function showImage(imgPath) {
@@ -154,5 +168,51 @@
             })
             .catch(console.error);
     }
+    $(document).ready(function() {
+        $("#tambah").click(function(event) {
+            event.preventDefault(); // Mencegah perilaku default form
+
+            var formData = new FormData($("#tambahForm")[0]);
+
+            $.ajax({
+                url: "/customer/trans/bayarSisanya",
+                type: "POST",
+                data: formData,
+                processData: false,  // Important: Don't process the data
+                contentType: false,
+                success: function(response) {
+                    if (response.success) {
+                        Swal.fire({
+                            title: "Success!",
+                            text: response.message,
+                            icon: "success"
+                        }).then((result) => {
+                        /* Read more about isConfirmed, isDenied below */
+                        if (result.isConfirmed) {
+                            window.location.reload();
+                        } else if (result.isDenied) {
+                            window.location.reload();
+                        }
+                        });
+                    }
+                    else {
+                        Swal.fire({
+                            title: "Error!",
+                            text: response.message,
+                            icon: "error"
+                        });
+                    }
+                    // alert('Berhasil Diterima!');
+                    // Atau Anda dapat mengupdate halaman dengan respons jika perlu
+                    // Anda dapat menyesuaikan feedback yang diberikan ke pengguna berdasarkan respons server
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert('Ada masalah saat mengirim data. Silahkan coba lagi.');
+                }
+            });
+
+            return false;
+        });
+    });
 </script>
 @endsection

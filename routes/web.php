@@ -53,6 +53,7 @@ Route::prefix("/customer")->group(function(){
         });
         Route::post('/cekStatus', [ControllersPembayaran::class, "cekStatus"]);
         Route::get('/cek/{id}', [ControllersPembayaran::class, "cek"]);
+        Route::post('/bayarSisanya', [ControllersPembayaran::class, "bayarSisanya"]);
     });
 });
 

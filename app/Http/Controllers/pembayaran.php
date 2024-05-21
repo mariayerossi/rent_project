@@ -158,7 +158,8 @@ class pembayaran extends Controller
         return response()->json(['success' => true, 'message' => 'Berhasil melakukan pembayaran! Silahkan cek status pembayaran']);
     }
 
-    public function cekStatus(Request $request) {
+    public function cekStatus(Request $request)
+    {
         if ($request->nama == "" || $request->telepon == "" || $request->tanggal == null) {
             return response()->json(['success' => false, 'message' => 'Field tidak boleh kosong!']);
         }
@@ -184,7 +185,8 @@ class pembayaran extends Controller
         }
     }
 
-    public function cek($id) {
+    public function cek($id)
+    {
         $ht = new Htrans();
         $param["dataH"] = $ht->get_data_by_id($id);
 
@@ -195,5 +197,32 @@ class pembayaran extends Controller
         $param["dataP"] = $by->get_data_by_id_htrans($id);
 
         return view("customer.status")->with($param);
+    }
+
+    public function bayarSisanya(Request $request)
+    {
+        if ($request->bukti == null) {
+            return response()->json(['success' => false, 'message' => 'Bukti Pembayaran tidak boleh kosong!']);
+        }
+
+        date_default_timezone_set("Asia/Jakarta");
+        $skrg = date("Y-m-d H:i:s");
+
+        $foto = $request->file("bukti");
+        $destinasi = "/upload";
+        $foto2 = uniqid().".".$foto->getClientOriginalExtension();
+        $foto->move(public_path($destinasi),$foto2);
+
+        $dataP = [
+            "fk_id_htrans" => $request->htrans,
+            "tanggal" => $skrg,
+            "persen" => $request->persen,
+            "jumlah" => $request->jumlah,
+            "bukti" => $foto2
+        ];
+        $byr = new ModelsPembayaran();
+        $byr->insertPembayaran($dataP);
+
+        return response()->json(['success' => true, 'message' => 'Berhasil Melunasi Pembayaran!']);
     }
 }
