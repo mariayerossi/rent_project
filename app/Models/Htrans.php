@@ -43,4 +43,10 @@ class Htrans extends Model
     public function get_data_by_id($id){
         return Htrans::where("id_htrans","=",$id)->first();
     }
+
+    public function updateStatus($data){
+        $ht = Htrans::find($data["id"]);
+        $ht->status_htrans = $data["status"];
+        $ht->save();
+    }
 }

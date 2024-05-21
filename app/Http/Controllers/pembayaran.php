@@ -223,6 +223,36 @@ class pembayaran extends Controller
         $byr = new ModelsPembayaran();
         $byr->insertPembayaran($dataP);
 
+        //edit status htrans menjadi "Lunas"
+        $dataH = [
+            "id" => $request->htrans,
+            "status" => "Lunas"
+        ];
+        $ht = new Htrans();
+        $ht->updateStatus($dataH);
+
         return response()->json(['success' => true, 'message' => 'Berhasil Melunasi Pembayaran!']);
+    }
+
+    public function daftarSewa()
+    {
+        $ht = new Htrans();
+        $param["data"] = $ht->get_all_data();
+
+        return view("admin.sewa.daftarSewa")->with($param);
+    }
+
+    public function detailSewa($id)
+    {
+        $ht = new Htrans();
+        $param["dataH"] = $ht->get_data_by_id($id);
+
+        $dt = new Dtrans();
+        $param["dataD"] = $dt->get_data_by_id_htrans($id);
+
+        $by = new ModelsPembayaran();
+        $param["dataP"] = $by->get_data_by_id_htrans($id);
+
+        return view("admin.sewa.detailSewa")->with($param);
     }
 }

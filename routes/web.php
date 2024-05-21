@@ -79,4 +79,9 @@ Route::prefix("/admin")->group(function(){
         Route::post("/tambah", [mobil::class, "tambahSedia"]);
         Route::post("/hapus/{id}", [mobil::class, "hapusSedia"]);
     });
+
+    Route::prefix("/sewa")->group(function(){
+        Route::get("/daftarSewa", [ControllersPembayaran::class, "daftarSewa"])->middleware([admin::class]);
+        Route::get("/detailSewa/{id}", [ControllersPembayaran::class, "detailSewa"])->middleware([admin::class]);
+    });
 });

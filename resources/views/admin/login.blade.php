@@ -232,7 +232,7 @@
                     data: formData,
                     success: function(response) {
                         if (response.success) {
-                            window.location.href = "/admin/beranda"
+                            window.location.href = "/admin/sewa/daftarSewa"
                         }
                         else {
                             Swal.fire({

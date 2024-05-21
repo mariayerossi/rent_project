@@ -1,13 +1,6 @@
-@extends('layouts.customer')
+@extends('layouts.admin')
 
 @section('content')
-<style>
-    .img-ratio-4-5 {
-        width: 150px; /* lebar tetap sama */
-        height: 187.5px; /* tinggi diubah untuk mengikuti rasio 4:5 */
-        object-fit: cover;
-    }
-</style>
 <div class="container">
     <h4>Nama: {{$dataH->nama_cust}}</h4>
     <h4>No. Telepon: {{$dataH->telepon_cust}}</h4>
@@ -35,6 +28,7 @@
     <h4>Durasi Perjalanan: {{$dataH->durasi}} @if($dataH->jenis == "City Tour" || $dataH->jenis == "Zona I") jam @else hari @endif</h4>
     <h4>Waktu Kembali: {{$tanggalKembali}}</h4>
     <h4>Alamat Penjemputan: {{$dataH->alamat_jemput}}</h4>
+    <h4>Status: @if($dataH->status_htrans == "Lunas") <b style="color: rgb(11, 164, 11)">Lunas</b> @else <b style="color: red">{{$dataH->status_htrans}}</b>  @endif </h4>
 
     <table class="table mt-4">
         <thead>
@@ -119,100 +113,5 @@
             @endif
         </tbody>
     </table>
-
-    @if ($dataP->sum("jumlah") < $dataH->total)
-        {{-- BAGIAN PEMBAYARAN UNTUK SISANYA --}}
-        <h3 class="mt-4"><b>Kekurangan Pembayaran: Rp {{ number_format($dataH->total-$dataP->sum("jumlah"), 0, ',', '.') }}</b></h3>
-        <img onclick="showImage('{{ asset('upload/qris.jpeg') }}')" style="cursor: zoom-in;" class="img-ratio-4-5" src="{{ asset('upload/qris.jpeg') }}" alt="">
-        <button onclick="downloadImage('{{ asset('upload/qris.jpeg') }}')" style="margin-left: 10px; padding: 10px 20px; cursor: pointer;">
-            Download Image
-        </button>
-        {{-- fitur show image --}}
-        <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-body">
-                <img src="" id="modalImage" class="img-fluid">
-                </div>
-            </div>
-            </div>
-        </div>
-        <form action="/customer/trans/bayarSisanya" enctype="multipart/form-data" method="post" class="mb-5 mt-3" id="tambahForm">
-            @csrf
-            <input type="hidden" name="persen" value={{100-$dataP->sum("persen")}}>
-            <input type="hidden" name="htrans" value={{$dataH->id_htrans}}>
-            <input type="hidden" name="jumlah" value={{$dataH->total-$dataP->sum("jumlah")}}>
-            Masukkan Bukti Pembayaran: <input type="file" name="bukti" id="" accept=".jpg,.png,.jpeg">
-            <div class="d-flex justify-content-end">
-                <button type="submit" class="btn btn-success" id="tambah">Bayar</button>
-            </div>
-        </form>
-    @endif
-
 </div>
-<script>
-    function showImage(imgPath) {
-        document.getElementById('modalImage').src = imgPath;
-        $('#imageModal').modal('show');
-    }
-    function downloadImage(url) {
-        fetch(url)
-            .then(response => response.blob())
-            .then(blob => {
-                const link = document.createElement('a');
-                link.href = URL.createObjectURL(blob);
-                link.download = 'qris.jpeg';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            })
-            .catch(console.error);
-    }
-    $(document).ready(function() {
-        $("#tambah").click(function(event) {
-            event.preventDefault(); // Mencegah perilaku default form
-
-            var formData = new FormData($("#tambahForm")[0]);
-
-            $.ajax({
-                url: "/customer/trans/bayarSisanya",
-                type: "POST",
-                data: formData,
-                processData: false,  // Important: Don't process the data
-                contentType: false,
-                success: function(response) {
-                    if (response.success) {
-                        Swal.fire({
-                            title: "Success!",
-                            text: response.message,
-                            icon: "success"
-                        }).then((result) => {
-                        /* Read more about isConfirmed, isDenied below */
-                        if (result.isConfirmed) {
-                            window.location.reload();
-                        } else if (result.isDenied) {
-                            window.location.reload();
-                        }
-                        });
-                    }
-                    else {
-                        Swal.fire({
-                            title: "Error!",
-                            text: response.message,
-                            icon: "error"
-                        });
-                    }
-                    // alert('Berhasil Diterima!');
-                    // Atau Anda dapat mengupdate halaman dengan respons jika perlu
-                    // Anda dapat menyesuaikan feedback yang diberikan ke pengguna berdasarkan respons server
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    alert('Ada masalah saat mengirim data. Silahkan coba lagi.');
-                }
-            });
-
-            return false;
-        });
-    });
-</script>
 @endsection

@@ -63,7 +63,7 @@
                 // Durasi dalam hari
                 $carbonDateKembali = $carbonDate3->copy()->addDays($durasi);
             }
-            $tanggalKembali = $carbonDateKembali->isoFormat('D MMMM YYYY HH:mm');
+            $tanggalKembali = $carbonDateKembali->isoFormat('D MMMM YYYY');
         @endphp
         <h4>Waktu Penjemputan: {{$tanggalBaru3}}</h4>
         <h4>Durasi Perjalanan: {{Session::get("data")["durasi"]}} @if(Session::get("jenis")["nama"] == "City Tour" || Session::get("jenis")["nama"] == "Zona I") jam @else hari @endif</h4>
