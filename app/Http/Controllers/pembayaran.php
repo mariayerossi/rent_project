@@ -237,7 +237,11 @@ class pembayaran extends Controller
     public function daftarSewa()
     {
         $ht = new Htrans();
-        $param["data"] = $ht->get_all_data();
+        $param["menunggu"] = $ht->get_all_data_menunggu();
+
+        $param["lunas"] = $ht->get_all_data_lunas();
+
+        $param["selesai"] = $ht->get_all_data_selesai();
 
         return view("admin.sewa.daftarSewa")->with($param);
     }

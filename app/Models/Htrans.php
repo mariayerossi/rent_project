@@ -40,6 +40,18 @@ class Htrans extends Model
         return Htrans::where('deleted_at',"=",null)->get();
     }
 
+    public function get_all_data_menunggu(){
+        return Htrans::where('deleted_at',"=",null)->where("status_htrans","=","Menunggu")->get();
+    }
+
+    public function get_all_data_lunas(){
+        return Htrans::where('deleted_at',"=",null)->where("status_htrans","=","Lunas")->get();
+    }
+
+    public function get_all_data_selesai(){
+        return Htrans::where('deleted_at',"=",null)->where("status_htrans","=","Selesai")->get();
+    }
+
     public function get_data_by_id($id){
         return Htrans::where("id_htrans","=",$id)->first();
     }

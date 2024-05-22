@@ -28,7 +28,7 @@
     <h4>Durasi Perjalanan: {{$dataH->durasi}} @if($dataH->jenis == "City Tour" || $dataH->jenis == "Zona I") jam @else hari @endif</h4>
     <h4>Waktu Kembali: {{$tanggalKembali}}</h4>
     <h4>Alamat Penjemputan: {{$dataH->alamat_jemput}}</h4>
-    <h4>Status: @if($dataH->status_htrans == "Lunas") <b style="color: rgb(11, 164, 11)">Lunas</b> @else <b style="color: red">{{$dataH->status_htrans}}</b>  @endif </h4>
+    <h4>Status: @if($dataH->status_htrans == "Lunas") <b style="color: rgb(11, 164, 11)">Lunas</b> @else <b style="color:rgb(227, 227, 0)">{{$dataH->status_htrans}}</b>  @endif </h4>
 
     <table class="table mt-4">
         <thead>
