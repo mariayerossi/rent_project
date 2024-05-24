@@ -240,6 +240,7 @@ class Controller extends BaseController
             "tanggal_ht" => $skrg,
             "nama" => $request->nama,
             "telepon" => $request->telepon,
+            "email" => $request->email,
             "jenis" => $jenis,
             "tanggal_jem" => $request->tanggal,
             "jam" => $request->jam,

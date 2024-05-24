@@ -82,6 +82,7 @@ class pembayaran extends Controller
             "tanggal_ht" => $skrg,
             "nama" => Session::get("data")["nama"],
             "telepon" => Session::get("data")["telepon"],
+            "email" => Session::get("data")["email"],
             "jenis" => Session::get("jenis")["nama"],
             "tanggal_jem" => Session::get("data")["tanggal_jem"],
             "jam" => Session::get("data")["jam"],

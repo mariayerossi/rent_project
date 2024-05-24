@@ -38,6 +38,10 @@
             <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="telepon" placeholder="Masukkan Nomer Telepon Whatsaap Anda">
         </div>
         <div class="form-group">
+            <label for="exampleInputEmail1">Alamat Email</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" placeholder="Masukkan Alamat Email Anda">
+        </div>
+        <div class="form-group">
             <label for="exampleInputDate1">Tanggal Penjemputan</label>
             <input type="date" class="form-control" id="exampleInputDate1" aria-describedby="dateHelp" name="tanggal">
         </div>

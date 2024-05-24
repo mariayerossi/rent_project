@@ -21,6 +21,7 @@ class Htrans extends Model
         $ht->tanggal_htrans = $data["tanggal_ht"];
         $ht->nama_cust = $data["nama"];
         $ht->telepon_cust = $data["telepon"];
+        $ht->email_cust = $data["email"];
         $ht->jenis = $data["jenis"];
         $ht->tanggal_jemput = $data["tanggal_jem"];
         $ht->jam_jemput = $data["jam"];

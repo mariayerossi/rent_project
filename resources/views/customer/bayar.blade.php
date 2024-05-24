@@ -69,60 +69,60 @@
         <h4>Durasi Perjalanan: {{Session::get("data")["durasi"]}} @if(Session::get("jenis")["nama"] == "City Tour" || Session::get("jenis")["nama"] == "Zona I") jam @else hari @endif</h4>
         <h4>Waktu Kembali: {{$tanggalKembali}}</h4>
         <h4>Alamat Penjemputan: {{Session::get("data")["alamat"]}}</h4>
-    @else
-        <h4 class="mt-3">Tidak ada data! Silahkan isi data</h4>
-    @endif
 
-    <table class="table mt-4">
-        <thead>
-            <tr>
-                <th scope="col" colspan="2"><h3><b>Jenis Perjalanan:</b></h3></th>
-            </tr>
-        </thead>
-        <tbody>
-          @if (Session::has("jenis") || Session::get("jenis") != null)
-          <tr>
-            <td>{{Session::get("jenis")["nama"]}}</td>
-            <td>Rp {{ number_format(Session::get("jenis")["harga"], 0, ',', '.') }} x {{Session::get("data")["durasi"]}} @if(Session::get("jenis")["nama"] == "City Tour" || Session::get("jenis")["nama"] == "Zona I") jam @else hari @endif</td>
-          </tr>
-          <tr>
-            <td><b>Subtotal:</b></td>
-            <td><b>Rp {{ number_format(Session::get("data")["subtotal_jenis"], 0, ',', '.') }}</b></td>
-          </tr>
-          @else
-          <tr>
-            <td colspan="2">Tidak ada data. Silahkan pilih jenis perjalanan</td>
-          </tr>
-          @endif
-        </tbody>
-        <thead>
-            <tr>
-                <th scope="col" colspan="2"><h3><b>Mobil yang disewa:</b></h3></th>
-            </tr>
-        </thead>
-        <tbody>
-          @if (Session::has("cart") || Session::get("cart") != null)
-            @foreach (Session::get("cart") as $item)
+        <table class="table mt-4">
+            <thead>
                 <tr>
-                    <td>{{$item["nama"]}}</td>
-                    <td>Rp {{ number_format($item["harga"], 0, ',', '.') }}</td>
+                    <th scope="col" colspan="2"><h3><b>Jenis Perjalanan:</b></h3></th>
                 </tr>
-            @endforeach
+            </thead>
+            <tbody>
+            @if (Session::has("jenis") || Session::get("jenis") != null)
+            <tr>
+                <td>{{Session::get("jenis")["nama"]}}</td>
+                <td>Rp {{ number_format(Session::get("jenis")["harga"], 0, ',', '.') }} x {{Session::get("data")["durasi"]}} @if(Session::get("jenis")["nama"] == "City Tour" || Session::get("jenis")["nama"] == "Zona I") jam @else hari @endif</td>
+            </tr>
             <tr>
                 <td><b>Subtotal:</b></td>
-                <td><b>Rp {{ number_format(Session::get("data")["subtotal_mobil"], 0, ',', '.') }}</b></td>
+                <td><b>Rp {{ number_format(Session::get("data")["subtotal_jenis"], 0, ',', '.') }}</b></td>
             </tr>
-        @else
+            @else
             <tr>
-                <td colspan="2">Tidak ada data. Silahkan pilih mobil</td>
+                <td colspan="2">Tidak ada data. Silahkan pilih jenis perjalanan</td>
             </tr>
-        @endif
-        <tr>
-            <td><h3><b>Total:</b></h3></td>
-            <td><h3><b>Rp {{ number_format(Session::get("data")["total"], 0, ',', '.') }}</b></h3></td>
-        </tr>
-        </tbody>
-    </table>
+            @endif
+            </tbody>
+            <thead>
+                <tr>
+                    <th scope="col" colspan="2"><h3><b>Mobil yang disewa:</b></h3></th>
+                </tr>
+            </thead>
+            <tbody>
+            @if (Session::has("cart") || Session::get("cart") != null)
+                @foreach (Session::get("cart") as $item)
+                    <tr>
+                        <td>{{$item["nama"]}}</td>
+                        <td>Rp {{ number_format($item["harga"], 0, ',', '.') }}</td>
+                    </tr>
+                @endforeach
+                <tr>
+                    <td><b>Subtotal:</b></td>
+                    <td><b>Rp {{ number_format(Session::get("data")["subtotal_mobil"], 0, ',', '.') }}</b></td>
+                </tr>
+            @else
+                <tr>
+                    <td colspan="2">Tidak ada data. Silahkan pilih mobil</td>
+                </tr>
+            @endif
+            <tr>
+                <td><h3><b>Total:</b></h3></td>
+                <td><h3><b>Rp {{ number_format(Session::get("data")["total"], 0, ',', '.') }}</b></h3></td>
+            </tr>
+            </tbody>
+        </table>
+    @else
+    <h4 class="mt-3">Tidak ada data! Silahkan isi data</h4>
+    @endif
     <h3 class="mt-5">Metode Pembayaran:</h3>
     <img onclick="showImage('{{ asset('upload/qris.jpeg') }}')" style="cursor: zoom-in;" class="img-ratio-4-5" src="{{ asset('upload/qris.jpeg') }}" alt="">
     <button onclick="downloadImage('{{ asset('upload/qris.jpeg') }}')" style="margin-left: 10px; padding: 10px 20px; cursor: pointer;">

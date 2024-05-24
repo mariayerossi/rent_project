@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\mobil;
 use App\Http\Controllers\pembayaran as ControllersPembayaran;
 use App\Http\Middleware\admin;
+use App\Http\Middleware\cekBayar;
 use App\Http\Middleware\cekStatus;
 use App\Http\Middleware\guest;
 use App\Http\Middleware\guestStatus;
@@ -40,14 +41,14 @@ Route::prefix("/customer")->group(function(){
     });
     Route::get('/data', function () {
         return view('customer.data');
-        Route::get('/clear', [Controller::class, "clearData"]);
     });
+    Route::get('/clearData', [Controller::class, "clearData"]);
     Route::get('/clearAll', [Controller::class, "clearAll"]);
     Route::post('/kirimData', [Controller::class, "kirimData"]);
     Route::post('/get_ketersediaan', [mobil::class, "getKetersediaan"]);
     Route::get('/bayar', function () {
         return view('customer.bayar');
-    });
+    })->middleware([cekBayar::class]);
     Route::prefix("/trans")->group(function(){
         Route::post('/tambahDP', [ControllersPembayaran::class, "tambahDP"]);
         Route::get('/loginStatus', function () {
