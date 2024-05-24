@@ -50,16 +50,15 @@ class reminder extends Command
         //---------------------------------------------------------------
 
         $ht = new Htrans();
-        $dataHt1 = $ht->get_all_data_menunggu();
+        $dataHt1 = $ht->get_all_data();
 
         if (!$dataHt1->isEmpty()) {
             foreach ($dataHt1 as $key => $value) {
-                //reminder melunasi hutang
-                if ($value->status_htrans == "Menunggu") {
-                    date_default_timezone_set('Asia/Jakarta');
-                    $skrg = date('Y-m-d H:i:s');
+                date_default_timezone_set('Asia/Jakarta');
+                $skrg = date('Y-m-d H:i:s');
 
-                    //reminder ke cust bahwa besok waktu booking
+                if ($value->status_htrans == "Menunggu") {
+                    //reminder melunasi hutang
                     $tanggal = $value->tanggal_jemput." ".$value->jam_jemput;
                     $sewa = new DateTime($tanggal);
                     $sewa->sub(new DateInterval('P5D'));
@@ -77,6 +76,32 @@ class reminder extends Command
                         ];
                         $e = new notifikasiEmail();
                         $e->sendEmail($value->email_cust, $dataNotif);
+                    }
+                }
+                else if ($value->status_htrans == "Lunas") {
+                    //ubah status menjadi "Selesai"
+                    $tanggalAwal3 = $value->tanggal_jemput . " " . $value->jam_jemput;
+                    $tanggalObjek3 = DateTime::createFromFormat('Y-m-d H:i:s', $tanggalAwal3);
+                    $carbonDate3 = \Carbon\Carbon::parse($tanggalObjek3)->locale('id');
+
+                    $durasi = $value->durasi;
+                    $jenis = $value->jenis;
+
+                    // Menghitung waktu kembali
+                    if ($jenis == "City Tour" || $jenis == "Zona I") {
+                        // Durasi dalam jam
+                        $carbonDateKembali = $carbonDate3->copy()->addHours($durasi);
+                    } else {
+                        // Durasi dalam hari
+                        $carbonDateKembali = $carbonDate3->copy()->addDays($durasi);
+                    }
+
+                    if ($carbonDateKembali <= $skrg) {
+                        $data = [
+                            "id" => $value->id_htrans,
+                            "status" => "Selesai"
+                        ];
+                        $ht->updateStatus($data);
                     }
                 }
             }
