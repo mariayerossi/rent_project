@@ -13,6 +13,9 @@
         <li class="nav-item" role="presentation">
             <a class="nav-link" id="selesai-tab" data-bs-toggle="tab" href="#selesai" role="tab" aria-controls="selesai" aria-selected="false">Selesai</a>
         </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="dibatalkan-tab" data-bs-toggle="tab" href="#dibatalkan" role="tab" aria-controls="dibatalkan" aria-selected="false">Dibatalkan</a>
+        </li>
     </ul>
     <div class="tab-content mt-3 mb-5 p-3" id="myTabContent">
         <div class="tab-pane fade show active" id="menunggu" role="tabpanel" aria-labelledby="menunggu-tab">
@@ -21,7 +24,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Tanggal</th>
+                                <th>Tanggal Transaksi</th>
                                 <th>Penyewa</th>
                                 <th>Jenis</th>
                                 <th>Aksi</th>
@@ -59,7 +62,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Tanggal</th>
+                                <th>Tanggal Transaksi</th>
                                 <th>Penyewa</th>
                                 <th>Jenis</th>
                                 <th>Aksi</th>
@@ -97,7 +100,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Tanggal</th>
+                                <th>Tanggal Transaksi</th>
                                 <th>Penyewa</th>
                                 <th>Jenis</th>
                                 <th>Aksi</th>
@@ -106,6 +109,44 @@
                         <tbody>
                             @if (!$selesai->isEmpty())
                                 @foreach ($selesai as $item)
+                                    <tr>
+                                        @php
+                                            $tanggalAwal3 = $item->tanggal_htrans;
+                                            $tanggalObjek3 = DateTime::createFromFormat('Y-m-d H:i:s', $tanggalAwal3);
+                                            $carbonDate3 = \Carbon\Carbon::parse($tanggalObjek3)->locale('id');
+                                            $tanggalBaru3 = $carbonDate3->isoFormat('D MMMM YYYY HH:mm');
+                                        @endphp
+                                        <td>{{$tanggalBaru3}}</td>
+                                        <td>{{$item->nama_cust}}</td>
+                                        <td>{{$item->jenis}}</td>
+                                        <td><a href="/admin/sewa/detailSewa/{{$item->id_htrans}}" class="btn btn-outline-success">Detail</a></td>
+                                    </tr>
+                                @endforeach
+                            @else
+                                <tr>
+                                    <td colspan="4" class="text-center">Tidak Ada Data</td>
+                                </tr>
+                            @endif
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="dibatalkan" role="tabpanel" aria-labelledby="dibatalkan-tab">
+            <div class="card">
+                <div class="table-responsive text-nowrap">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Tanggal Transaksi</th>
+                                <th>Penyewa</th>
+                                <th>Jenis</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (!$dibatalkan->isEmpty())
+                                @foreach ($dibatalkan as $item)
                                     <tr>
                                         @php
                                             $tanggalAwal3 = $item->tanggal_htrans;

@@ -4,7 +4,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\mobil;
 use App\Http\Controllers\pembayaran as ControllersPembayaran;
 use App\Http\Middleware\admin;
+use App\Http\Middleware\cekStatus;
 use App\Http\Middleware\guest;
+use App\Http\Middleware\guestStatus;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,9 +52,9 @@ Route::prefix("/customer")->group(function(){
         Route::post('/tambahDP', [ControllersPembayaran::class, "tambahDP"]);
         Route::get('/loginStatus', function () {
             return view('customer.loginStatus');
-        });
+        })->middleware([guestStatus::class]);
         Route::post('/cekStatus', [ControllersPembayaran::class, "cekStatus"]);
-        Route::get('/cek/{id}', [ControllersPembayaran::class, "cek"]);
+        Route::get('/cek/{id}', [ControllersPembayaran::class, "cek"])->middleware([cekStatus::class]);
         Route::post('/bayarSisanya', [ControllersPembayaran::class, "bayarSisanya"]);
     });
 });
@@ -83,5 +85,6 @@ Route::prefix("/admin")->group(function(){
     Route::prefix("/sewa")->group(function(){
         Route::get("/daftarSewa", [ControllersPembayaran::class, "daftarSewa"])->middleware([admin::class]);
         Route::get("/detailSewa/{id}", [ControllersPembayaran::class, "detailSewa"])->middleware([admin::class]);
+        Route::post("/batalkan", [ControllersPembayaran::class, "batalkanTransAdmin"]);
     });
 });

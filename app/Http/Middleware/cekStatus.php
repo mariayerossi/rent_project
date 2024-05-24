@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Symfony\Component\HttpFoundation\Response;
 
-class guest
+class cekStatus
 {
     /**
      * Handle an incoming request.
@@ -16,9 +16,9 @@ class guest
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Session::has("role") && Session::get("role") == "admin"){
+        if(!Session::has("status")){
             // Jika iya kembalikan sesuai posisi semula
-            return redirect('/admin/sewa/daftarSewa');
+            return redirect('/loginStatus');
         }
         return $next($request);
     }

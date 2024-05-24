@@ -28,8 +28,8 @@
     <h4>Durasi Perjalanan: {{$dataH->durasi}} @if($dataH->jenis == "City Tour" || $dataH->jenis == "Zona I") jam @else hari @endif</h4>
     <h4>Waktu Kembali: {{$tanggalKembali}}</h4>
     <h4>Alamat Penjemputan: {{$dataH->alamat_jemput}}</h4>
-    <h4>Status: @if($dataH->status_htrans == "Lunas") <b style="color: rgb(11, 164, 11)">Lunas</b> @else <b style="color:rgb(227, 227, 0)">{{$dataH->status_htrans}}</b>  @endif </h4>
-
+    <h4>Status: @if($dataH->status_htrans == "Lunas") <b style="color: rgb(11, 164, 11)">Lunas</b> @elseif($dataH->status_htrans == "Menunggu") <b style="color:rgb(227, 227, 0)">Menunggu</b> @elseif($dataH->status_htrans == "Dibatalkan") <b style="color:red">Dibatalkan</b> @elseif($dataH->status_htrans == "Selesai") <b style="color:rgb(11, 164, 11)">Selesai</b>  @endif </h4>
+    
     <table class="table mt-4">
         <thead>
             <tr>
@@ -113,5 +113,75 @@
             @endif
         </tbody>
     </table>
+    @if ($dataH->status_htrans == "Menunggu" || $dataH->status_htrans == "Lunas")
+        <div class="d-flex justify-content-end mt-4 mb-3">
+            <form action="/admin/sewa/batalkan" method="post" id="tambahForm">
+                @csrf
+                <input type="hidden" name="id_htrans" value="{{$dataH->id_htrans}}">
+                <input type="hidden" name="status_htrans" value="{{$dataH->status_htrans}}">
+                <button type="submit" class="btn btn-danger" id="tambah">Batalkan Transaksi</button>
+            </form>
+        </div>
+    @endif
 </div>
+<script>
+    $(document).ready(function() {
+        $("#tambah").click(function(event) {
+            event.preventDefault(); // Prevent the default form behavior
+
+            Swal.fire({
+                title: "Apakah Anda yakin?",
+                text: "Pembatalan 1 minggu sebelumnya: pengembalian dana 50%. Kurang dari 1 minggu: tidak ada pengembalian dana.",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Ya, Tolak!",
+                cancelButtonText: "Tidak!",
+                closeOnConfirm: false,
+                closeOnCancel: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    var formData = new FormData($("#tambahForm")[0]);
+
+                    $.ajax({
+                        url: "/admin/sewa/batalkan",
+                        type: "POST",
+                        data: formData,
+                        processData: false,  // Important: Don't process the data
+                        contentType: false,
+                        success: function(response) {
+                            if (response.success) {
+                                Swal.fire({
+                                    title: "Success!",
+                                    text: response.message,
+                                    icon: "success"
+                                }).then((result) => {
+                                    if (result.isConfirmed || result.isDenied) {
+                                        window.location.reload();
+                                    }
+                                });
+                            } else {
+                                Swal.fire({
+                                    title: "Error!",
+                                    text: response.message,
+                                    icon: "error"
+                                });
+                            }
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            Swal.fire({
+                                title: "Error!",
+                                text: "Ada masalah saat mengirim data. Silahkan coba lagi.",
+                                icon: "error"
+                            });
+                        }
+                    });
+                } else {
+                    Swal.close(); // Close SweetAlert if user chooses "No"
+                }
+            });
+        });
+    });
+</script>
+
 @endsection

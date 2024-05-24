@@ -176,6 +176,9 @@ class pembayaran extends Controller
             }
             // dd($status);
 
+            //buat session status
+            session()->put('status', $status);
+
             if ($status != 0) {
                 return response()->json(['success' => true, 'message' => $status]);
             }
@@ -243,6 +246,8 @@ class pembayaran extends Controller
 
         $param["selesai"] = $ht->get_all_data_selesai();
 
+        $param["dibatalkan"] = $ht->get_all_data_dibatalkan();
+
         return view("admin.sewa.daftarSewa")->with($param);
     }
 
@@ -258,5 +263,22 @@ class pembayaran extends Controller
         $param["dataP"] = $by->get_data_by_id_htrans($id);
 
         return view("admin.sewa.detailSewa")->with($param);
+    }
+
+    public function batalkanTransAdmin(Request $request)
+    {
+        if ($request->status_htrans == "Menunggu" || $request->status_htrans == "Lunas") {
+            $data = [
+                "id" => $request->id_htrans,
+                "status" => "Dibatalkan"
+            ];
+            $ht = new Htrans();
+            $ht->updateStatus($data);
+        }
+        else {
+            return response()->json(['success' => false, 'message' => 'Gagal Membatalkan!']);
+        }
+
+        return response()->json(['success' => true, 'message' => 'Berhasil Membatalkan!']);
     }
 }
