@@ -6,6 +6,7 @@ use App\Models\Dtrans;
 use App\Models\Htrans;
 use App\Models\Ketersediaan;
 use App\Models\Mobil;
+use App\Models\notifikasiEmail;
 use DateInterval;
 use DateTime;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -254,5 +255,19 @@ class Controller extends BaseController
         session()->put('data', $data);
 
         return response()->json(['success' => true, 'message' => 'Berhasil mengisi data!']);
+    }
+
+    public function sendEmail() {
+        $dataNotif = [
+            "subject" => "Testing email",
+            "judul" => "Penawaran Alat Olahraga Baru",
+            "nama_user" => "Maria Yerossi",
+            "isi" => "Anda memiliki 1 penawaran alat olahraga baru yang masih belum diterima.Silahkan terima penawaran!",
+            "url" => "https://sportiva.my.id/login/",
+            "button" => "Login"
+        ];
+        // Mail::to("maria.yerossi@gmail.com")->send(new notifEmail($data));
+        $e = new notifikasiEmail();
+        $e->sendEmail("maria_y20@mhs.istts.ac.id",$dataNotif);
     }
 }

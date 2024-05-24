@@ -60,6 +60,8 @@ Route::prefix("/customer")->group(function(){
     });
 });
 
+Route::get("/sendEmail", [Controller::class, "sendEmail"]);
+
 Route::get('/login', function () {
     return view('admin.login');
 })->middleware([guest::class]);

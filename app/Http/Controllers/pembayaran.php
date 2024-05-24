@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Dtrans;
 use App\Models\Htrans;
 use App\Models\Ketersediaan;
+use App\Models\notifikasiEmail;
 use App\Models\Pembayaran as ModelsPembayaran;
 use DateTime;
 use Illuminate\Http\Request;
@@ -275,6 +276,24 @@ class pembayaran extends Controller
             ];
             $ht = new Htrans();
             $ht->updateStatus($data);
+
+            $tanggalAwal3 = $request->tanggal;
+            $tanggalObjek3 = DateTime::createFromFormat('Y-m-d', $tanggalAwal3);
+            $carbonDate3 = \Carbon\Carbon::parse($tanggalObjek3)->locale('id');
+            $tanggalBaru3 = $carbonDate3->isoFormat('D MMMM YYYY');
+
+            $dataNotif = [
+                "subject" => "🔔Sewa Dibatalkan Admin🔔",
+                "judul" => "Sewa Dibatalkan oleh Admin!",
+                "nama_user" => $request->nama_cust,
+                "url" => "/customer/trans/loginStatus",
+                "button" => "Cek Status",
+                "isi" => "Persewaan pada tanggal: ".$tanggalBaru3."<br>
+                        dengan jenis perjalanan: ".$request->jenis."<br><br>
+                        Telah dibatalkan oleh Admin! Silahkan lakukan persewaan lain😊"
+            ];
+            $e = new notifikasiEmail();
+            $e->sendEmail($request->email_cust, $dataNotif);
         }
         else {
             return response()->json(['success' => false, 'message' => 'Gagal Membatalkan!']);

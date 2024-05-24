@@ -119,6 +119,10 @@
                 @csrf
                 <input type="hidden" name="id_htrans" value="{{$dataH->id_htrans}}">
                 <input type="hidden" name="status_htrans" value="{{$dataH->status_htrans}}">
+                <input type="hidden" name="nama_cust" value="{{$dataH->nama_cust}}">
+                <input type="hidden" name="email_cust" value="{{$dataH->email_cust}}">
+                <input type="hidden" name="jenis" value="{{$dataH->jenis}}">
+                <input type="hidden" name="tanggal" value="{{$dataH->tanggal_jemput}}">
                 <button type="submit" class="btn btn-danger" id="tambah">Batalkan Transaksi</button>
             </form>
         </div>
