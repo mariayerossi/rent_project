@@ -152,52 +152,21 @@
             </div>
             <div class="gallery_section_2">
                <div class="row">
-                  <div class="col-md-4">
-                     <div class="gallery_box">
-                        <div class="gallery_img"><img src="{{asset('images/img-1.png')}}"></div>
-                        <h3 class="types_text">Toyota car</h3>
-                          <p class="looking_text">Start per day $4500</p>
-                     </div>
-                  </div>
-                  <div class="col-md-4">
-                     <div class="gallery_box">
-                        <div class="gallery_img"><img src="{{asset('images/img-2.png')}}"></div>
-                        <h3 class="types_text">Toyota car</h3>
-                          <p class="looking_text">Start per day $4500</p>
-                     </div>
-                  </div>
-                  <div class="col-md-4">
-                     <div class="gallery_box">
-                        <div class="gallery_img"><img src="{{asset('images/img-3.png')}}"></div>
-                        <h3 class="types_text">Toyota car</h3>
-                          <p class="looking_text">Start per day $4500</p>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="gallery_section_2">
-               <div class="row">
-                  <div class="col-md-4">
-                     <div class="gallery_box">
-                        <div class="gallery_img"><img src="{{asset('images/img-1.png')}}"></div>
-                        <h3 class="types_text">Toyota car</h3>
-                          <p class="looking_text">Start per day $4500</p>
-                     </div>
-                  </div>
-                  <div class="col-md-4">
-                     <div class="gallery_box">
-                        <div class="gallery_img"><img src="{{asset('images/img-2.png')}}"></div>
-                        <h3 class="types_text">Toyota car</h3>
-                          <p class="looking_text">Start per day $4500</p>
-                     </div>
-                  </div>
-                  <div class="col-md-4">
-                     <div class="gallery_box">
-                        <div class="gallery_img"><img src="{{asset('images/img-3.png')}}"></div>
-                        <h3 class="types_text">Toyota car</h3>
-                          <p class="looking_text">Start per day $4500</p>
-                     </div>
-                  </div>
+                  @php
+                     $data1 = DB::table('mobil')->where("deleted_at","=",null)->take(6)->get();
+                     // dd($data1);
+                  @endphp
+                  @if (!$data1->isEmpty())
+                      @foreach ($data1 as $item)
+                        <div class="col-md-4">
+                           <div class="gallery_box">
+                              <div class="gallery_img"><img src="{{ asset('upload/' . $item->foto_mobil) }}"></div>
+                              <h3 class="types_text">{{$item->nama_mobil}}</h3>
+                              <p class="looking_text">Rp {{ number_format($item->harga_mobil, 0, ',', '.') }}</p>
+                           </div>
+                        </div>
+                      @endforeach
+                  @endif
                </div>
             </div>
          </div>
@@ -247,19 +216,30 @@
                      </div>
                      <div class="client_section_2">
                         <div class="row">
-                           <div class="col-md-6">
+                           <div class="col-md-4">
                               <div class="client_taital_box">
-                                 <div class="client_img"><img src="{{asset('images/client-img1.png')}}"></div>
-                                 <h3 class="moark_text">Hannery</h3>
-                                 <p class="client_text">It is a long established fact that a reader will be distracted by the readable content of a page</p>
+                                 <div class="client_img"><img src="{{asset('images/client-img1.jpg')}}"></div>
+                                 <h3 class="moark_text">Christopher</h3>
+                                 <h6 class="client_text" style="color: #fe5b29;"><b>PT Telkom Indonesia</b></h6>
+                                 <p class="client_text">Rental mobil Hiace terpercaya di surabaya, harga bersaing dibandingkan tempat lain namun dengan kualitas premium, gratis banner untuk foto bersama. Perusahaan kami sudah menjadi langganan setiap kali kami ke Surabaya.</p>
                               </div>
                               <div class="quick_icon"><img src="{{asset('images/quick-icon.png')}}"></div>
                            </div>
-                           <div class="col-md-6">
+                           <div class="col-md-4">
                               <div class="client_taital_box">
                                  <div class="client_img"><img src="{{asset('images/client-img2.png')}}"></div>
-                                 <h3 class="moark_text">Channery</h3>
-                                 <p class="client_text">It is a long established fact that a reader will be distracted by the readable content of a page</p>
+                                 <h3 class="moark_text">Maulidya Anindya</h3>
+                                 <h6 class="client_text" style="color: #fe5b29;"><b>PT COCA COLA AMATIL</b></h6>
+                                 <p class="client_text">Pelayanan Tulus dan Ramah, Mobil Bersih dan Terawat. Harga Sangat Kompetitif Dengan Fasilitas Yang Lebih Baik.</p>
+                              </div>
+                              <div class="quick_icon"><img src="{{asset('images/quick-icon.png')}}"></div>
+                           </div>
+                           <div class="col-md-4">
+                              <div class="client_taital_box">
+                                 <div class="client_img"><img src="{{asset('images/client-img3.jpeg')}}"></div>
+                                 <h3 class="moark_text">Yudianto</h3>
+                                 <h6 class="client_text" style="color: #fe5b29;"><b>East West Tour and Travel</b></h6>
+                                 <p class="client_text">EW Tour and Travel telah bekerjasama dengan Darmo Rent Car selama 7 tahun, dan selalu menjadi pilihan utama pelanggan tour kami untuk berwisata di Jawa Timur dan sekitarnya.</p>
                               </div>
                               <div class="quick_icon"><img src="{{asset('images/quick-icon.png')}}"></div>
                            </div>
@@ -267,12 +247,12 @@
                      </div>
                   </div>
                </div>
-               <a class="carousel-control-prev" href="#custom_slider" role="button" data-slide="prev">
+               {{-- <a class="carousel-control-prev" href="#custom_slider" role="button" data-slide="prev">
                <i class="fa fa-angle-left"></i>
                </a>
                <a class="carousel-control-next" href="#custom_slider" role="button" data-slide="next">
                <i class="fa fa-angle-right"></i>
-               </a>
+               </a> --}}
             </div>
          </div>
       </div>
@@ -302,15 +282,6 @@
                      <h4 class="footer_taital">Contact Us</h4>
                      <div class="location_text"><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i><span class="padding_left_15">Location</span></a></div>
                      <div class="location_text"><a href="https://wa.me/+628118000071"><i class="fa fa-phone" aria-hidden="true"></i><span class="padding_left_15">(+62) 811-8000-071</span></a></div>
-                     <div class="location_text"><a href="mailto:someone@example.com"><i class="fa fa-envelope" aria-hidden="true"></i><span class="padding_left_15">demo@gmail.com</span></a></div>
-                     <div class="social_icon">
-                        <ul>
-                           <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                           <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                           <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                           <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                        </ul>
-                     </div>
                   </div>
                </div>
             </div>

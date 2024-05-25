@@ -745,7 +745,7 @@ span.current {
 }
 
 .client_section_2 {
-    width: 60%;
+    width: 80%;
     margin: 0 auto;
     margin-bottom: 20px;
     padding-top: 90px;
@@ -755,7 +755,7 @@ span.current {
     width: 100%;
     float: left;
     background-color: #ffffff;
-    height: auto;
+    height: 520px;
     padding: 0px 20px 30px 20px;
     box-shadow: 0px 0px 10px 10px #ebebea;
 }

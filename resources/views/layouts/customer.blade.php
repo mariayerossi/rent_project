@@ -114,15 +114,6 @@
                      <h4 class="footer_taital">Contact Us</h4>
                      <div class="location_text"><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i><span class="padding_left_15">Location</span></a></div>
                      <div class="location_text"><a href="https://wa.me/+628118000071"><i class="fa fa-phone" aria-hidden="true"></i><span class="padding_left_15">(+62) 811-8000-071</span></a></div>
-                     <div class="location_text"><a href="mailto:someone@example.com"><i class="fa fa-envelope" aria-hidden="true"></i><span class="padding_left_15">demo@gmail.com</span></a></div>
-                     <div class="social_icon">
-                        <ul>
-                           <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                           <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                           <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                           <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                        </ul>
-                     </div>
                   </div>
                </div>
             </div>
