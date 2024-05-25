@@ -9,6 +9,7 @@
     }
 </style>
 <div class="container">
+    <a href="/customer/trans/logout" class="btn btn-outline-primary mb-2 float-right">Keluar</a>
     <h4>Nama: {{$dataH->nama_cust}}</h4>
     <h4>No. Telepon: {{$dataH->telepon_cust}}</h4>
     @php

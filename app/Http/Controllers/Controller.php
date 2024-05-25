@@ -270,4 +270,9 @@ class Controller extends BaseController
         $e = new notifikasiEmail();
         $e->sendEmail("maria_y20@mhs.istts.ac.id",$dataNotif);
     }
+
+    public function logoutStatus(){
+        Session::forget('status');
+        return redirect("/customer/trans/loginStatus");
+    }
 }

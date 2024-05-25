@@ -57,6 +57,7 @@ Route::prefix("/customer")->group(function(){
         Route::post('/cekStatus', [ControllersPembayaran::class, "cekStatus"]);
         Route::get('/cek/{id}', [ControllersPembayaran::class, "cek"])->middleware([cekStatus::class]);
         Route::post('/bayarSisanya', [ControllersPembayaran::class, "bayarSisanya"]);
+        Route::get("/logout", [Controller::class, "logoutStatus"]);
     });
 });
 

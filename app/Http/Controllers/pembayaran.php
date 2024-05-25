@@ -153,6 +153,24 @@ class pembayaran extends Controller
         $byr = new ModelsPembayaran();
         $byr->insertPembayaran($dataP);
 
+        $tanggalAwal3 = Session::get("data")["tanggal_jem"];
+        $tanggalObjek3 = DateTime::createFromFormat('Y-m-d', $tanggalAwal3);
+        $carbonDate3 = \Carbon\Carbon::parse($tanggalObjek3)->locale('id');
+        $tanggalBaru3 = $carbonDate3->isoFormat('D MMMM YYYY');
+
+        $dataNotif = [
+            "subject" => "🎉Pembayaran DP Berhasil🎉",
+            "judul" => "Pembayaran DP Berhasil!",
+            "nama_user" => Session::get("data")["nama"],
+            "url" => "/customer/trans/loginStatus",
+            "button" => "Cek Status",
+            "isi" => "Pembayaran DP sebesar Rp ".number_format($request->jumlah, 0, ',', '.')."<br>
+                    pada persewaan tanggal ".$tanggalBaru3."<br>
+                    Telah berhasil! 😊"
+        ];
+        $e = new notifikasiEmail();
+        $e->sendEmail(Session::get("data")["email"], $dataNotif);
+
         // session()->forget('cart');
         // session()->forget('jenis');
         // session()->forget('data');
