@@ -10,14 +10,14 @@ class laporan extends Controller
     public function lihatLaporan()
     {
         $ht = new Htrans();
-        $param["dataH"] = $ht->get_all_data();
+        $param["dataH"] = $ht->get_all_data_selesai();
 
         $monthlyIncome = [];
         for ($i=1; $i <= 12; $i++) {
             $monthlyIncome[$i] = 0; // inisialisasi pendapatan setiap bulan dengan 0
         }
 
-        foreach ($ht->get_all_data() as $data) {
+        foreach ($ht->get_all_data_selesai() as $data) {
             $bulan = date('m', strtotime($data->tanggal_jemput));
             $year = date('Y', strtotime($data->tanggal_jemput));
             if ($year == date('Y')) {

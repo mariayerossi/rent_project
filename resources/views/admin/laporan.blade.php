@@ -18,7 +18,7 @@
     <h2><b>Total Pendapatan:</b></h2>
     <h2><b>Rp {{number_format($dataH->sum("total"), 0, ',', '.')}}</b></h2>
     
-    <h3 class="mt-3">Grafik Pendapatan Tahun 2024:</h3>
+    <h3 class="mt-3">Grafik Pendapatan Tahun ini:</h3>
     <div class="card">
         <div class="card-body">
             <div class="chart-container">
