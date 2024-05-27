@@ -63,6 +63,9 @@
                      <li class="nav-item">
                         <a class="nav-link" href="/admin/sewa/daftarSewa">Sewa</a>
                      </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="/admin/laporan/lihatLaporan">Laporan</a>
+                     </li>
                       <li class="nav-item">
                          <a class="nav-link" href="/admin/logout">Logout</a>
                       </li>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\laporan;
 use App\Http\Controllers\mobil;
 use App\Http\Controllers\pembayaran as ControllersPembayaran;
 use App\Http\Middleware\admin;
@@ -90,5 +91,9 @@ Route::prefix("/admin")->group(function(){
         Route::get("/daftarSewa", [ControllersPembayaran::class, "daftarSewa"])->middleware([admin::class]);
         Route::get("/detailSewa/{id}", [ControllersPembayaran::class, "detailSewa"])->middleware([admin::class]);
         Route::post("/batalkan", [ControllersPembayaran::class, "batalkanTransAdmin"]);
+    });
+
+    Route::prefix("/laporan")->group(function(){
+        Route::get("/lihatLaporan", [laporan::class, "lihatLaporan"])->middleware([admin::class]);
     });
 });
