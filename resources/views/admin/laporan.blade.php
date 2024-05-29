@@ -13,12 +13,36 @@
             height: 200px; /* Tinggi yang lebih kecil untuk mobile */
         }
     }
+    .select-wrapper {
+    display: inline-block;
+    vertical-align: middle; /* Menyesuaikan posisi vertikal input select */
+    margin-left: 10px;
+}
+
+.mt-3 {
+    vertical-align: middle; /* Menyesuaikan posisi vertikal teks */
+}
+
 </style>
 <div class="container">
     <h2><b>Total Pendapatan:</b></h2>
-    <h2><b>Rp {{number_format($dataH->sum("total"), 0, ',', '.')}}</b></h2>
-    
-    <h3 class="mt-3">Grafik Pendapatan Tahun ini:</h3>
+    <h2><b id="total-pendapatan">Rp {{number_format($total, 0, ',', '.')}}</b></h2>
+
+    <h3 class="mt-3">Grafik Pendapatan Tahun:
+        <div class="select-wrapper">
+            <select id="year-select" onchange="pilihTahun(this)">
+                <?php
+                $start_year = 2022;
+                $current_year = date('Y');
+                
+                for ($year = $start_year; $year <= $current_year; $year++) {
+                    $selected = ($year == $tahun) ? 'selected' : ''; // Jika tahun sama dengan $tahun, tambahkan atribut 'selected'
+                    echo "<option value=\"$year\" $selected>$year</option>";
+                }
+                ?>
+            </select>
+        </div>
+    </h3>
     <div class="card">
         <div class="card-body">
             <div class="chart-container">
@@ -27,7 +51,7 @@
         </div>
     </div>
 
-    <table class="table mt-4">
+    <table class="table mt-4" id="laporan-table">
         <thead>
             <tr>
                 <th scope="col">Tanggal Sewa</th>
@@ -97,5 +121,30 @@
             }
         }
     });
+
+    function pilihTahun(select) {
+        // alert(select.value);
+        var tahun = select.value;
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+        // Kirim permintaan AJAX
+        $.ajax({
+            url: '/admin/laporan/data/' + tahun,
+            type: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': csrfToken
+            },
+            success: function(data) {
+                // Perbarui grafik
+                myChart.data.datasets[0].data = data.monthlyIncome;
+                myChart.update();
+                // Perbarui tabel
+                $('#laporan-table tbody').html(data.tableData);
+                $('#total-pendapatan').text('Rp ' + data.total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+
+            }
+        });
+    }
 </script>
 @endsection

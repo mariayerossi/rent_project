@@ -53,6 +53,10 @@ class Htrans extends Model
         return Htrans::where('deleted_at',"=",null)->where("status_htrans","=","Selesai")->get();
     }
 
+    public function get_all_data_selesai_tahun($tahun){
+        return Htrans::where('deleted_at',"=",null)->where("status_htrans","=","Selesai")->whereYear('tanggal_jemput', '=', $tahun)->get();
+    }
+
     public function get_all_data_dibatalkan(){
         return Htrans::where('deleted_at',"=",null)->where("status_htrans","=","Dibatalkan")->get();
     }
