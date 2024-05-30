@@ -95,6 +95,6 @@ Route::prefix("/admin")->group(function(){
 
     Route::prefix("/laporan")->group(function(){
         Route::get("/lihatLaporan", [laporan::class, "lihatLaporan"])->middleware([admin::class]);
-        Route::get('/data/{tahun}', [laporan::class, "getLaporandData"])->middleware([admin::class]);
+        Route::get('/data/{tahun}', [laporan::class, "getLaporanData"])->middleware([admin::class]);
     });
 });
