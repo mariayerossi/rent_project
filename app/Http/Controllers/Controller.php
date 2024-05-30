@@ -84,7 +84,7 @@ class Controller extends BaseController
             // Simpan keranjang belanja kembali ke sesi
             session()->put('cart', $cart);
 
-            return response()->json(['success' => true, 'message' => 'Berhasil menambah item!']);
+            return response()->json(['success' => true, 'message' => 'Berhasil menambah item! Silahkan cek keranjang.']);
         }
         // return redirect()->back();
         return response()->json(['success' => false, 'message' => 'Gagal Menambah item!']);

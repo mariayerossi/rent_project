@@ -1,6 +1,13 @@
 @extends('layouts.admin')
 
 @section('content')
+<style>
+    .img-ratio-16-9 {
+        width: 150px;
+        height: 84.375px;
+        object-fit: cover;
+    }
+</style>
 <div class="container">
     <h4>Nama: {{$dataH->nama_cust}}</h4>
     <h4>No. Telepon: {{$dataH->telepon_cust}}</h4>
@@ -84,6 +91,7 @@
             <tr>
                 <th>Tanggal</th>
                 <th>Jumlah</th>
+                <th>Bukti Pembayaran</th>
             </tr>
         </thead>
         <tbody>
@@ -98,16 +106,27 @@
                         @endphp
                         <td>{{$tanggalBaru3}}</td>
                         <td>Rp {{ number_format($item->jumlah, 0, ',', '.') }}</td>
+                        <td><img onclick="showImage('{{ asset('upload/'.$item->bukti) }}')" style="cursor: zoom-in;" class="img-ratio-16-9" src="{{ asset('upload/' . $item->bukti) }}" alt=""></td>
                     </tr>
                 @endforeach
+                {{-- fitur show image --}}
+                <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                        <img src="" id="modalImage" class="img-fluid">
+                        </div>
+                    </div>
+                    </div>
+                </div>
                 @if ($dataP->sum("jumlah") < $dataH->total)
                     <tr>
                         <td><b>Kekurangan :</b></td>
-                        <td><b>Rp {{ number_format($dataH->total-$dataP->sum("jumlah"), 0, ',', '.') }}</b></td>
+                        <td colspan="2"><b>Rp {{ number_format($dataH->total-$dataP->sum("jumlah"), 0, ',', '.') }}</b></td>
                     </tr>
                 @else
                     <tr>
-                        <td colspan="2" style="text-align: center;"><b>PEMBAYARAN LUNAS!</b></td>
+                        <td colspan="3" style="text-align: center;"><b>PEMBAYARAN LUNAS!</b></td>
                     </tr>
                 @endif
             @endif
@@ -129,6 +148,10 @@
     @endif
 </div>
 <script>
+    function showImage(imgPath) {
+        document.getElementById('modalImage').src = imgPath;
+        $('#imageModal').modal('show');
+    }
     $(document).ready(function() {
         $("#tambah").click(function(event) {
             event.preventDefault(); // Prevent the default form behavior
