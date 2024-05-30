@@ -50,7 +50,7 @@ class Htrans extends Model
     }
 
     public function get_all_data_selesai(){
-        return Htrans::where('deleted_at',"=",null)->where("status_htrans","=","Selesai")->get();
+        return Htrans::where('deleted_at',"=",null)->where("status_htrans","=","Selesai")->orderBy("tanggal_jemput","ASC")->get();
     }
 
     public function get_all_data_selesai_tahun($tahun){
