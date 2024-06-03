@@ -10,7 +10,7 @@
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
       <title>Central Hiace Rent Jatim</title>
-      {{-- <link rel="shortcut icon" href="{{asset('/logo.ico')}}"> --}}
+      <link rel="shortcut icon" href="{{asset('/logo.ico')}}">
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -20,16 +20,13 @@
       <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
       <!-- Responsive-->
       <link rel="stylesheet" href="{{asset('css/responsive.css')}}">
-      <!-- fevicon -->
-      <link rel="icon" href="{{asset('images/fevicon.png')}}" type="image/gif" />
       <!-- font css -->
       <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
       <!-- Scrollbar Custom CSS -->
       <link rel="stylesheet" href="{{asset('css/jquery.mCustomScrollbar.min.css')}}">
       <!-- Tweaks for older IEs-->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-      <link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
    </head>
    <body>
       <style>
@@ -51,6 +48,35 @@
 .fab-icon {
  margin-top: 16px;
 }
+.custom-list {
+  list-style: none; /* Menghapus default bullet */
+}
+.custom-list li:before {
+  content: "\2713"; /* Unicode untuk centang */
+  display: inline-block;
+  width: 1em; /* Menyesuaikan ukuran */
+  margin-left: -1em; /* Menggeser ke kiri agar terlihat rapi */
+}
+.custom-list2 {
+  list-style: none; /* Menghapus default bullet */
+}
+.custom-list2 li:before {
+  content: "\2717"; /* Unicode untuk silang */
+  display: inline-block;
+  width: 1em; /* Menyesuaikan ukuran */
+  margin-left: -1em; /* Menggeser ke kiri agar terlihat rapi */
+}
+ul li {
+    font-size: 20px;
+}
+.card-text {
+    font-size: 20px;
+}
+@media (max-width: 767px) {
+      .banner_img img {
+         height: auto; /* Allow the height to adjust */
+      }
+   }
       </style>
       <!-- header section start -->
       <div class="header_section">
@@ -65,22 +91,22 @@
                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav ml-auto">
                      <li class="nav-item">
-                        <a class="nav-link" href="/">Home</a>
+                        <a class="nav-link" href="/">Beranda</a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
+                        <a class="nav-link" href="#about">Tentang</a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="#gallery">Vehicles</a>
+                        <a class="nav-link" href="#jenis">Jenis</a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="#client">Client</a>
+                        <a class="nav-link" href="#gallery">Mobil</a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
+                        <a class="nav-link" href="#client">Testimoni</a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="/login">Admin</a>
+                        <a class="nav-link" href="#contact">Kontak</a>
                      </li>
                   </ul>
                   <form class="form-inline my-2 my-lg-0">
@@ -93,12 +119,12 @@
       <div class="call_text_main">
          <div class="container">
             <div class="call_taital">
-               <div class="call_text"><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i><span class="padding_left_15">Location</span></a></div>
+               <div class="call_text"><a href="https://goo.gl/maps/YHZeDx9PzJPvr7Yy5"><i class="fa fa-map-marker" aria-hidden="true"></i><span class="padding_left_15">Lokasi</span></a></div>
+               <div class="call_text"><a href="https://wa.me/+6281217600284"><i class="fa fa-phone" aria-hidden="true"></i><span class="padding_left_15">(+62) 812-1760-0284</span></a></div>
                <div class="call_text"><a href="https://wa.me/+628118000071"><i class="fa fa-phone" aria-hidden="true"></i><span class="padding_left_15">(+62) 811-8000-071</span></a></div>
             </div>
          </div>
       </div>
-      <!-- banner section start --> 
       <div class="banner_section layout_padding">
          <div class="container">
             <div class="row">
@@ -109,17 +135,10 @@
                            <div class="banner_taital_main">
                               <h1 class="banner_taital">Rental Wisata<br><spa style="color: #fe5b29;">Central Hiace Rent Jatim</spa</h1>
                               <p class="banner_text">Kami siap memberikan pengalaman wisata yang tak terlupakan dengan rental Hiace kami, sesuai dengan kebutuhan dan keinginan Anda!</p>
-                              <div class="btn_main">
-                                 <div class="contact_bt"><a href="/customer/pricelist">Booking</a></div>
-                                 <div class="contact_bt active"><a href="/customer/trans/loginStatus">Cek Status</a></div>
-                              </div>
                            </div>
                         </div>
                      </div>
                   </div>
-               </div>
-               <div class="col-md-6">
-                  <div class="banner_img"><img src="{{asset('images/banner-img.png')}}"></div>
                </div>
             </div>
          </div>
@@ -135,7 +154,7 @@
                   </div>
                   <div class="col-md-6"> 
                      <div class="about_taital_box">
-                        <h1 class="about_taital">About <span style="color: #fe5b29;">Us</span></h1>
+                        <h1 class="about_taital">Tentang <span style="color: #fe5b29;">Kami</span></h1>
                         <p class="about_text">Central Hiace Rent Jatim platform penyewaan mobil yang didedikasikan untuk memenuhi kebutuhan perjalanan wisata Anda dengan kenyamanan dan keamanan yang tak tertandingi. Dengan fokus pada penyediaan layanan penyewaan mobil khususnya Toyota Hiace, kami bertekad untuk memberikan pengalaman perjalanan yang tak terlupakan bagi pelanggan kami.</p>
                      </div>
                   </div>
@@ -143,31 +162,245 @@
             </div>
          </div>
       </div>
-      <!-- gallery section start -->
-      <div class="gallery_section layout_padding" id="gallery">
+      <!-- pricelist -->
+      <div class="gallery_section layout_padding" id="jenis">
          <div class="container">
             <div class="row">
                <div class="col-md-12">
-                  <h1 class="gallery_taital">Our best offers</h1>
+                  <h1 class="gallery_taital">Jenis Perjalanan</h1>
                </div>
             </div>
             <div class="gallery_section_2">
                <div class="row">
-                  @php
-                     $data1 = DB::table('mobil')->where("deleted_at","=",null)->take(6)->get();
-                     // dd($data1);
-                  @endphp
-                  @if (!$data1->isEmpty())
-                      @foreach ($data1 as $item)
-                        <div class="col-md-4">
-                           <div class="gallery_box">
-                              <div class="gallery_img"><img src="{{ asset('upload/' . $item->foto_mobil) }}"></div>
-                              <h3 class="types_text">{{$item->nama_mobil}}</h3>
-                              <p class="looking_text">Rp {{ number_format($item->harga_mobil, 0, ',', '.') }}</p>
-                           </div>
+                 <div class="col-md-4">
+                     <div class="card text-center" style="box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);">
+                         <div class="card-header bg-success text-white">
+                             <h3 class="text-white">Zona I</h3>
+                             <h4 class="text-white">(Jawa Timur ≥ 175 km)</h4>
+                         </div>
+                         <div class="card-body d-flex flex-column" style="height: 500px;">
+                             <h2 class="card-title">Rp 1.300.000/12 jam</h2>
+                             <h4 class="card-title">(max. 15 jam)</h4>
+                             <p class="card-text">
+                                 <h3>Sudah Termasuk:</h3>
+                                 <ul class="custom-list mb-3">
+                                     <li>Mobil</li>
+                                     <li>Driver</li>
+                                 </ul>
+                                 <h3>Tidak Termasuk:</h3>
+                                 <ul class="custom-list2">
+                                     <li>BBM</li>
+                                     <li>Biaya Parkir</li>
+                                     <li>Biaya Tol</li>
+                                 </ul>
+                                 <div class="read_bt"><a href="https://wa.me/+628118000071">Booking</a></div>
+                             </p>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="col-md-4">
+                     <div class="card text-center" style="box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);">
+                         <div class="card-header bg-secondary text-white">
+                             <h3 class="text-white">Zona II</h3>
+                             <h4 class="text-white">(Jawa Tengah ≥ 400 km)</h4>
+                         </div>
+                         <div class="card-body d-flex flex-column" style="height: 500px;">
+                             <h2 class="card-title">Rp 1.500.000/hari</h2>
+                             <h4 class="card-title">(min. 2 hari)</h4>
+                             <p class="card-text">
+                                 <h3>Sudah Termasuk:</h3>
+                                 <ul class="custom-list mb-3">
+                                     <li>Mobil</li>
+                                     <li>Driver</li>
+                                 </ul>
+                                 <h3>Tidak Termasuk:</h3>
+                                 <ul class="custom-list2">
+                                     <li>BBM</li>
+                                     <li>Biaya Parkir</li>
+                                     <li>Biaya Tol</li>
+                                 </ul>
+                                 <div class="read_bt"><a href="https://wa.me/+628118000071">Booking</a></div>
+                             </p>
+                             <div class="mt-auto">
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="col-md-4">
+                     <div class="card text-center" style="box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);">
+                         <div class="card-header bg-danger text-white">
+                             <h3 class="text-white">Zona III</h3>
+                             <h4 class="text-white">(Jawa Barat ≥ 800 km)</h4>
+                         </div>
+                         <div class="card-body d-flex flex-column" style="height: 500px;">
+                             <h2 class="card-title">Rp 1.700.000/hari</h2>
+                             <h4 class="card-title">(min. 3 hari)</h4>
+                             <p class="card-text">
+                                 <h3>Sudah Termasuk:</h3>
+                                 <ul class="custom-list mb-3">
+                                     <li>Mobil</li>
+                                     <li>Driver</li>
+                                 </ul>
+                                 <h3>Tidak Termasuk:</h3>
+                                 <ul class="custom-list2">
+                                     <li>BBM</li>
+                                     <li>Biaya Parkir</li>
+                                     <li>Biaya Tol</li>
+                                 </ul>
+                                 <div class="read_bt"><a href="https://wa.me/+628118000071">Booking</a></div>
+                             </p>
+                             <div class="mt-auto">
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+               </div>
+               {{-- ----------------------------------------------- --}}
+               <div class="row mt-4">
+                  <div class="col-md-4">
+                     <div class="card text-center" style="box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);">
+                        <div class="card-header bg-primary text-white">
+                            <h3 class="text-white">City Tour</h3>
+                            <h4 class="text-white mb-3"> </h4>
                         </div>
-                      @endforeach
-                  @endif
+                        <div class="card-body d-flex flex-column" style="height: 500px;">
+                            <h2 class="card-title">Rp 1.100.000/12 jam</h2>
+                            <p class="card-text">
+                                <h3>Sudah Termasuk:</h3>
+                                <ul class="custom-list mb-3">
+                                    <li>Mobil</li>
+                                    <li>Driver</li>
+                                    <li>BBM</li>
+                                </ul>
+                                <h3>Tidak Termasuk:</h3>
+                                <ul class="custom-list2">
+                                    <li>Biaya Parkir</li>
+                                    <li>Biaya Tol</li>
+                                </ul>
+                            </p>
+                            <div class="mt-auto">
+                              <div class="read_bt"><a href="https://wa.me/+628118000071">Booking</a></div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                     <div class="card text-center" style="box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);">
+                         <div class="card-header bg-info text-white">
+                             <h3 class="text-white">City Tour Wuling</h3>
+                             <h4 class="text-white mb-3"> </h4>
+                         </div>
+                         <div class="card-body d-flex flex-column" style="height: 500px;">
+                             <h2 class="card-title">Rp 400.000/12 jam</h2>
+                             <p class="card-text">
+                                 <h3>Sudah Termasuk:</h3>
+                                 <ul class="custom-list mb-3">
+                                     <li>Mobil</li>
+                                     <li>Driver</li>
+                                     <li>Biaya Parkir</li>
+                                     <li>Biaya Tol</li>
+                                 </ul>
+                             </p>
+                             <div class="mt-auto">
+                                 <div class="read_bt"><a href="https://wa.me/+628118000071">Booking</a></div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                  <div class="col-md-4">
+                      <div class="card text-center" style="box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);">
+                          <div class="card-header bg-warning text-white">
+                              <h3 class="text-white">Pickup/Drop Bandara, Stasiun</h3>
+                              <h4 class="text-white">(Surabaya, Gresik, Sidoarjo)</h4>
+                          </div>
+                          <div class="card-body d-flex flex-column" style="height: 500px;">
+                              <h2 class="card-title">Rp 700.000</h2>
+                              <p class="card-text">
+                                  <h3>Sudah Termasuk:</h3>
+                                  <ul class="custom-list mb-3">
+                                      <li>Mobil</li>
+                                      <li>Driver</li>
+                                      <li>BBM</li>
+                                      <li>Biaya Parkir</li>
+                                      <li>Biaya Tol</li>
+                                  </ul>
+                              </p>
+                              <div class="mt-auto">
+                               <div class="read_bt"><a href="https://wa.me/+628118000071">Booking</a></div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+            </div>
+         </div>
+      </div>
+      {{-- LANGKAH LANGKAH PEMESANAN DITARUH DISINI --}}
+      <div class="choose_section layout_padding">
+         <div class="container">
+             <div class="row">
+                 <div class="col-md-12">
+                     <h1 class="choose_taital">cara pemesanan</h1>
+                 </div>
+             </div>
+             <div class="choose_section_2">
+                 <div class="row">
+                     <div class="col-sm-4">
+                         <div class="icon_1"><img src="{{asset('images/icon-4.png')}}"></div>
+                         <h4 class="safety_text">Langkah 1: Pilih Mobil & Jenis Perjalanan</h4>
+                         <p class="ipsum_text">Telusuri berbagai pilihan mobil Hiace yang kami sediakan, sesuaikan dengan kebutuhan jenis perjalanan Anda.</p>
+                     </div>
+                     <div class="col-sm-4">
+                         <div class="icon_1"><img src="{{asset('images/icon-5.png')}}"></div>
+                         <h4 class="safety_text">Langkah 2: Pemesanan Online</h4>
+                         <p class="ipsum_text">Gunakan kontak info yang tersedia di website ini dengan menyebutkan tanggal dan tujuan sewa.</p>
+                     </div>
+                     <div class="col-sm-4">
+                         <div class="icon_1"><img src="{{asset('images/icon-6.png')}}"></div>
+                         <h4 class="safety_text">Langkah 3: Admin akan Melayani Anda</h4>
+                         <p class="ipsum_text">Setelah memesan, Admin akan melayani Anda dengan pilihan armada dan penawaran harga yang kompetitif.</p>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+     
+      <div class="gallery_section layout_padding" id="gallery">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <h1 class="gallery_taital">Mobil Kami</h1>
+               </div>
+            </div>
+            <div class="gallery_section_2">
+               <div class="row">
+                  <div class="col-md-4">
+                     <div class="gallery_box text-center">
+                        <div class="gallery_img"><img src="{{ asset('upload/commuter.png') }}"></div>
+                        <h3 class="types_text">Hiace Commuter</h3>
+                        <h6>(Mobil + Driver)</h6>
+                        <p class="looking_text">Rp 1.200.000</p>
+                        <div class="read_bt"><a href="https://wa.me/+628118000071">Booking</a></div>
+                     </div>
+                  </div>
+                  <div class="col-md-4">
+                     <div class="gallery_box text-center">
+                        <div class="gallery_img"><img src="{{ asset('upload/premio.png') }}"></div>
+                        <h3 class="types_text">Hiace Premio</h3>
+                        <h6>(Mobil + Driver)</h6>
+                        <p class="looking_text">Rp 1.500.000</p>
+                        <div class="read_bt"><a href="https://wa.me/+628118000071">Booking</a></div>
+                     </div>
+                  </div>
+                  <div class="col-md-4">
+                     <div class="gallery_box text-center">
+                        <div class="gallery_img"><img src="{{ asset('upload/wuling.png') }}"></div>
+                        <h3 class="types_text">Wuling Air EV</h3>
+                        <h6>(Mobil + Driver)</h6>
+                        <p class="looking_text">Rp 400.000</p>
+                        <div class="read_bt"><a href="https://wa.me/+628118000071">Booking</a></div>
+                     </div>
+                  </div>
                </div>
             </div>
          </div>
@@ -178,7 +411,7 @@
          <div class="container">
             <div class="row">
                <div class="col-md-12">
-                  <h1 class="choose_taital">WHY CHOOSE US</h1>
+                  <h1 class="choose_taital">Kenapa harus Central Hiace Rent Jatim?</h1>
                </div>
             </div>
             <div class="choose_section_2">
@@ -212,7 +445,7 @@
                   <div class="carousel-item active">
                      <div class="row">
                         <div class="col-md-12">
-                           <h1 class="client_taital">What Says Customers</h1>
+                           <h1 class="client_taital">Testimoni Pelanggan Kami</h1>
                         </div>
                      </div>
                      <div class="client_section_2">
@@ -273,16 +506,14 @@
             <div class="footer_section_2">
                <div class="row">
                   <div class="col">
-                     <h4 class="footer_taital">Information</h4>
-                     <div class="location_text"><a href="/"><span class="padding_left_15">Home</span></a></div>
-                     <div class="location_text"><a href="#about"><span class="padding_left_15">About</span></a></div>
-                     <div class="location_text"><a href="#gallery"><span class="padding_left_15">Vehicles</span></a></div>
-                     <div class="location_text"><a href="#client"><span class="padding_left_15">Client</span></a></div>
+                     <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d31661.40711913645!2d112.687369!3d-7.277670999999999!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fdd12d726d75%3A0x1ecfad11623a94b5!2sPusat%20Sewa%20Hiace%20Surabaya%20%7C%20PT%20DARMO%20RENT%20HIACE%20CENTER%20%7C%20Rental%20Elf%20%7C%20Hiace%20Premio%20%7C%20Shuttle%20Airport%20Transfer!5e0!3m2!1sen!2sid!4v1717135527290!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                   </div>
                   <div class="col">
-                     <h4 class="footer_taital">Contact Us</h4>
-                     <div class="location_text"><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i><span class="padding_left_15">Location</span></a></div>
-                     <div class="location_text"><a href="https://wa.me/+628118000071"><i class="fa fa-phone" aria-hidden="true"></i><span class="padding_left_15">(+62) 811-8000-071</span></a></div>
+                     <h4 class="footer_taital">Kontak Kami</h4>
+                     <div class="location_text"><a href="https://goo.gl/maps/YHZeDx9PzJPvr7Yy5"><i class="fa fa-map-marker" aria-hidden="true"></i><span class="padding_left_15">Darmo Permai Utara 8/6, Tanjungsari, Sukomanunggal, Surabaya, Jawa Timur</span></a></div>
+                     <div class="location_text"><a href="https://wa.me/+628118000071?text=Halo%20Admin,%20Saya%20mau%20sewa%20mobil"><i class="fa fa-phone" aria-hidden="true"></i><span class="padding_left_15">(+62) 811-8000-071</span></a></div>
+                     <div class="location_text"><a href="https://wa.me/+6281217600284?text=Halo%20Admin,%20Saya%20mau%20sewa%20mobil"><i class="fa fa-phone" aria-hidden="true"></i><span class="padding_left_15">(+62) 812-1760-0284</span></a></div>
+                     <div class="location_text"><a href="mailto:hiacesurabaya.rental@gmail.com?subject=Sewa%20Mobil&body=Halo%20Admin,%20Saya%20mau%20sewa%20mobil"><i class="fa fa-envelope" aria-hidden="true"></i><span class="padding_left_15">hiacesurabaya.rental@gmail.com</span></a></div>
                   </div>
                </div>
             </div>
