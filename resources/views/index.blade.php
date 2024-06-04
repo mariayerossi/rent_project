@@ -27,6 +27,9 @@
       <!-- Tweaks for older IEs-->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+      <!-- Bootstrap JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
    </head>
    <body>
       <style>
@@ -120,8 +123,8 @@ ul li {
          <div class="container">
             <div class="call_taital">
                <div class="call_text"><a href="https://goo.gl/maps/YHZeDx9PzJPvr7Yy5"><i class="fa fa-map-marker" aria-hidden="true"></i><span class="padding_left_15">Lokasi</span></a></div>
-               <div class="call_text"><a href="https://wa.me/+6281217600284"><i class="fa fa-phone" aria-hidden="true"></i><span class="padding_left_15">(+62) 812-1760-0284</span></a></div>
-               <div class="call_text"><a href="https://wa.me/+628118000071"><i class="fa fa-phone" aria-hidden="true"></i><span class="padding_left_15">(+62) 811-8000-071</span></a></div>
+               <div class="call_text"><a href="https://wa.me/+6281217600284?text=Halo%20Admin,%20Saya%20mau%20sewa%20mobil"><i class="fa fa-phone" aria-hidden="true"></i><span class="padding_left_15">(+62) 812-1760-0284</span></a></div>
+               <div class="call_text"><a href="https://wa.me/+628118000071?text=Halo%20Admin,%20Saya%20mau%20sewa%20mobil"><i class="fa fa-phone" aria-hidden="true"></i><span class="padding_left_15">(+62) 811-8000-071</span></a></div>
             </div>
          </div>
       </div>
@@ -162,6 +165,35 @@ ul li {
             </div>
          </div>
       </div>
+      <div class="choose_section layout_padding">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <h1 class="choose_taital">Kenapa harus Central Hiace Rent Jatim?</h1>
+               </div>
+            </div>
+            <div class="choose_section_2">
+               <div class="row">
+                   <div class="col-sm-4">
+                       <div class="icon_1"><img src="{{asset('images/icon-1.png')}}"></div>
+                       <h4 class="safety_text">Keamanan & Keselamatan</h4>
+                       <p class="ipsum_text">Keamanan dan keselamatan adalah prioritas kami. Kami memiliki standar ketat untuk menjamin pengalaman perjalanan yang aman dan nyaman bagi pelanggan kami.</p>
+                   </div>
+                   <div class="col-sm-4">
+                       <div class="icon_1"><img src="{{asset('images/icon-2.png')}}"></div>
+                       <h4 class="safety_text">Pemesanan Online</h4>
+                       <p class="ipsum_text">Kami menawarkan layanan pemesanan online yang cepat dan mudah untuk memesan mobil Hiace, kapan saja, di mana saja.</p>
+                   </div>
+                   <div class="col-sm-4">
+                       <div class="icon_1"><img src="{{asset('images/icon-3.png')}}"></div>
+                       <h4 class="safety_text">Pengemudi Terbaik</h4>
+                       <p class="ipsum_text">Kami bekerja dengan pengemudi-pengemudi berpengalaman dan profesional yang menyediakan pengalaman berkendara yang aman dan menyenangkan.</p>
+                   </div>
+               </div>
+           </div>
+           
+         </div>
+      </div>
       <!-- pricelist -->
       <div class="gallery_section layout_padding" id="jenis">
          <div class="container">
@@ -193,7 +225,7 @@ ul li {
                                      <li>Biaya Parkir</li>
                                      <li>Biaya Tol</li>
                                  </ul>
-                                 <div class="read_bt"><a href="https://wa.me/+628118000071">Booking</a></div>
+                                 <div class="read_bt"><a href="https://wa.me/+628118000071?text=Halo%20Admin,%20Saya%20mau%20sewa%20mobil%20dengan%20jenis%20perjalanan%20Zona%20I">Booking</a></div>
                              </p>
                          </div>
                      </div>
@@ -219,7 +251,7 @@ ul li {
                                      <li>Biaya Parkir</li>
                                      <li>Biaya Tol</li>
                                  </ul>
-                                 <div class="read_bt"><a href="https://wa.me/+628118000071">Booking</a></div>
+                                 <div class="read_bt"><a href="https://wa.me/+628118000071?text=Halo%20Admin,%20Saya%20mau%20sewa%20mobil%20dengan%20jenis%20perjalanan%20Zona%20II">Booking</a></div>
                              </p>
                              <div class="mt-auto">
                              </div>
@@ -247,7 +279,7 @@ ul li {
                                      <li>Biaya Parkir</li>
                                      <li>Biaya Tol</li>
                                  </ul>
-                                 <div class="read_bt"><a href="https://wa.me/+628118000071">Booking</a></div>
+                                 <div class="read_bt"><a href="https://wa.me/+628118000071?text=Halo%20Admin,%20Saya%20mau%20sewa%20mobil%20dengan%20jenis%20perjalanan%20Zona%20III">Booking</a></div>
                              </p>
                              <div class="mt-auto">
                              </div>
@@ -279,7 +311,7 @@ ul li {
                                 </ul>
                             </p>
                             <div class="mt-auto">
-                              <div class="read_bt"><a href="https://wa.me/+628118000071">Booking</a></div>
+                              <div class="read_bt"><a href="https://wa.me/+628118000071?text=Halo%20Admin,%20Saya%20mau%20sewa%20mobil%20dengan%20jenis%20perjalanan%20City%20Tour">Booking</a></div>
                             </div>
                         </div>
                     </div>
@@ -302,7 +334,7 @@ ul li {
                                  </ul>
                              </p>
                              <div class="mt-auto">
-                                 <div class="read_bt"><a href="https://wa.me/+628118000071">Booking</a></div>
+                                 <div class="read_bt"><a href="https://wa.me/+628118000071?text=Halo%20Admin,%20Saya%20mau%20sewa%20mobil%20dengan%20jenis%20perjalanan%20City%20Tour%20Wuling">Booking</a></div>
                              </div>
                          </div>
                      </div>
@@ -326,7 +358,7 @@ ul li {
                                   </ul>
                               </p>
                               <div class="mt-auto">
-                               <div class="read_bt"><a href="https://wa.me/+628118000071">Booking</a></div>
+                               <div class="read_bt"><a href="https://wa.me/+628118000071?text=Halo%20Admin,%20Saya%20mau%20sewa%20mobil%20untuk%20pickup%20/%20drop%20bandara%20/%20stasiun">Booking</a></div>
                               </div>
                           </div>
                       </div>
@@ -380,7 +412,7 @@ ul li {
                         <h3 class="types_text">Hiace Commuter</h3>
                         <h6>(Mobil + Driver)</h6>
                         <p class="looking_text">Rp 1.200.000</p>
-                        <div class="read_bt"><a href="https://wa.me/+628118000071">Booking</a></div>
+                        <div class="read_bt"><a href="https://wa.me/+628118000071?text=Halo%20Admin,%20Saya%20mau%20sewa%20mobil%20Hiace%20Commuter">Booking</a></div>
                      </div>
                   </div>
                   <div class="col-md-4">
@@ -389,7 +421,7 @@ ul li {
                         <h3 class="types_text">Hiace Premio</h3>
                         <h6>(Mobil + Driver)</h6>
                         <p class="looking_text">Rp 1.500.000</p>
-                        <div class="read_bt"><a href="https://wa.me/+628118000071">Booking</a></div>
+                        <div class="read_bt"><a href="https://wa.me/+62811800007?text=Halo%20Admin,%20Saya%20mau%20sewa%20mobil%20Hiace%20Premio">Booking</a></div>
                      </div>
                   </div>
                   <div class="col-md-4">
@@ -398,46 +430,142 @@ ul li {
                         <h3 class="types_text">Wuling Air EV</h3>
                         <h6>(Mobil + Driver)</h6>
                         <p class="looking_text">Rp 400.000</p>
-                        <div class="read_bt"><a href="https://wa.me/+628118000071">Booking</a></div>
+                        <div class="read_bt"><a href="https://wa.me/+628118000071?text=Halo%20Admin,%20Saya%20mau%20sewa%20mobil%20Wuling%20Air%20EV">Booking</a></div>
                      </div>
                   </div>
                </div>
             </div>
          </div>
       </div>
-      <!-- gallery section end -->
-      <!-- choose section start -->
-      <div class="choose_section layout_padding">
+      {{-- bagian peraturan --}}
+      {{-- <div class="gallery_section layout_padding" id="gallery">
          <div class="container">
-            <div class="row">
-               <div class="col-md-12">
-                  <h1 class="choose_taital">Kenapa harus Central Hiace Rent Jatim?</h1>
+             <div class="row">
+                 <div class="col-md-12">
+                     <h1 class="gallery_taital">Yang Perlu diperhatikan dalam pemesanan</h1>
+                 </div>
+             </div>
+             <div class="gallery_section_2">
+                 <div class="row">
+                     <div class="col-md-4">
+                         <div class="gallery_box2 text-center">
+                              <div class="gallery_img2"><img src="{{ asset('images/gas-pump.png') }}"></div>
+                             <h3 class="types_text">Mobil harus dikembalikan dengan tangki bahan bakar yang terisi penuh. (Zona I, Zona II, Zona III)</h3>
+                         </div>
+                     </div>
+                     <div class="col-md-4">
+                         <div class="gallery_box2 text-center">
+                           <div class="gallery_img2"><img src="{{ asset('images/tag.png') }}"></div>
+                             <h3 class="types_text">Harga tidak dapat dinegosiasikan untuk perjalanan pada akhir pekan atau saat libur.</h3>
+                         </div>
+                     </div>
+                     <div class="col-md-4">
+                         <div class="gallery_box2 text-center">
+                           <div class="gallery_img2"><img src="{{ asset('images/cancelled.png') }}"></div>
+                             <h3 class="types_text">Pembatalan pemesanan 1 minggu sebelumnya mendapat pengembalian dana sebesar 50%. Pembatalan pemesanan kurang dari seminggu sebelumnya tidak mendapat pengembalian dana.</h3>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div> --}}
+
+     <div class="gallery_section layout_padding" id="peraturan">
+      <div class="container">
+         <div class="row">
+            <div class="col-md-12">
+                <h1 class="gallery_taital">Yang Perlu diperhatikan dalam pemesanan</h1>
+            </div>
+        </div>
+         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+               <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+               <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            </ol>
+            <div class="carousel-inner">
+               <div class="carousel-item active">
+                  <div class="row">
+                     <div class="col-md-4">
+                        <div class="gallery_box2 text-center">
+                              <div class="gallery_img2"><img src="{{ asset('images/gas-pump.png') }}"></div>
+                           <h3 class="types_text">Mobil harus dikembalikan dengan tangki bahan bakar yang terisi penuh. (Zona I, Zona II, Zona III)</h3>
+                        </div>
+                     </div>
+                     <div class="col-md-4">
+                        <div class="gallery_box2 text-center">
+                           <div class="gallery_img2"><img src="{{ asset('images/tag.png') }}"></div>
+                           <h3 class="types_text">Harga tidak dapat dinegosiasikan untuk perjalanan pada akhir pekan atau saat libur.</h3>
+                        </div>
+                     </div>
+                     <div class="col-md-4">
+                        <div class="gallery_box2 text-center">
+                           <div class="gallery_img2"><img src="{{ asset('images/cancelled.png') }}"></div>
+                           <h3 class="types_text">Pembatalan pemesanan 1 minggu sebelumnya mendapat pengembalian dana sebesar 50%. Pembatalan pemesanan kurang dari seminggu sebelumnya tidak mendapat pengembalian dana.</h3>
+                        </div>
+                     </div>
+               </div>
+               </div>
+               <div class="carousel-item">
+                  <div class="row">
+                     <div class="col-md-4">
+                        <div class="gallery_box2 text-center">
+                              <div class="gallery_img2"><img src="{{ asset('images/dollar.png') }}"></div>
+                           <h3 class="types_text">Pelanggan dapat melakukan pembayaran secara tunai atau dengan sistem pembayaran DP saat pemesanan, dengan sisa pembayaran harus diselesaikan paling lambat sebelum keberangkatan.</h3>
+                        </div>
+                     </div>
+                     <div class="col-md-4">
+                        <div class="gallery_box2 text-center">
+                           <div class="gallery_img2"><img src="{{ asset('images/work-in-progress.png') }}"></div>
+                           <h3 class="types_text">Besaran pembayaran DP dapat ditentukan secara fleksibel, namun untuk situasi yang mendesak, pembayaran muka minimal sebesar 50% dari total biaya.</h3>
+                        </div>
+                     </div>
+               </div>
                </div>
             </div>
-            <div class="choose_section_2">
-               <div class="row">
-                   <div class="col-sm-4">
-                       <div class="icon_1"><img src="{{asset('images/icon-1.png')}}"></div>
-                       <h4 class="safety_text">Keamanan & Keselamatan</h4>
-                       <p class="ipsum_text">Keamanan dan keselamatan adalah prioritas kami. Kami memiliki standar ketat untuk menjamin pengalaman perjalanan yang aman dan nyaman bagi pelanggan kami.</p>
-                   </div>
-                   <div class="col-sm-4">
-                       <div class="icon_1"><img src="{{asset('images/icon-2.png')}}"></div>
-                       <h4 class="safety_text">Pemesanan Online</h4>
-                       <p class="ipsum_text">Kami menawarkan layanan pemesanan online yang cepat dan mudah untuk memesan mobil Hiace, kapan saja, di mana saja.</p>
-                   </div>
-                   <div class="col-sm-4">
-                       <div class="icon_1"><img src="{{asset('images/icon-3.png')}}"></div>
-                       <h4 class="safety_text">Pengemudi Terbaik</h4>
-                       <p class="ipsum_text">Kami bekerja dengan pengemudi-pengemudi berpengalaman dan profesional yang menyediakan pengalaman berkendara yang aman dan menyenangkan.</p>
-                   </div>
-               </div>
-           </div>
-           
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+               <span class="sr-only">Previous</span>
+           </a>
+           <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+               <span class="carousel-control-next-icon" aria-hidden="true"></span>
+               <span class="sr-only">Next</span>
+           </a>
          </div>
       </div>
-      <!-- choose section end -->
-      <!-- client section start -->
+   </div>
+     {{-- galeri --}}
+     <div class="gallery_section layout_padding" id="galeri">
+      <div class="container">
+         <div class="row">
+            <div class="col-md-12">
+                <h1 class="gallery_taital">Galeri Kami</h1>
+            </div>
+        </div>
+         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+               <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+               <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            </ol>
+            <div class="carousel-inner">
+               <div class="carousel-item active">
+                  
+               </div>
+               <div class="carousel-item">
+                  
+               </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+               <span class="sr-only">Previous</span>
+           </a>
+           <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+               <span class="carousel-control-next-icon" aria-hidden="true"></span>
+               <span class="sr-only">Next</span>
+           </a>
+         </div>
+      </div>
+   </div>
+
       <div class="client_section layout_padding" id="client">
          <div class="container">
             <div id="custom_slider" class="carousel slide" data-ride="carousel">
@@ -491,7 +619,7 @@ ul li {
          </div>
       </div>
       <!-- render the button and direct it to wa.me -->
-         <a href="https://wa.me/628118000071" class="floating" target="_blank">
+         <a href="https://wa.me/628118000071?text=Halo%20Admin,%20Saya%20mau%20sewa%20mobil" class="floating" target="_blank">
             <i class="fab fa-whatsapp fab-icon"></i>
          </a>
       <div class="footer_section layout_padding" id="contact">
@@ -540,5 +668,6 @@ ul li {
       <!-- sidebar -->
       <script src="{{asset('js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
       <script src="{{asset('js/custom.js')}}"></script>
+
    </body>
 </html>

@@ -79,7 +79,7 @@
                 </div>
                 <div class="modal-body">
                     Peraturan: <br>
-                    1. Mobil harus dikembalikan dengan  tangki bahan bakar yang terisi penuh. (Kecuali jenis city tour) <br>
+                    1. Mobil harus dikembalikan dengan tangki bahan bakar yang terisi penuh. (Kecuali jenis city tour) <br>
                     2. Harga tidak dapat dinegosiasikan untuk perjalanan pada akhir pekan atau saat libur. <br>
                     3. Negosiasi harga dan pemesanan hanya dapat dilakukan melalui Whatsapp. <br>
                     4. Pembatalan pemesanan 1 minggu sebelumnya mendapat pengembalian dana sebesar 50%. <br>
