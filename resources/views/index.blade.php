@@ -48,6 +48,12 @@
  z-index: 100;
 }
 
+.corr {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+  }
+
 .fab-icon {
  margin-top: 16px;
 }
@@ -558,40 +564,40 @@ ul li {
             </ol>
             <div class="carousel-inner">
                <div class="carousel-item active">
-                  <img src="{{ asset('images/galeri1.jpg') }}" class="d-block w-100">
+                  <img src="{{ asset('images/galeri1.jpg') }}" class="d-block w-100 corr">
                </div>
                <div class="carousel-item">
-                  <img src="{{ asset('images/galeri2.jpg') }}" class="d-block w-100">
+                  <img src="{{ asset('images/galeri2.jpg') }}" class="d-block w-100 corr">
                </div>
                <div class="carousel-item">
-                  <img src="{{ asset('images/galeri3.jpg') }}" class="d-block w-100">
+                  <img src="{{ asset('images/galeri3.jpg') }}" class="d-block w-100 corr">
                </div>
                <div class="carousel-item">
-                  <img src="{{ asset('images/galeri4.jpg') }}" class="d-block w-100">
+                  <img src="{{ asset('images/galeri4.jpg') }}" class="d-block w-100 corr">
                </div>
                <div class="carousel-item">
-                  <img src="{{ asset('images/galeri5.jpg') }}" class="d-block w-100">
+                  <img src="{{ asset('images/galeri5.jpg') }}" class="d-block w-100 corr">
                </div>
                <div class="carousel-item">
-                  <img src="{{ asset('images/galeri6.jpg') }}" class="d-block w-100">
+                  <img src="{{ asset('images/galeri6.jpg') }}" class="d-block w-100 corr">
                </div>
                <div class="carousel-item">
-                  <img src="{{ asset('images/galeri7.jpg') }}" class="d-block w-100">
+                  <img src="{{ asset('images/galeri7.jpg') }}" class="d-block w-100 corr">
                </div>
                <div class="carousel-item">
-                  <img src="{{ asset('images/galeri8.jpg') }}" class="d-block w-100">
+                  <img src="{{ asset('images/galeri8.jpg') }}" class="d-block w-100 corr">
                </div>
                <div class="carousel-item">
-                  <img src="{{ asset('images/galeri9.jpg') }}" class="d-block w-100">
+                  <img src="{{ asset('images/galeri9.jpg') }}" class="d-block w-100 corr">
                </div>
                <div class="carousel-item">
-                  <img src="{{ asset('images/galeri10.jpg') }}" class="d-block w-100">
+                  <img src="{{ asset('images/galeri10.jpg') }}" class="d-block w-100 corr">
                </div>
                <div class="carousel-item">
-                  <img src="{{ asset('images/galeri11.jpg') }}" class="d-block w-100">
+                  <img src="{{ asset('images/galeri11.jpg') }}" class="d-block w-100 corr">
                </div>
                <div class="carousel-item">
-                  <img src="{{ asset('images/galeri12.jpg') }}" class="d-block w-100">
+                  <img src="{{ asset('images/galeri12.jpg') }}" class="d-block w-100 corr">
                </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-slide="prev">
@@ -599,6 +605,78 @@ ul li {
                <span class="sr-only">Previous</span>
            </a>
            <a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next">
+               <span class="carousel-control-next-icon" aria-hidden="true"></span>
+               <span class="sr-only">Next</span>
+           </a>
+         </div>
+      </div>
+   </div>
+
+   <div class="gallery_section layout_padding" id="unit">
+      <div class="container">
+         <div class="row">
+            <div class="col-md-12">
+                <h1 class="gallery_taital">Galeri Unit Kami</h1>
+            </div>
+        </div>
+         <div id="carouselExampleIndicators3" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+               <li data-target="#carouselExampleIndicators3" data-slide-to="0" class="active"></li>
+               <li data-target="#carouselExampleIndicators3" data-slide-to="1"></li>
+               <li data-target="#carouselExampleIndicators3" data-slide-to="2"></li>
+               <li data-target="#carouselExampleIndicators3" data-slide-to="3"></li>
+               <li data-target="#carouselExampleIndicators3" data-slide-to="4"></li>
+               <li data-target="#carouselExampleIndicators3" data-slide-to="5"></li>
+               <li data-target="#carouselExampleIndicators3" data-slide-to="6"></li>
+               <li data-target="#carouselExampleIndicators3" data-slide-to="7"></li>
+               <li data-target="#carouselExampleIndicators3" data-slide-to="8"></li>
+               <li data-target="#carouselExampleIndicators3" data-slide-to="9"></li>
+               <li data-target="#carouselExampleIndicators3" data-slide-to="10"></li>
+               <li data-target="#carouselExampleIndicators3" data-slide-to="11"></li>
+            </ol>
+            <div class="carousel-inner">
+               <div class="carousel-item active">
+                  <img src="{{ asset('images/unit1.jpg') }}" class="d-block w-100">
+               </div>
+               <div class="carousel-item">
+                  <img src="{{ asset('images/unit2.jpg') }}" class="d-block w-100">
+               </div>
+               <div class="carousel-item">
+                  <img src="{{ asset('images/unit3.jpg') }}" class="d-block w-100 ">
+               </div>
+               <div class="carousel-item">
+                  <img src="{{ asset('images/unit4.jpg') }}" class="d-block w-100">
+               </div>
+               <div class="carousel-item">
+                  <img src="{{ asset('images/unit5.jpg') }}" class="d-block w-100">
+               </div>
+               <div class="carousel-item">
+                  <img src="{{ asset('images/unit6.jpg') }}" class="d-block w-100">
+               </div>
+               <div class="carousel-item">
+                  <img src="{{ asset('images/unit7.jpg') }}" class="d-block w-100">
+               </div>
+               <div class="carousel-item">
+                  <img src="{{ asset('images/unit8.jpg') }}" class="d-block w-100">
+               </div>
+               <div class="carousel-item">
+                  <img src="{{ asset('images/unit9.jpg') }}" class="d-block w-100">
+               </div>
+               <div class="carousel-item">
+                  <img src="{{ asset('images/unit10.jpg') }}" class="d-block w-100">
+               </div>
+               <div class="carousel-item">
+                  <img src="{{ asset('images/unit11.jpg') }}" class="d-block w-100">
+               </div>
+               <div class="carousel-item">
+                  <img src="{{ asset('images/unit12.jpg') }}" class="d-block w-100">
+               </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators3" role="button" data-slide="prev">
+               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+               <span class="sr-only">Previous</span>
+           </a>
+           <a class="carousel-control-next" href="#carouselExampleIndicators3" role="button" data-slide="next">
                <span class="carousel-control-next-icon" aria-hidden="true"></span>
                <span class="sr-only">Next</span>
            </a>
