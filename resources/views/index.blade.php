@@ -52,6 +52,14 @@
     width: 100%;
     height: auto;
     aspect-ratio: 3 / 2;
+    max-width: 600px; /* Adjust this value as needed */
+    max-height: 400px; /* Adjust this value as needed */
+    margin: auto;
+  }
+  .corr2 {
+    max-width: 500px; /* Adjust this value as needed */
+    max-height: 500px; /* Adjust this value as needed */
+    margin: auto;
   }
 
 .fab-icon {
@@ -636,40 +644,40 @@ ul li {
             </ol>
             <div class="carousel-inner">
                <div class="carousel-item active">
-                  <img src="{{ asset('images/unit1.jpg') }}" class="d-block w-100">
+                  <img src="{{ asset('images/unit1.jpg') }}" class="d-block w-100 corr2">
                </div>
                <div class="carousel-item">
-                  <img src="{{ asset('images/unit2.jpg') }}" class="d-block w-100">
+                  <img src="{{ asset('images/unit2.jpg') }}" class="d-block w-100 corr2">
                </div>
                <div class="carousel-item">
-                  <img src="{{ asset('images/unit3.jpg') }}" class="d-block w-100 ">
+                  <img src="{{ asset('images/unit3.jpg') }}" class="d-block w-100 corr2">
                </div>
                <div class="carousel-item">
-                  <img src="{{ asset('images/unit4.jpg') }}" class="d-block w-100">
+                  <img src="{{ asset('images/unit4.jpg') }}" class="d-block w-100 corr2">
                </div>
                <div class="carousel-item">
-                  <img src="{{ asset('images/unit5.jpg') }}" class="d-block w-100">
+                  <img src="{{ asset('images/unit5.jpg') }}" class="d-block w-100 corr2">
                </div>
                <div class="carousel-item">
-                  <img src="{{ asset('images/unit6.jpg') }}" class="d-block w-100">
+                  <img src="{{ asset('images/unit6.jpg') }}" class="d-block w-100 corr2">
                </div>
                <div class="carousel-item">
-                  <img src="{{ asset('images/unit7.jpg') }}" class="d-block w-100">
+                  <img src="{{ asset('images/unit7.jpg') }}" class="d-block w-100 corr2">
                </div>
                <div class="carousel-item">
-                  <img src="{{ asset('images/unit8.jpg') }}" class="d-block w-100">
+                  <img src="{{ asset('images/unit8.jpg') }}" class="d-block w-100 corr2">
                </div>
                <div class="carousel-item">
-                  <img src="{{ asset('images/unit9.jpg') }}" class="d-block w-100">
+                  <img src="{{ asset('images/unit9.jpg') }}" class="d-block w-100 corr2">
                </div>
                <div class="carousel-item">
-                  <img src="{{ asset('images/unit10.jpg') }}" class="d-block w-100">
+                  <img src="{{ asset('images/unit10.jpg') }}" class="d-block w-100 corr2">
                </div>
                <div class="carousel-item">
-                  <img src="{{ asset('images/unit11.jpg') }}" class="d-block w-100">
+                  <img src="{{ asset('images/unit11.jpg') }}" class="d-block w-100 corr2">
                </div>
                <div class="carousel-item">
-                  <img src="{{ asset('images/unit12.jpg') }}" class="d-block w-100">
+                  <img src="{{ asset('images/unit12.jpg') }}" class="d-block w-100 corr2">
                </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators3" role="button" data-slide="prev">
