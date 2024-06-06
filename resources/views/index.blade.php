@@ -120,6 +120,9 @@ ul li {
                         <a class="nav-link" href="#gallery">Mobil</a>
                      </li>
                      <li class="nav-item">
+                        <a class="nav-link" href="#galeri">Galeri</a>
+                     </li>
+                     <li class="nav-item">
                         <a class="nav-link" href="#client">Testimoni</a>
                      </li>
                      <li class="nav-item">
@@ -183,7 +186,7 @@ ul li {
          <div class="container">
             <div class="row">
                <div class="col-md-12">
-                  <h1 class="choose_taital">Kenapa harus Central Hiace Rent Jatim?</h1>
+                  <h1 class="choose_taital">Kenapa harus <span style="color: #fe5b29;">Central Hiace Jatim</span>?</h1>
                </div>
             </div>
             <div class="choose_section_2">
@@ -213,7 +216,7 @@ ul li {
          <div class="container">
             <div class="row">
                <div class="col-md-12">
-                  <h1 class="gallery_taital">Jenis Perjalanan</h1>
+                  <h1 class="gallery_taital">Jenis <span style="color: #fe5b29;">Perjalanan</span></h1>
                </div>
             </div>
             <div class="gallery_section_2">
@@ -386,7 +389,7 @@ ul li {
          <div class="container">
              <div class="row">
                  <div class="col-md-12">
-                     <h1 class="choose_taital">cara pemesanan</h1>
+                     <h1 class="choose_taital">cara <span style="color: #fe5b29;">pemesanan</span></h1>
                  </div>
              </div>
              <div class="choose_section_2">
@@ -415,7 +418,7 @@ ul li {
          <div class="container">
             <div class="row">
                <div class="col-md-12">
-                  <h1 class="gallery_taital">Mobil Kami</h1>
+                  <h1 class="gallery_taital">Mobil <span style="color: #fe5b29;">Kami</span></h1>
                </div>
             </div>
             <div class="gallery_section_2">
@@ -488,7 +491,7 @@ ul li {
       <div class="container">
          <div class="row">
             <div class="col-md-12">
-                <h1 class="gallery_taital">Yang Perlu diperhatikan dalam pemesanan</h1>
+                <h1 class="gallery_taital">Yang Perlu diperhatikan <span style="color: #fe5b29;">dalam pemesanan</span></h1>
             </div>
         </div>
          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -552,7 +555,7 @@ ul li {
       <div class="container">
          <div class="row">
             <div class="col-md-12">
-                <h1 class="gallery_taital">Galeri Kami</h1>
+                <h1 class="gallery_taital">Galeri <span style="color: #fe5b29;">Kami</span></h1>
             </div>
         </div>
          <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
@@ -624,7 +627,7 @@ ul li {
       <div class="container">
          <div class="row">
             <div class="col-md-12">
-                <h1 class="gallery_taital">Galeri Unit Kami</h1>
+                <h1 class="gallery_taital">Galeri <span style="color: #fe5b29;">Unit Kami</span></h1>
             </div>
         </div>
          <div id="carouselExampleIndicators3" class="carousel slide" data-ride="carousel">
@@ -699,7 +702,7 @@ ul li {
                   <div class="carousel-item active">
                      <div class="row">
                         <div class="col-md-12">
-                           <h1 class="client_taital">Testimoni Pelanggan Kami</h1>
+                           <h1 class="client_taital">Testimoni <span style="color: #fe5b29;">pelanggan Kami</span></h1>
                         </div>
                      </div>
                      <div class="client_section_2">
